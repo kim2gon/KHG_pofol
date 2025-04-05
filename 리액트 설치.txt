@@ -1,0 +1,4 @@
+npm i react@18 react-dom@18
+
+tailwind-3.4.17v
+3번까지 진행
