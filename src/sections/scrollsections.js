@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import Section1 from "./section1";
+import Section2 from "./section2";
 
 const ScrollSections = () => {
   const totalSections = 7; // 총 섹션의 수
@@ -70,6 +72,8 @@ const ScrollSections = () => {
   );
 };
 
+
+
 // 각 섹션을 컴포넌트로 정의
 const Section = React.forwardRef(({ sectionName, sectionRef, index }, ref) => {
     return (
@@ -87,7 +91,10 @@ const Section = React.forwardRef(({ sectionName, sectionRef, index }, ref) => {
         //   transition: "background-color 0.5s",
         // }}
       >
-        <h2>{sectionName}</h2>
+        
+        {sectionName === "section1" && ( <Section1 />)}
+        {sectionName === "section2" && ( <Section2 />)}
+        {sectionName}
       </section>
     );
   });
