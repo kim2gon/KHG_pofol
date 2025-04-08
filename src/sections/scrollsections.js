@@ -1,103 +1,71 @@
-import React, { useState, useRef, useEffect } from "react";
-import Section1 from "./section1";
-import Section2 from "./section2";
+import React, { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Section1 from './section1';
+import Section2 from './section2';
+import Section3 from './section3';
+import Section4 from './section4';
+import Section5 from './section5';
+import Section6 from './section6';
+
+const sections = [
+  { component: Section1, path: '/' },
+  { component: Section2, path: '/about' },
+  { component: Section3, path: '/awards' },
+  { component: Section4, path: '/animation' },
+  { component: Section5, path: '/pofol' },
+  { component: Section6, path: '/skills' },
+];
 
 const ScrollSections = () => {
-  const totalSections = 7; // 총 섹션의 수
-  const [currentSection, setCurrentSection] = useState(0); // 현재 섹션
-  const [isScrolling, setIsScrolling] = useState(false); // 스크롤 방지용 boolean
-  
-  // 각 섹션에 대한 참조를 section1, section2, ..., section7로 관리
-  const sectionRefs = useRef({
-    section1: null,
-    section2: null,
-    section3: null,
-    section4: null,
-    section5: null,
-    section6: null,
-    section7: null,
-  });
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // 섹션의 스크롤을 방지하고 스크롤 이벤트를 처리하는 함수
-  const handleWheel = (e) => {
-    if (isScrolling) return; // 스크롤이 진행 중이면 아무 작업도 하지 않음
+  const [currentSection, setCurrentSection] = useState(0);
+  const isScrolling = useRef(false);
 
-    setIsScrolling(true); // 스크롤 진행 중 설정
+  const sectionRefs = useRef(sections.map(() => React.createRef()));
 
-    setTimeout(() => {
-      if (e.deltaY > 0) {
-        // 아래로 스크롤
-        if (currentSection < totalSections - 1) {
-          setCurrentSection((prev) => prev + 1);
-        }
-      } else {
-        // 위로 스크롤
-        if (currentSection > 0) {
-          setCurrentSection((prev) => prev - 1);
-        }
-      }
-
-      setIsScrolling(false); // 스크롤 끝나면 방지용 boolean 해제
-    }, 200); // 0.2초 지연
-  };
-
+  // URL 변경 → 섹션 이동
   useEffect(() => {
-    // 현재 섹션으로 스크롤을 이동
-    const sectionName = `section${currentSection + 1}`;
-    if (sectionRefs.current[sectionName]) {
-      sectionRefs.current[sectionName].scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    const index = sections.findIndex((s) => s.path === location.pathname);
+    if (index !== -1) {
+      setCurrentSection(index);
+    }
+  }, [location.pathname]);
+
+  // 섹션 변경 → 스크롤 + URL 동기화
+  useEffect(() => {
+    const ref = sectionRefs.current[currentSection];
+    if (ref?.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+      navigate(sections[currentSection].path, { replace: true });
     }
   }, [currentSection]);
 
+  // 휠 스크롤 이벤트
+  const handleWheel = (e) => {
+    if (isScrolling.current) return;
+    isScrolling.current = true;
+
+    setTimeout(() => {
+      if (e.deltaY > 0 && currentSection < sections.length - 1) {
+        setCurrentSection((prev) => prev + 1);
+      } else if (e.deltaY < 0 && currentSection > 0) {
+        setCurrentSection((prev) => prev - 1);
+      }
+      isScrolling.current = false;
+    }, 400); // 디바운스 시간
+  };
+
   return (
-    <div
-      style={{ height: "100vh", overflow: "hidden" }}
-      onWheel={handleWheel}
-    >
-      {Array.from({ length: totalSections }, (_, index) => {
-        const sectionName = `section${index + 1}`;
-        return (
-          <Section
-            key={index}
-            sectionName={sectionName}
-            sectionRef={(el) => (sectionRefs.current[sectionName] = el)}
-            index={index}
-          />
-        );
-      })}
+    <div onWheel={handleWheel}>
+      {sections.map(({ component: Component }, index) => (
+        <div key={index} ref={sectionRefs.current[index]} style={{ height: '100vh' }}>
+          <Component />
+        </div>
+      ))}
     </div>
   );
 };
-
-
-
-// 각 섹션을 컴포넌트로 정의
-const Section = React.forwardRef(({ sectionName, sectionRef, index }, ref) => {
-    return (
-      <section
-        ref={(el) => {
-          sectionRef(el);  // sectionRef가 DOM을 추적하도록 전달
-          if (ref) ref(el);  // 전달된 ref를 DOM에 연결
-        }}
-        // style={{
-        //   height: "100vh",
-        //   display: "flex",
-        //   justifyContent: "center",
-        //   alignItems: "center",
-        //   backgroundColor: index % 2 === 0 ? "lightblue" : "lightcoral",
-        //   transition: "background-color 0.5s",
-        // }}
-      >
-        
-        {sectionName === "section1" && ( <Section1 />)}
-        {sectionName === "section2" && ( <Section2 />)}
-        {sectionName}
-      </section>
-    );
-  });
-  
 
 export default ScrollSections;

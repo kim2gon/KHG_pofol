@@ -16,12 +16,12 @@ import ScrollSections from './sections/scrollsections';
 function App() {
   return (
     <div className='flex flex-col h-full w-[1300px] my-0 mx-auto'>
-      <div className="w-dvw flex justify-between max-w-[1300px] mx-auto xl-px-[5%] absolute overflow-hidden z-0">
-        <div className="w-[1px] h-dvh bg-[#eee]"></div>
-        <div className="w-[1px] h-dvh bg-[#eee]"></div>
-        <div className="w-[1px] h-dvh bg-[#eee]"></div>
-        <div className="w-[1px] h-dvh bg-[#eee]"></div>
-        <div className="w-[1px] h-dvh bg-[#eee]"></div>
+      <div className="w-dvw flex justify-between max-w-[1300px] mx-auto xl-px-[5%] fixed overflow-hidden z-0">
+        <div className="w-[1px] h-screen bg-[#eee]"></div>
+        <div className="w-[1px] h-screen bg-[#eee]"></div>
+        <div className="w-[1px] h-screen bg-[#eee]"></div>
+        <div className="w-[1px] h-screen bg-[#eee]"></div>
+        <div className="w-[1px] h-screen bg-[#eee]"></div>
       </div>
       <div>
         <Character />
@@ -29,15 +29,7 @@ function App() {
       <div className='z-10'>
         <Header />
         <Navbar />
-        <div>
-          <ScrollSections />
-          <Section1 />
-          <Section2 />
-          <Section3 />
-          <Section4 />
-          <Section5 />
-          <Section6 />
-        </div>
+        <ScrollSections />
         <Footer />
       </div>
     </div>
