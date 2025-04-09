@@ -54,7 +54,7 @@ const ScrollSections = () => {
         setCurrentSection((prev) => prev - 1);
       }
       isScrolling.current = false;
-    }, 400); // 디바운스 시간
+    }, 200); // 디바운스 시간
   };
 
   return (
