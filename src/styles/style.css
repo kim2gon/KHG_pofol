@@ -3,9 +3,18 @@
 html,
 body {
     overflow: hidden;
-    font-family: "Rajdhani",Helvetica,sans-serif;
+    font-family: "Rajdhani", Helvetica, sans-serif;
 }
 
 :root {
     --h-padding: calc((100vw - 1440px) / 2 + 71px);
+    --right-padding-scroll: calc(calc((100vw - 1440px) / 2 + 71px) + calc(160px - calc((100vw - 1440px) / 2 + 71px) + 4.7vw));
+}
+
+.triangle {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+}
+
+.boxani {
+    transition: 'transform 0.2s ease-out'
 }
