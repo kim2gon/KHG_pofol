@@ -31,6 +31,9 @@ const ScrollSections = () => {
     if (index !== -1) {
       setCurrentSection(index);
     }
+    if (index === 1) {
+      console.log('섹션2');
+    }
   }, [location.pathname]);
 
   // 섹션 변경 → 스크롤 + URL 동기화

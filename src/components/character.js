@@ -7,7 +7,7 @@ const Character = () => {
   return (
     <>
       <Canvas>
-        <ambientLight intensity={1.2} />
+        <ambientLight intensity={0.5} />
         <directionalLight position={[1, 2, 3]} intensity={1} />
         <Model scale={2.5} position={[0, -2.5, 0]} />
       </Canvas>

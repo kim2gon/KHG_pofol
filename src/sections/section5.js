@@ -2,9 +2,9 @@ import React from 'react'
 
 const Section5 = () => {
   return (
-    <section className="w-full h-dvh flex items-center justify-center text-black relative">
-      <p className='mx-10 my-4 max-w-60 gap-8 flex flex-col items-start justify-items-center font-medium text-[11px] leading-tight tracking-wide text-[#111] spac'>this is my portfolio thank you for visiting my site thank you.this is my portfolio thank you for visiting my site thank you.
-        <a href='#App.js' className='pt-4 pb-[10px] px-7 text-white bg-black relative min-w-[16px] text-center text-sm leading-tight font-semibold'>click my profile</a>
+    <section className='w-full h-dvh flex pt-[100px] pl-10 pb-[75px] top-0 bottom-0 relative'>
+      <p className='mt-[15vh] m-0 max-w-60 font-medium text-[11px] leading-[18px] tracking-wide text-[#111]'>this is my portfolio thank you for visiting my site thank you.
+        <a href='/' className='block max-w-max min-w-40 mt-8 cursor-pointer font-semibold text-xs leading-tight text-center realative text-white pt-4 px-[30px] pb-[11px] bg-black'>click my profile</a>
       </p>
     </section>
   )

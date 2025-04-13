@@ -8,7 +8,8 @@ body {
 
 :root {
     --h-padding: calc((100vw - 1440px) / 2 + 71px);
-    --right-padding-scroll: calc(calc((100vw - 1440px) / 2 + 71px) + calc(160px - calc((100vw - 1440px) / 2 + 71px) + 4.7vw));
+    --scrollnav-overlap: calc(160px - calc((100vw - 1440px) / 2 + 71px) + 4.7vw);
+    --right-padding-scroll: calc(var(--h-padding) + var(--scrollnav-overlap));
 }
 
 .triangle {
