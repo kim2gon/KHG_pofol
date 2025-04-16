@@ -4,12 +4,14 @@ html,
 body {
     overflow: hidden;
     font-family: "Rajdhani", Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 :root {
     --h-padding: calc((100vw - 1440px) / 2 + 71px);
     --scrollnav-overlap: calc(160px - calc((100vw - 1440px) / 2 + 71px) + 4.7vw);
     --right-padding-scroll: calc(var(--h-padding) + var(--scrollnav-overlap));
+    --left: calc(-720px + 50vw);
 }
 
 .triangle {
@@ -18,30 +20,136 @@ body {
 
 @keyframes slide-up {
     0% {
-        transform: translate3d(0px, 0px, 0px);
+        transform: translateY(0%);
     }
 
     100% {
-        transform: translate3d(0px, -200%, 0px);
+        transform: translateY(-200%);
     }
 }
 
 @keyframes slide-down {
     0% {
-        transform: translate3d(0px, 0px, 0px);
+        transform: translateY(0%);
     }
 
     100% {
-        transform: translate3d(0px, 200%, 0px);
+        transform: translateY(200%);
     }
 }
 
 .slide-up {
     animation: slide-up 475200ms linear infinite;
-    animation-delay: -237600ms;
 }
 
 .slide-down {
     animation: slide-down 475200ms linear infinite;
+}
+
+.ani-delay {
     animation-delay: -237600ms;
+}
+
+.circlecontainer {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: calc(-1 * 200px);
+    left: calc(-1 * 200px);
+    pointer-events: none;
+}
+
+.circlecontainer:nth-child(2n+1) > * {
+    animation-direction: reverse;
+}
+
+@keyframes jiggle {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(1px, 1px) rotate(1deg);
+    }
+
+    75% {
+        transform: translate(-1px, 1px) rotate(-1deg);
+    }
+
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+
+.circleinner {
+    position: absolute;
+    width: 109px;
+    height: 109px;
+    left: calc(50% - 109px / 2);
+    top: calc(50% - 109px / 2);
+    background: #111;
+    border-radius: 100%;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 7px;
+    pointer-events: all;
+    color: #fff;
+    animation: 400ms linear 0s infinite normal none running jiggle;
+    z-index: 1;
+}
+
+@keyframes circleup {
+    0% {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+
+    5% {
+        opacity: 0;
+    }
+
+    95% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(100%);
+    }
+}
+
+.circleinner:hover {
+    animation: linear 10s circleup;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.circlespin {
+    position: absolute;
+    width: 117px;
+    height: 117px;
+    left: calc(50% - 117px / 2);
+    top: calc(50% - 117px / 2);
+    border-radius: 100%;
+    z-index: 0;
+    pointer-events: all;
+    cursor: pointer;
+    background: url(../assets/img/circlegradient.png) 0% 0% / cover;
+    animation: 30s linear 0s infinite normal none running spin;
+    transition: -webkit-filter 1s linear;
 }

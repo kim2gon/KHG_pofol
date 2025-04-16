@@ -35,11 +35,11 @@ function Model(props) {
   const { actions } = useAnimations(animations, group)
 
 
-  useFrame(() => {
-    if (group.current) {
-      group.current.rotation.y += 0.05;
-    }
-  })
+  // useFrame(() => {
+  //   if (group.current) {
+  //     group.current.rotation.y += 0.05;
+  //   }
+  // })
 
   return (
     <group ref={group} {...props} dispose={null}>
