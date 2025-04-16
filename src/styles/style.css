@@ -10,7 +10,6 @@ body {
     --h-padding: calc((100vw - 1440px) / 2 + 71px);
     --scrollnav-overlap: calc(160px - calc((100vw - 1440px) / 2 + 71px) + 4.7vw);
     --right-padding-scroll: calc(var(--h-padding) + var(--scrollnav-overlap));
-    --animationDuration: 100000ms;
 }
 
 .triangle {
@@ -37,14 +36,12 @@ body {
     }
 }
 
-.ani-delay {
-    animation-delay: calc((var(--animationDuration) / 2) * -1);
-}
-
 .slide-up {
-    animation: slide-up var(--animationDuration) linear infinite;
+    animation: slide-up 475200ms linear infinite;
+    animation-delay: -237600ms;
 }
 
 .slide-down {
-    animation: slide-down var(--animationDuration) linear infinite;
+    animation: slide-down 475200ms linear infinite;
+    animation-delay: -237600ms;
 }

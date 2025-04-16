@@ -3,12 +3,6 @@ import './styles/style.css'
 import Footer from './components/footer';
 import Header from './components/header';
 import Navbar from './components/navbar';
-import Section1 from './sections/section1';
-import Section2 from './sections/section2';
-import Section3 from './sections/section3';
-import Section4 from './sections/section4';
-import Section5 from './sections/section5';
-import Section6 from './sections/section6';
 import Character from './components/character';
 import ScrollSections from './sections/scrollsections';
 
