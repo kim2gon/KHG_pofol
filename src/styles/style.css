@@ -10,12 +10,41 @@ body {
     --h-padding: calc((100vw - 1440px) / 2 + 71px);
     --scrollnav-overlap: calc(160px - calc((100vw - 1440px) / 2 + 71px) + 4.7vw);
     --right-padding-scroll: calc(var(--h-padding) + var(--scrollnav-overlap));
+    --animationDuration: 100000ms;
 }
 
 .triangle {
     clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
 }
 
-.boxani {
-    transition: 'transform 0.2s ease-out'
+@keyframes slide-up {
+    0% {
+        transform: translate3d(0px, 0px, 0px);
+    }
+
+    100% {
+        transform: translate3d(0px, -200%, 0px);
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translate3d(0px, 0px, 0px);
+    }
+
+    100% {
+        transform: translate3d(0px, 200%, 0px);
+    }
+}
+
+.ani-delay {
+    animation-delay: calc((var(--animationDuration) / 2) * -1);
+}
+
+.slide-up {
+    animation: slide-up var(--animationDuration) linear infinite;
+}
+
+.slide-down {
+    animation: slide-down var(--animationDuration) linear infinite;
 }

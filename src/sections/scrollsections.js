@@ -109,18 +109,18 @@ const ScrollSections = () => {
           <Component />
         </div>
       ))}
-
       <div
         className={`w-[100vw] fixed left-0 right-0 pt-[53px] pr-[232px] pb-[50px] pl-[159px] bg-black text-white z-10 transition-all duration-500 ${getDivStyle()}`}
       >
         <div className="font-medium text-[34px] leading-tight tracking-wide max-w-[1250px]">
           <p>
-            this is my portfolio thank you for visiting my site thank you.this is my portfolio thank you for visiting my
-            site thank you. this is my portfolio thank you for visiting my site thank you.this is my portfolio thank you
-            for visiting my site thank you.
+            This is my portfolio thank you for visiting my site thank you.this is my portfolio thank you for visiting my
+            site thank you. this is my portfolio thank you for visiting my site thank you for visiting my site.
           </p>
         </div>
       </div>
+
+      {/* {section5 || section6 && ()} */}
     </div>
   );
 };
