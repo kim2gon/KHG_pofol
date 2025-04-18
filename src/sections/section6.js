@@ -6,7 +6,7 @@ const Section6 = () => {
       <h3 className='font-bold text-base leading-tight mt-[10vh] mx-0 mb-[21px] text-[#111]'>My skills</h3>
       <p className='m-0 max-w-60 font-medium text-[11px] leading-[18px] tracking-wide'>This is my portfolio and this page is introduce my skills thank you for visiting my site thank you.this is my portfolio thank you for visiting my
         site thank you.</p>
-      <div className='fixed left-[--left] bottom-0 right-0 h-[1000px] overflow-hidden'>
+      <div className='left-[--left] bottom-0 right-0 h-[1000px] overflow-hidden'>
         <div className='circlecontainer transform translate-x-[668px] translate-y-[380px] z-10 opacity-100'>
           <div className='circleinner'>HTML</div>
         </div>
