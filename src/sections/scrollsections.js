@@ -6,6 +6,8 @@ import Section3 from "./section3";
 import Section4 from "./section4";
 import Section5 from "./section5";
 import Section6 from "./section6";
+import Section7 from "./section7";
+import Section8 from "./section8";
 
 const sections = [
   { component: Section1, path: "/" },
@@ -14,6 +16,8 @@ const sections = [
   { component: Section4, path: "/animation" },
   { component: Section5, path: "/pofol" },
   { component: Section6, path: "/skills" },
+  { component: Section7, path: "/tools" },
+  { component: Section8, path: "/myself" },
 ];
 
 const ScrollSections = () => {
@@ -94,7 +98,7 @@ const ScrollSections = () => {
       case "bottom":
         return "bottom-0";
       case "middle":
-        return "bottom-[50vh]";
+        return "bottom-[64vh]";
       case "above":
         return "bottom-[100vh]";
       default:
