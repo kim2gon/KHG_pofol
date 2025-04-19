@@ -17,10 +17,10 @@ function App() {
         <div className="w-[1px] h-screen bg-[#eee]"></div>
         <div className="w-[1px] h-screen bg-[#eee]"></div>
       </div>
-      <div className='w-[1300px] h-full fixed'>
+      <div className='w-[1300px] h-full fixed z-20'>
         <Character />
       </div>
-      <div className='z-10'>
+      <div className='z-30'>
         <Header />
         <Navbar />
         <ScrollSections />

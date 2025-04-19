@@ -27,19 +27,28 @@ const ThreeCamera = () => {
   return null;
 }
 
-function Model(props) {
+function Model({ animation = "Run", ...props }) {
   const { scene, animations } = useGLTF('/m_2.glb')
   const group = React.useRef()
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
   const { nodes, materials } = useGraph(clone)
-  const { actions } = useAnimations(animations, group)
+  const { actions, names } = useAnimations(animations, group)
 
+  useEffect(() => {
+    Object.values(actions).forEach(action => action.stop())
 
-  // useFrame(() => {
-  //   if (group.current) {
-  //     group.current.rotation.y += 0.05;
-  //   }
-  // })
+    if (actions[animation]) {
+      actions[animation].reset().fadeIn(0.5).play()
+    } else {
+      console.warn(`애니메이션 "${animation}"을 찾을 수 없습니다.`)
+    }
+    return () => {
+      // cleanup: 컴포넌트 언마운트 시 애니메이션 정지
+      if (actions[animation]) {
+        actions[animation].fadeOut(0.5).stop()
+      }
+    }
+  }, [animation, actions])
 
   return (
     <group ref={group} {...props} dispose={null}>
