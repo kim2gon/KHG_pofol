@@ -20,7 +20,7 @@ const sections = [
   { component: Section8, path: "/myself" },
 ];
 
-const ScrollSections = ({ onVisibilityChange }) => {
+const ScrollSections = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -50,7 +50,6 @@ const ScrollSections = ({ onVisibilityChange }) => {
 
   // 휠 스크롤 이벤트
   const handleWheel = (e) => {
-
     if (isScrolling.current) return;
     isScrolling.current = true;
 
@@ -106,23 +105,6 @@ const ScrollSections = ({ onVisibilityChange }) => {
         return "bottom-[-100vh]";
     }
   };
-
-  // const anilist = ["A-pose", "Dance", "Idle", "Run", "Run (RM)", "Sad", "Walk", "Walk (RM)", "Win"]
-
-  useEffect(() => {
-    const handleScroll = (e) => {
-      const scrollY = window.scrollY
-
-      // ✅ 보임/숨김 처리
-      if (scrollY > 600) {
-        onVisibilityChange(false)
-      } else {
-        onVisibilityChange(true)
-      }
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [onVisibilityChange])
 
   return (
     <div onWheel={handleWheel}>
