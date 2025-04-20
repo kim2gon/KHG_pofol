@@ -10,8 +10,9 @@ const Bubble = ({ children, x = 0, y = 0 }) => {
       ref.current.style.opacity=0
       ref.current.style.bottom=0
       setTimeout(()=>{
-
-      }, 1000)
+        ref.current.style.opacity=1
+        ref.current.style.bottom='100%'
+      }, 2000)
     }
   }
 
