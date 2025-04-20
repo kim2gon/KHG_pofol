@@ -6,8 +6,6 @@ Command: npx gltfjsx@6.5.3 src/util/glb/m_2.glb
 import React, { useEffect, useRef, useState } from 'react';
 import { useGLTF, useAnimations, useScroll } from '@react-three/drei';
 import { SkeletonUtils } from 'three-stdlib';
-import * as THREE from 'three';
-import { useTransform, useMotionValueEvent } from "framer-motion";
 import { useGraph } from '@react-three/fiber';
 
 const Model = ({ defaultAnimation = "Run", ...props }) => {
@@ -42,52 +40,6 @@ const Model = ({ defaultAnimation = "Run", ...props }) => {
     };
   }, [currentAnimation, actions]);
 
-  const Model = () => {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-      target: ref,
-      offset: ["start start", "end end"],
-    });
-
-    useEffect(() => {
-      window.addEventListener("scroll", () => {
-        console.log(scrollYProgress.get());
-      });
-
-      return () => {
-        window.removeEventListener("scroll", () => {
-          console.log(scrollYProgress.get());
-        });
-      };
-    }, [scrollYProgress]);
-
-    const triggerRef = useRef(null);
-    const [animationState, setAnimationState] = useState("Walk");
-
-    const animations = useTransform(scrollYProgress, (value) => {
-      if (value < 0.05) return "Walk";
-      if (value < 0.25) return "Walk (RM)";
-      if (value < 0.5) return "Run";
-      if (value < 0.75) return "Run (RM)";
-      return "Walk";
-    });
-
-    useMotionValueEvent(animationState, "change", (latest) => {
-      setAnimationState(latest);
-    });
-
-    const position = useTransform(
-      scrollYProgress,
-      [0, 0.25, 0.5, 0.75, 1],
-      [
-        new THREE.Vector3(0, -1.5, 3.5),
-        new THREE.Vector3(0, 0, -5),
-        new THREE.Vector3(-2, 0, 0),
-        new THREE.Vector3(-2, 0, 0),
-        new THREE.Vector3(2, 0, 0),
-      ]
-    )
-  };
 
   return (
     <group ref={group} {...props} dispose={null}>
