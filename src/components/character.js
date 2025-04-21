@@ -55,7 +55,6 @@ const Character = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      console.log(scrollYProgress.get());
     });
   }, [scrollYProgress]);
   return (

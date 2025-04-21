@@ -1,24 +1,80 @@
-import React, { useEffect, useRef } from "react";
+import { motion, useAnimation } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 
 const Bubble = ({ children, x = 0, y = 0 }) => {
+  const controls = useAnimation();
+  const [isHovered, setIsHovered] = useState(false);
+  const initialY = useRef(y);
+
+  useEffect(() => {
+    if (isHovered) {
+      controls.start({
+        scale: 1.5,
+        opacity: 0,
+        transition: { duration: 0.5, ease: 'easeOut' }
+      });
+
+      const isDown = setTimeout(() => {
+        controls.start({
+        y: window.innerHeight*2
+        })
+      },1000);
+
+      const isUp = setTimeout(()=>{
+        controls.start({
+          scale: 1,
+          opacity: 1
+        });
+      },1100)
+
+      const timeout = setTimeout(() => {
+        controls.start({
+          y: initialY.current,
+          transition: { duration: 5 }
+        });
+        setIsHovered(false);
+      }, 3000);
+
+      return () => clearTimeout(isDown,isUp,timeout);
+    }
+  }, [isHovered, controls]);
+
+  return (
+    <motion.div
+      animate={controls}
+      onMouseEnter={() => setIsHovered(true)}
+      style={{
+        x, y
+      }}
+      className="circlecontainer z-10 opacity-100"
+    >
+      <div className="circleinner">
+        {children}
+      </div>
+    </motion.div>
+  );
+};
+
+
+
+
+const Circle = ({ children, x = 0, y = 0 }) => {
   const ref = useRef(null);
 
   useEffect(() => {
-    const handleMouseOver = () => {
+    const handleClick = () => {
       if (ref.current) {
         ref.current.style.opacity = 0;
-        ref.current.style.bottom = 0;
         setTimeout(() => {
           ref.current.style.opacity = 1;
-          ref.current.style.bottom = "100%";
         }, 2000);
       }
     };
 
     const element = ref.current;
-    element?.addEventListener("mouseover", handleMouseOver);
+    element?.addEventListener('click', handleClick);
     return () => {
-      element?.removeEventListener("mouseover", handleMouseOver);
+      element?.removeEventListener('click', handleClick);
     };
   }, []);
 
@@ -27,31 +83,16 @@ const Bubble = ({ children, x = 0, y = 0 }) => {
       style={{
         transform: `translateX(${x}px) translateY(${y}px)`,
       }}
-      className="circlecontainer z-10 opacity-100"
-    >
-      <div ref={ref} className="circleinner">
-        {children}
-      </div>
-    </div>
-  );
-};
-
-const Circle = ({ children, x = 0, y = 0 }) => {
-  return (
-    <div
-      style={{
-        transform: `translateX(${x}px) translateY(${y}px)`,
-      }}
       className="circlecontainer z-0 opacity-100"
     >
-      <div className="circlespin">{children}</div>
+      <div ref={ref} className="circlespin">{children}</div>
     </div>
   );
 };
 
 const Section6 = () => {
   return (
-    <section className="w-full h-dvh flex flex-col pt-[100px] pl-10 pb-[75px] !left-0 top-0 bottom-0 start-[--h-padding] end-[--h-padding] relative">
+    <section className="w-full h-dvh flex flex-col pt-[100px] pl-10 pb-[75px] !left-0 top-0 bottom-0 start-[--h-padding] end-[--h-padding] relative overflow-hidden">
       <h3 className="font-bold text-base leading-tight mt-[10vh] mx-0 mb-[21px] text-[#111]">My skills</h3>
       <p className="m-0 max-w-60 font-medium text-[11px] leading-[18px] tracking-wide">
         This is my portfolio and this page is introduce my skills thank you for visiting my site thank you.this is my
@@ -81,21 +122,6 @@ const Section6 = () => {
         </Bubble>
         <Bubble x={1193} y={732}>
           React
-        </Bubble>
-        <Bubble x={1248} y={824}>
-          Gsap
-        </Bubble>
-        <Bubble x={502} y={836}>
-          Fiber
-        </Bubble>
-        <Bubble x={1031} y={881}>
-          Drei
-        </Bubble>
-        <Bubble x={306} y={941}>
-          FramerMotion
-        </Bubble>
-        <Bubble x={648} y={941}>
-          ThreeJS
         </Bubble>
         <Circle x={710} y={803}></Circle>
         <Bubble x={1248} y={824}>
