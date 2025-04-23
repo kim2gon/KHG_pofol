@@ -123,8 +123,6 @@ const ScrollSections = () => {
           </p>
         </div>
       </div>
-
-      {/* {section5 || section6 && ()} */}
     </div>
   );
 };
