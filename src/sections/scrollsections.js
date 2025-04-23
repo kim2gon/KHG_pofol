@@ -45,8 +45,12 @@ const ScrollSections = () => {
     if (ref?.current) {
       ref.current.scrollIntoView({ behavior: "smooth" });
       navigate(sections[currentSection].path, { replace: true });
+      console.log(ref.current)
     }
-  }, [currentSection]);
+    if (ref?.current === 5) {
+      ref.current.style.position = 'static';
+    }
+  }, [currentSection]); 
 
   // 휠 스크롤 이벤트
   const handleWheel = (e) => {
