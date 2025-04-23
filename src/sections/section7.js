@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Section7 = () => {
+  const items = [ 'HTML', 'CSS', 'JavaScript', 'JQuery', 'React', 'Illustrator', 'PhotoShop', 'Gsap', 'ThreeJS' ]
+
+  const [selected, setSelected] = useState(null);
+  
+  function clickhandler(v){
+    setSelected(v);
+    console.log(v);
+  }
+
   return (
     < section className='w-full h-dvh flex flex-col pt-[100px] pl-10 pb-[75px] !left-0 top-0 bottom-0 start-[--h-padding] end-[--h-padding] relative' >
       <h3 className='font-bold text-base leading-tight mt-[10vh] mx-0 mb-[21px] text-[#111]'>tools</h3>
@@ -8,15 +17,9 @@ const Section7 = () => {
 
         this is my portfolio thank you for visiting mysite thank you. This is my portfolio and this page is introduce my skills thank you for visiting my site thank you.`}</p>
       <div className='max-w-[324px] absolute top-[35vh] left-[324px] flex flex-wrap pl-10'>
-        <button className='boxtext'>HTML</button>
-        <button className='boxtext'>CSS</button>
-        <button className='boxtext'>JavaScript</button>
-        <button className='boxtext'>JQuery</button>
-        <button className='boxtext'>React</button>
-        <button className='boxtext'>Illustrator</button>
-        <button className='boxtext'>PhotoShop</button>
-        <button className='boxtext'>Gsap</button>
-        <button className='boxtext'>ThreeJS</button>
+        {items.map((v, i) => (
+          <button onClick={() => clickhandler(v)} key={v} className='boxtext'>{v}</button>
+        ))}
       </div>
       <div className='absolute max-w-[275px] top-[40vh] left-[648px] w-full h-[230px]'>
         <div className='boxtext2'>

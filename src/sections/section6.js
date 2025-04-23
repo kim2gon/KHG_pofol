@@ -118,9 +118,10 @@ const Section6 = () => {
         This is my portfolio and this page is introduce my skills thank you for visiting my site thank you.this is my
         portfolio thank you for visiting my site thank you.
       </p>
-      <div className="left-[--left] bottom-0 right-0 h-[1000px] overflow-hidden">
+      <div className="absolute -left-[70px] bottom-0 right-0 h-[1000px] overflow-hidden">
         <Bubble x={668} y={380}>
           HTML
+          <div className="dotspin"></div>
         </Bubble>
         <Bubble x={821} y={512}>
           CSS
@@ -133,6 +134,7 @@ const Section6 = () => {
         </Bubble>
         <Bubble x={264} y={656}>
           PhotoShop
+          <div className="dotspin"></div>
         </Bubble>
         <Bubble x={871} y={720}>
           Illustrator
@@ -142,6 +144,7 @@ const Section6 = () => {
         </Bubble>
         <Bubble x={1193} y={732}>
           React
+          <div className="dotspin"></div>
         </Bubble>
         <Circle x={710} y={803}></Circle>
         <Bubble x={1248} y={824}>
@@ -155,9 +158,11 @@ const Section6 = () => {
         </Bubble>
         <Bubble x={306} y={941}>
           FramerMotion
+          <div className="dotspin"></div>
         </Bubble>
         <Bubble x={648} y={941}>
           ThreeJS
+          <div className="dotspin"></div>
         </Bubble>
         <Bubble x={1171} y={954}>
           AndroidStudio

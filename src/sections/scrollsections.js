@@ -45,7 +45,6 @@ const ScrollSections = () => {
     if (ref?.current) {
       ref.current.scrollIntoView({ behavior: "smooth" });
       navigate(sections[currentSection].path, { replace: true });
-      console.log(ref.current)
     }
     if (ref?.current === 5) {
       ref.current.style.position = 'static';
