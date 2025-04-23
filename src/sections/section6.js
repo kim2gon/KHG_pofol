@@ -16,16 +16,16 @@ const Bubble = ({ children, x = 0, y = 0 }) => {
 
       const isDown = setTimeout(() => {
         controls.start({
-        y: window.innerHeight*2
+          y: window.innerHeight * 2
         })
-      },1000);
+      }, 1000);
 
-      const isUp = setTimeout(()=>{
+      const isUp = setTimeout(() => {
         controls.start({
           scale: 1,
           opacity: 1
         });
-      },1100)
+      }, 1100)
 
       const timeout = setTimeout(() => {
         controls.start({
@@ -35,7 +35,7 @@ const Bubble = ({ children, x = 0, y = 0 }) => {
         setIsHovered(false);
       }, 3000);
 
-      return () => clearTimeout(isDown,isUp,timeout);
+      return () => clearTimeout(isDown, isUp, timeout);
     }
   }, [isHovered, controls]);
 
@@ -59,34 +59,54 @@ const Bubble = ({ children, x = 0, y = 0 }) => {
 
 
 const Circle = ({ children, x = 0, y = 0 }) => {
-  const ref = useRef(null);
+  const controls = useAnimation();
+  const [isClicked, setIsClicked] = useState(false);
+  const initialY = useRef(y);
 
   useEffect(() => {
-    const handleClick = () => {
-      if (ref.current) {
-        ref.current.style.opacity = 0;
-        setTimeout(() => {
-          ref.current.style.opacity = 1;
-        }, 2000);
-      }
-    };
+    if (isClicked) {
+      controls.start({
+        scale: 1.5,
+        opacity: 0,
+        transition: { duration: 0.5, ease: 'easeOut' }
+      });
 
-    const element = ref.current;
-    element?.addEventListener('click', handleClick);
-    return () => {
-      element?.removeEventListener('click', handleClick);
-    };
-  }, []);
+      const isDown = setTimeout(() => {
+        controls.start({
+          y: window.innerHeight * 2
+        })
+      }, 1000);
+
+      const isUp = setTimeout(() => {
+        controls.start({
+          scale: 1,
+          opacity: 1
+        });
+      }, 1100)
+
+      const timeout = setTimeout(() => {
+        controls.start({
+          y: initialY.current,
+          transition: { duration: 5 }
+        });
+        setIsClicked(false);
+      }, 3000);
+
+      return () => clearTimeout(isDown, isUp, timeout);
+    }
+  }, [isClicked, controls]);
 
   return (
-    <div
+    <motion.div
+      animate={controls}
+      onMouseDown={() => setIsClicked(true)}
       style={{
-        transform: `translateX(${x}px) translateY(${y}px)`,
+        x, y
       }}
       className="circlecontainer z-0 opacity-100"
     >
-      <div ref={ref} className="circlespin">{children}</div>
-    </div>
+      <div className="circlespin">{children}</div>
+    </motion.div>
   );
 };
 
