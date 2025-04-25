@@ -18,6 +18,7 @@ const CameraController = ({
     }
   }, [camera]);
 
+
   useFrame(() => {
     const progress = scrollYProgress.get();
     if (pivotRef.current) {
@@ -25,8 +26,8 @@ const CameraController = ({
       let targetRotationY = 0;
 
       if (progress >= 0.1 && progress <= 0.5) {
-        targetPosition.set(1.5, -1, -3);
-        targetRotationY = -(Math.PI / 180) *0;
+        targetPosition.set(2, -2, -3);
+        targetRotationY = -(Math.PI / 180) *10.8;
       } else if (progress >= 0.5 && progress <= 0.9) {
         targetPosition.set(0, 15, 5);
       } else if (progress >= 0.9 && progress <= 1) {

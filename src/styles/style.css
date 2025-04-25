@@ -19,7 +19,8 @@ body {
 }
 
 .bgsquare {
-    clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%); /* 스크롤 하면 60 40 40 60*/
+    clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%);
+    /* 스크롤 하면 60 40 40 60*/
 }
 
 @keyframes slide-up {
@@ -174,21 +175,7 @@ body {
 
 .boxtext4 {
     font-weight: 500;
-    font-size: 11px;
-    line-height: 9px;
-    letter-spacing: 0.2px;
-}
-
-.boxtext5 {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 8px;
-}
-
-.boxtext6 {
-    font-weight: 500;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.2px;
     color: rgb(17, 17, 17);
