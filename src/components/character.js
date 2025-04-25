@@ -13,7 +13,7 @@ const CameraController = ({
   useEffect(() => {
     if (pivotRef.current) {
       pivotRef.current.add(camera);
-      camera.position.set(2.5, 1, 8);
+      camera.position.set(1.5, 1, 8);
       camera.lookAt(0, 1, 0);
     }
   }, [camera]);
@@ -25,13 +25,12 @@ const CameraController = ({
       let targetRotationY = 0;
 
       if (progress >= 0.1 && progress <= 0.5) {
-        targetPosition.set(2.5, -1, -3);
-        targetRotationY = -(Math.PI / 180) * 17.5;
+        targetPosition.set(1.5, -1, -3);
+        targetRotationY = -(Math.PI / 180) *0;
       } else if (progress >= 0.5 && progress <= 0.9) {
         targetPosition.set(0, 15, 5);
       } else if (progress >= 0.9 && progress <= 1) {
-        targetPosition.set(2.5, -1, -3);
-        targetRotationY = -(Math.PI / 180) * 17.5;
+        targetPosition.set(0, 0, 0);
       }
 
       pivotRef.current.position.lerp(targetPosition, 0.05);
@@ -59,12 +58,12 @@ const Character = () => {
   }, [scrollYProgress]);
   return (
     <>
-      <motion.div className="w-full h-full absolute" style={{ opacity: useTransform(scrollYProgress, [0.1, 0.4, 0.9, 1], [1, 1, 0, 1])}}>
+      <motion.div className="w-full h-full absolute" style={{ opacity: useTransform(scrollYProgress, [0.1, 0.4, 0.9, 1], [1, 1, 0, 1]) }}>
         <Canvas>
           <CameraController scrollYProgress={scrollYProgress} />
           <ambientLight intensity={1.2} />
           <directionalLight position={[1, 2, 3]} intensity={1} />
-          <Model  scale={2.5} position={[2.5, -2.5, 0]} />
+          <Model scale={2.5} position={[2, -3.5, 0]} />
         </Canvas>
       </motion.div>
     </>
