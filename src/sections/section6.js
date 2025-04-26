@@ -11,7 +11,7 @@ const Bubble = ({ children, x = 0, y = 0 }) => {
       controls.start({
         scale: 1.5,
         opacity: 0,
-        transition: { duration: 0.5, ease: 'easeOut' }
+        transition: { duration: 0.15, ease: 'easeOut' }
       });
 
       const isDown = setTimeout(() => {
