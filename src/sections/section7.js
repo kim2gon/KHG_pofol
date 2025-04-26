@@ -9,16 +9,15 @@ const Section7 = () => {
     { i1: '웹디자인개발기능사', i2: '2025.09.26 취득' },
   ];
 
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(items[0]);
 
   function clickHandler(item) {
     setSelected(item);
-    console.log(item.i1);
   }
 
   return (
     <section className='w-full h-dvh flex flex-col pt-[100px] pl-10 pb-[75px] relative'>
-      <h3 className='font-bold text-base leading-tight mt-[10vh] mx-0 mb-[21px] text-[#111]'>tools</h3>
+      <h3 className='font-bold text-xl leading-tight mt-[10vh] mx-0 mb-[21px] text-[#111]'>tools</h3>
       <p className='m-0 max-w-60 font-medium text-[11px] leading-[18px] tracking-wide whitespace-pre-line'>
         {`This is my portfolio and this page is introduce my skills thank you for visiting my site thank you.
 
@@ -27,7 +26,9 @@ const Section7 = () => {
 
       <div className='max-w-96 absolute top-[35vh] left-[300px] flex flex-wrap pl-10'>
         {items.map((item, index) => (
-          <button onClick={() => clickHandler(item)} key={index} className='boxtext' style={{backgroundColor : item.i1 ? 'bg-black' : 'bg-none'}}>
+          <button onClick={() => clickHandler(item)} key={index}
+          className={`boxtext ${selected.i1 === item.i1 ? 'bg-black !text-white !border-none' : ''}`}
+          >
             {item.i1}
           </button>
         ))}
@@ -35,9 +36,9 @@ const Section7 = () => {
 
       {selected && (
         <div className='absolute max-w-[275px] top-[40vh] left-[648px] w-full h-[230px]'>
-          <div className='boxtext2'>
-            <h4 className='boxtext3'>{selected.i1}</h4>
-            <p className='boxtext4'>{selected.i2}</p>
+          <div className='absolute flex flex-col pl-[65px] gap-6 w-full'>
+            <h4 className='relative font-semibold text-xl leading-tight'>{selected.i1}</h4>
+            <p className='font-medium text-lg leading-tight tracking-wide text-[#111]'>{selected.i2}</p>
           </div>
         </div>
       )}

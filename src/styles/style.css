@@ -12,6 +12,7 @@ body {
     --scrollnav-overlap: calc(160px - calc((100vw - 1440px) / 2 + 71px) + 4.7vw);
     --right-padding-scroll: calc(var(--h-padding) + var(--scrollnav-overlap));
     --left: calc(-720px + 50vw);
+    --dotspinsize: calc(50% - 735px / 2);
 }
 
 .triangle {
@@ -156,31 +157,4 @@ body {
     margin: 0px 8px 8px 0px;
     border: 1px dashed currentcolor;
     transition: color 250ms ease-in-out, border-color 250ms ease-in-out;
-}
-
-.boxtext2 {
-    padding-left: 65px;
-    display: grid;
-    gap: 24px;
-    position: absolute;
-    width: 100%;
-}
-
-.boxtext3 {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
-    position: relative;
-}
-
-.boxtext4 {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 18px;
-    letter-spacing: 0.2px;
-    color: rgb(17, 17, 17);
-}
-
-.boxtext.selected {
-    background: black;
 }
