@@ -14,17 +14,17 @@ function App() {
       <Loading />
       <Header />
       <div className='flex flex-col h-full w-[1300px] my-0 mx-auto'>
-        <div className="w-dvw flex justify-between max-w-[1300px] mx-auto xl-px-[5%] fixed overflow-hidden z-10">
+        <div className="w-dvw flex justify-between max-w-[1300px] mx-auto xl-px-[5%] fixed overflow-hidden -z-10">
           <div className="w-[1px] h-screen bg-[#eee]"></div>
           <div className="w-[1px] h-screen bg-[#eee]"></div>
           <div className="w-[1px] h-screen bg-[#eee]"></div>
           <div className="w-[1px] h-screen bg-[#eee]"></div>
           <div className="w-[1px] h-screen bg-[#eee]"></div>
-        </div>
-        <div className='w-[1300px] h-full fixed z-20'>
-          <Character />
         </div>
         <div className='z-30'>
+          <div className='w-[1300px] h-full fixed pointer-events-none'>
+            <Character />
+          </div>
           <Navbar />
           <ScrollSections />
           <Footer />

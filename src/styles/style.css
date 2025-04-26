@@ -65,7 +65,7 @@ body {
     pointer-events: none;
 }
 
-.circlecontainer:nth-child(3n+1)>* {
+.circlecontainer:nth-child(2n+1)>* {
     animation-direction: reverse;
 }
 
@@ -77,6 +77,8 @@ body {
     25% {
         transform: translate(1px, 1px) rotate(1deg);
     }
+
+    50% {}
 
     75% {
         transform: translate(-1px, 1px) rotate(-1deg);
@@ -107,7 +109,7 @@ body {
     padding: 7px;
     pointer-events: all;
     color: #fff;
-    animation: 400ms linear 0s infinite normal none running jiggle;
+    animation: 400ms linear infinite none running jiggle;
     z-index: 1;
 }
 
@@ -132,8 +134,8 @@ body {
     pointer-events: all;
     cursor: pointer;
     background: url(../assets/img/circlegradient.png) 0% 0% / cover;
-    animation: 30s linear 0s infinite normal none running spin;
-    transition: -webkit-filter 1s linear;
+    animation: 30s linear infinite none running spin;
+    transition: 1s linear;
 }
 
 .dotspin {
@@ -143,7 +145,7 @@ body {
     width: 155px;
     height: 155px;
     background: url(../assets/img/orbit-dots-xs.svg);
-    animation: 30s linear 0s infinite normal none running spin;
+    animation: 30s linear infinite none running spin;
     pointer-events: none;
 }
 
@@ -158,3 +160,25 @@ body {
     border: 1px dashed currentcolor;
     transition: color 250ms ease-in-out, border-color 250ms ease-in-out;
 }
+
+.bigdotspin1 {
+    background: url(../assets/img/orbit-dots.svg);
+    animation: 60s linear infinite none running spin;
+}
+
+.bigdotspin2 {
+    background: url(../assets/img/orbit-dots.svg);
+    animation: 40s linear infinite none running spin2;
+}
+
+@keyframes spin2 {
+    0% {
+        transform: scale(0.65) rotate(0deg);
+    }
+
+    100% {
+        transform: scale(0.65) rotate(360deg);
+    }
+}
+
+;

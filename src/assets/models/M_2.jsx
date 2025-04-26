@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.5.3 src/util/glb/m_2.glb
 */
 
 import React, { useEffect, useRef, useState } from 'react';
-import { useGLTF, useAnimations, useScroll } from '@react-three/drei';
+import { useGLTF, useAnimations } from '@react-three/drei';
 import { SkeletonUtils } from 'three-stdlib';
 import { useGraph } from '@react-three/fiber';
 

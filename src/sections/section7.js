@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 const Section7 = () => {
   const items = [
-    { i1: '자동차 운전면허 1종', i2: '2020.09.29 취득' },
-    { i1: '육군병장 만기전역', i2: '2024.02.01 전역' },
-    { i1: '삼육보건대학교', i2: '2025.02.12 졸업' },
-    { i1: '의료정보과', i2: '2025.02.12 졸업' },
-    { i1: '웹디자인개발기능사', i2: '2025.09.26 취득' },
+    { i1: '2025.09.26', i2: '웹디자인개발기능사 취득'  },
+    { i1: '2025.02.12', i2: '삼육보건대학교 의료정보과 졸업'  },
+    { i1: '2024.02.01', i2: '육군병장 만기전역'  },
+    { i1: '2020.09.29', i2: '자동차 운전면허 1종 취득'  },
+    { i1: '2020.02.06', i2: '안양 부흥고등학교 졸업'  },
   ];
 
   const [selected, setSelected] = useState(items[0]);
@@ -24,7 +24,7 @@ const Section7 = () => {
         this is my portfolio thank you for visiting mysite thank you. This is my portfolio and this page is introduce my skills thank you for visiting my site thank you.`}
       </p>
 
-      <div className='max-w-96 absolute top-[35vh] left-[300px] flex flex-wrap pl-10'>
+      <div className='max-w-[324px] absolute top-[35vh] left-[324px] flex flex-wrap pl-10'>
         {items.map((item, index) => (
           <button onClick={() => clickHandler(item)} key={index}
           className={`boxtext ${selected.i1 === item.i1 ? 'bg-black !text-white !border-none' : ''}`}

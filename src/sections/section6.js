@@ -57,6 +57,63 @@ const Bubble = ({ children, x = 0, y = 0 }) => {
 
 
 
+const Bubble2 = ({ children, x = 0, y = 0 }) => {
+  const controls = useAnimation();
+  const [isHovered, setIsHovered] = useState(false);
+  const initialY = useRef(y);
+
+  useEffect(() => {
+    if (isHovered) {
+      controls.start({
+        scale: 1.5,
+        opacity: 0,
+        transition: { duration: 0.15, ease: 'easeOut' }
+      });
+
+      const isDown = setTimeout(() => {
+        controls.start({
+          y: window.innerHeight * 2
+        })
+      }, 1000);
+
+      const isUp = setTimeout(() => {
+        controls.start({
+          scale: 1,
+          opacity: 1
+        });
+      }, 1100)
+
+      const timeout = setTimeout(() => {
+        controls.start({
+          y: initialY.current,
+          transition: { duration: 5 }
+        });
+        setIsHovered(false);
+      }, 3000);
+
+      return () => clearTimeout(isDown, isUp, timeout);
+    }
+  }, [isHovered, controls]);
+
+  return (
+    <motion.div
+      animate={controls}
+      onMouseEnter={() => setIsHovered(true)}
+      style={{
+        x, y
+      }}
+      className="circlecontainer z-10 opacity-100"
+    >
+      <div className="circleinner">
+        {children}
+      </div>
+      <div className="dotspin"></div>
+    </motion.div>
+  );
+};
+
+
+
 
 const Circle = ({ children, x = 0, y = 0 }) => {
   const controls = useAnimation();
@@ -119,10 +176,9 @@ const Section6 = () => {
         portfolio thank you for visiting my site thank you.
       </p>
       <div className="absolute -left-[70px] bottom-0 right-0 h-[1000px] overflow-hidden">
-        <Bubble x={668} y={380}>
+        <Bubble2 x={668} y={380}>
           HTML
-          <div className="dotspin"></div>
-        </Bubble>
+        </Bubble2>
         <Bubble x={821} y={512}>
           CSS
         </Bubble>
@@ -132,20 +188,18 @@ const Section6 = () => {
         <Bubble x={1031} y={619}>
           JQuery
         </Bubble>
-        <Bubble x={264} y={656}>
+        <Bubble2 x={264} y={656}>
           PhotoShop
-          <div className="dotspin"></div>
-        </Bubble>
+        </Bubble2>
         <Bubble x={871} y={720}>
           Illustrator
         </Bubble>
         <Bubble x={642} y={732}>
           Figma
         </Bubble>
-        <Bubble x={1193} y={732}>
+        <Bubble2 x={1193} y={732}>
           React
-          <div className="dotspin"></div>
-        </Bubble>
+        </Bubble2>
         <Circle x={710} y={803}></Circle>
         <Bubble x={1248} y={824}>
           Gsap
@@ -156,14 +210,12 @@ const Section6 = () => {
         <Bubble x={1031} y={881}>
           Drei
         </Bubble>
-        <Bubble x={306} y={941}>
+        <Bubble2 x={306} y={941}>
           FramerMotion
-          <div className="dotspin"></div>
-        </Bubble>
-        <Bubble x={648} y={941}>
+        </Bubble2>
+        <Bubble2 x={648} y={941}>
           ThreeJS
-          <div className="dotspin"></div>
-        </Bubble>
+        </Bubble2>
         <Bubble x={1171} y={954}>
           AndroidStudio
         </Bubble>
