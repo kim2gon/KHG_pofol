@@ -13,6 +13,7 @@ body {
     --right-padding-scroll: calc(var(--h-padding) + var(--scrollnav-overlap));
     --left: calc(-720px + 50vw);
     --dotspinsize: calc(50% - 735px / 2);
+    --footerpd: calc(var(--h-padding) + 175px);
 }
 
 .triangle {
@@ -181,4 +182,38 @@ body {
     }
 }
 
-;
+.footerani1 {
+    animation: 12s cubic-bezier(0.52, 0.3, 0.48, 0.72) 0s infinite normal none running spin3;
+}
+
+@keyframes spin3 {
+    0% {
+        transform: rotateX(6deg) rotateY(-13deg) rotateZ(0deg);
+    }
+
+    50% {
+        transform: rotateX(-9deg) rotateY(10deg) rotateZ(360deg);
+    }
+
+    100% {
+        transform: rotateX(6deg) rotateY(-13deg) rotateZ(720deg);
+    }
+}
+
+.footerani2 {
+    animation: 12s cubic-bezier(0.52, 0.3, 0.48, 0.72) 0s infinite normal none running spin4;
+}
+
+@keyframes spin4 {
+    0% {
+        transform: rotateX(320deg) rotateY(0deg);
+    }
+
+    50% {
+        transform: rotateX(250deg) rotateY(360deg);
+    }
+
+    100% {
+        transform: rotateX(320deg) rotateY(720deg);
+    }
+}

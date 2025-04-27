@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { navTextColorState } from '../store';
 
 const Navbar = () => {
   const sectionText = [
@@ -13,8 +15,10 @@ const Navbar = () => {
     { path: '/myself', label: 'MYSELF', v: '08' },
   ];
 
+  const navTextColor = useRecoilValue(navTextColorState);
+
   return (
-    <div className='fixed right-[4.7vw] bottom-[50px] flex flex-col z-10 mix-blend-difference text-[#111]'>
+    <div className={`fixed right-[4.7vw] bottom-[50px] flex flex-col z-50 mix-blend-difference  text-${navTextColor}`}>
       {sectionText.map((section,i) => (
         <Link key={section.path} to={section.path} className='mb-5 flex justify-between items-center gap-[53px]'>
           <span className='font-medium text-[10px] leading-normal text-right self-end'>{section.label}</span>

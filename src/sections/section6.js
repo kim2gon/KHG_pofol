@@ -56,7 +56,6 @@ const Bubble = ({ children, x = 0, y = 0 }) => {
 };
 
 
-
 const Bubble2 = ({ children, x = 0, y = 0 }) => {
   const controls = useAnimation();
   const [isHovered, setIsHovered] = useState(false);
@@ -113,8 +112,6 @@ const Bubble2 = ({ children, x = 0, y = 0 }) => {
 };
 
 
-
-
 const Circle = ({ children, x = 0, y = 0 }) => {
   const controls = useAnimation();
   const [isClicked, setIsClicked] = useState(false);
@@ -125,7 +122,7 @@ const Circle = ({ children, x = 0, y = 0 }) => {
       controls.start({
         scale: 1.5,
         opacity: 0,
-        transition: { duration: 0.5, ease: 'easeOut' }
+        transition: { duration: 0.15, ease: 'easeOut' }
       });
 
       const isDown = setTimeout(() => {
@@ -166,6 +163,7 @@ const Circle = ({ children, x = 0, y = 0 }) => {
     </motion.div>
   );
 };
+
 
 const Section6 = () => {
   return (

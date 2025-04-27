@@ -5,9 +5,19 @@ import eximg3 from '../assets/img/capsulegreen2.png'
 import eximg4 from '../assets/img/capsulepink2.png'
 import eximg5 from '../assets/img/capsulered2.png'
 import eximg6 from '../assets/img/characters.png'
+import Cssanimations from '../components/cssanimations'
 
 const Section5 = () => {
-  const pofolimg = [eximg1, eximg2, eximg3, eximg4, eximg5, eximg6, eximg1, eximg2, eximg3, eximg4, eximg5, eximg6];
+  // const pofolimg = [eximg1, eximg2, eximg3, eximg4, eximg5, eximg6, eximg1, eximg2, eximg3, eximg4, eximg5, eximg6];
+  const pofolimg = [
+    <Cssanimations key={1} />,
+    <Cssanimations key={2} />,
+    <Cssanimations key={3} />,
+    <Cssanimations key={4} />,
+    <Cssanimations key={5} />,
+    <Cssanimations key={6} />,
+  ];
+
 
   return (
     <section className='w-full h-dvh flex pt-[100px] pl-10 pb-[75px] !left-0 top-0 bottom-0 start-[--h-padding] end-[--h-padding] relative'>
@@ -17,36 +27,42 @@ const Section5 = () => {
           click my profile
         </a>
       </p>
-      
+
       <div className='absolute top-0 bottom-[-75px] left-[324px] w-[324px] overflow-hidden'>
         <div className='w-full h-full'>
           <div className='top-full flex-col absolute flex slide-up'>
-            <div className='w-full ani-delay'>
-              {pofolimg.map((v, i) => (
+            <div className='w-full ani-delay relative'>
+              {/* {pofolimg.map((v, i) => (
                 <img key={`${v}-${i}`} src={v} className='block mt-[91px] object-cover w-[324px] h-[404px]' />
               ))}
             </div>
             <div className='w-full'>
               {pofolimg.map((v, i) => (
                 <img key={`${v}-${i}`} src={v} className='block mt-[91px] object-cover w-[324px] h-[404px]' />
-              ))}
+              ))} */}
+              <div className='flex flex-wrap'>
+                {pofolimg}
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div className='absolute top-0 bottom-[-300px] left-[739px] w-[324px] overflow-hidden'>
         <div className='w-full h-full'>
           <div className='bottom-full flex-col absolute flex slide-down'>
             <div className='w-full ani-delay'>
-              {pofolimg.map((v, i) => (
+              {/* {pofolimg.map((v, i) => (
                 <img key={`${v}-${i}`} src={v} className='block mt-[91px] object-cover w-[324px] h-[404px]' />
               ))}
             </div>
             <div className='w-full'>
               {pofolimg.map((v, i) => (
                 <img key={`${v}-${i}`} src={v} className='block mt-[91px] object-cover w-[324px] h-[404px]' />
-              ))}
+              ))} */}
+              <div className='flex flex-wrap'>
+                {pofolimg}
+              </div>
             </div>
           </div>
         </div>

@@ -8,6 +8,9 @@ import Section5 from "./section5";
 import Section6 from "./section6";
 import Section7 from "./section7";
 import Section8 from "./section8";
+import { currentSectionsState, navTextColorState } from "../store";
+import { useInView } from "framer-motion";
+import { useSetRecoilState } from "recoil";
 
 const sections = [
   { component: Section1, path: "/" },
@@ -49,7 +52,7 @@ const ScrollSections = () => {
     if (ref?.current === 5) {
       ref.current.style.position = 'static';
     }
-  }, [currentSection]); 
+  }, [currentSection]);
 
   // 휠 스크롤 이벤트
   const handleWheel = (e) => {
@@ -109,6 +112,36 @@ const ScrollSections = () => {
     }
   };
 
+  const getDivStyle2 = () => {
+    switch (divPosition) {
+      case "below":
+        return "bottom-[-200vh]";
+      case "bottom":
+        return "bottom-[100vh]";
+      case "above":
+        return "bottom-[100vh]";
+      default:
+        return "bottom-[-100vh]";
+    }
+  };
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    amount: 0.5,
+    once: false,
+  });
+  const setCurrentSections = useSetRecoilState(currentSectionsState);
+  const setNavTextColor = useSetRecoilState(navTextColorState);
+
+  useEffect(() => {
+    if (isInView) {
+      setCurrentSections(1);
+      setNavTextColor("white");
+    } else {
+      setNavTextColor("#111");
+    }
+  }, [isInView, setCurrentSections, setNavTextColor]);
+
   return (
     <div onWheel={handleWheel}>
       {sections.map(({ component: Component }, index) => (
@@ -116,7 +149,7 @@ const ScrollSections = () => {
           <Component />
         </div>
       ))}
-      <div
+      <div ref={ref}
         className={`w-[100vw] fixed left-0 right-0 pt-[53px] pr-[232px] pb-[50px] pl-[159px] bg-black text-white z-10 transition-all duration-500 ${getDivStyle()}`}
       >
         <div className="font-medium text-[34px] leading-tight tracking-wide max-w-[1250px]">
@@ -124,6 +157,27 @@ const ScrollSections = () => {
             This is my portfolio thank you for visiting my site thank you.this is my portfolio thank you for visiting my
             site thank you. this is my portfolio thank you for visiting my site thank you for visiting my site.
           </p>
+        </div>
+      </div>
+      <div ref={ref} 
+      className={`{fixed left-0 right-0 bottom-0 bg-black text-white z-40 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-centertransition-all duration-500 ${getDivStyle2()}`}
+      >
+        <p className="text-[30px]">KHG PORTFOLIO</p>
+        <p className="mt-16 mx-0 mb-[50px] max-w-[200px] text-base leading-tight whitespace-pre-line"></p>
+        <div className="relative w-[165px] h-[143px]">
+          <img className="w-full h-full !rounded-full pointer-events-none footerani1"></img>
+          <div className="absolute w-full h-full pt-[100%] top-0 left-0 footerani2"></div>
+        </div>
+        <button className="flex flex-col gap-4 mt-[50px] mx-0 mb-10 text-inherit justify-items-center items-center">
+          <svg className="w-[10px] h-[28px] fill-none scale-[-1]">
+            <path d="M9.924.924 5 7.314.076.924h9.848ZM9.308 12.308 5 17.9.692 12.31h8.616ZM8.693 22.693 5 27.485l-3.693-4.792h7.386Z" fill="currentColor"></path>
+          </svg>
+          <span className="text-sm">Page top</span>
+        </button>
+        <div className="flex flex-wrap-reverse gap-y-4 gap-x-5 text-left w-full">
+          <span className="font-normal text-[10px] leading-tight mr-auto tracking-wide"></span>
+          <a className="font-medium text-[10px] leading-tight tracking-wide"></a>
+          <a className="font-medium text-[10px] leading-tight tracking-wide"></a>
         </div>
       </div>
     </div>
