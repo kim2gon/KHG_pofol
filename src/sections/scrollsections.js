@@ -112,35 +112,22 @@ const ScrollSections = () => {
     }
   };
 
-  const getDivStyle2 = () => {
-    switch (divPosition) {
-      case "below":
-        return "bottom-[-200vh]";
-      case "bottom":
-        return "bottom-[100vh]";
-      case "above":
-        return "bottom-[100vh]";
-      default:
-        return "bottom-[-100vh]";
-    }
-  };
+  // const ref = useRef(null);
+  // const isInView = useInView(ref, {
+  //   amount: 0.5,
+  //   once: false,
+  // });
+  // const setCurrentSections = useSetRecoilState(currentSectionsState);
+  // const setNavTextColor = useSetRecoilState(navTextColorState);
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    amount: 0.5,
-    once: false,
-  });
-  const setCurrentSections = useSetRecoilState(currentSectionsState);
-  const setNavTextColor = useSetRecoilState(navTextColorState);
-
-  useEffect(() => {
-    if (isInView) {
-      setCurrentSections(1);
-      setNavTextColor("white");
-    } else {
-      setNavTextColor("#111");
-    }
-  }, [isInView, setCurrentSections, setNavTextColor]);
+  // useEffect(() => {
+  //   if (isInView) {
+  //     setCurrentSections(1);
+  //     setNavTextColor("white");
+  //   } else {
+  //     setNavTextColor("#111");
+  //   }
+  // }, [isInView, setCurrentSections, setNavTextColor]);
 
   return (
     <div onWheel={handleWheel}>
@@ -149,7 +136,7 @@ const ScrollSections = () => {
           <Component />
         </div>
       ))}
-      <div ref={ref}
+      <div
         className={`w-[100vw] fixed left-0 right-0 pt-[53px] pr-[232px] pb-[50px] pl-[159px] bg-black text-white z-10 transition-all duration-500 ${getDivStyle()}`}
       >
         <div className="font-medium text-[34px] leading-tight tracking-wide max-w-[1250px]">
@@ -159,9 +146,7 @@ const ScrollSections = () => {
           </p>
         </div>
       </div>
-      <div ref={ref} 
-      className={`{fixed left-0 right-0 bottom-0 bg-black text-white z-40 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-centertransition-all duration-500 ${getDivStyle2()}`}
-      >
+      <div className="left-0 right-0 bottom-0 bg-black text-white z-40 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center">
         <p className="text-[30px]">KHG PORTFOLIO</p>
         <p className="mt-16 mx-0 mb-[50px] max-w-[200px] text-base leading-tight whitespace-pre-line"></p>
         <div className="relative w-[165px] h-[143px]">

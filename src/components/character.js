@@ -28,9 +28,9 @@ const CameraController = ({
       if (progress >= 0.1 && progress <= 0.5) {
         targetPosition.set(2, -2, -3);
         targetRotationY = -(Math.PI / 180) * 10.8;
-      } else if (progress >= 0.5 && progress <= 0.9) {
+      } else if (progress >= 0.5 && progress <= 0.8) {
         targetPosition.set(0, 15, 5);
-      } else if (progress >= 0.9 && progress <= 1) {
+      } else if (progress >= 0.8 && progress <= 0.9) {
         targetPosition.set(0, 0, 0);
       }
 
