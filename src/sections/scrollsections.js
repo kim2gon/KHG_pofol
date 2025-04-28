@@ -8,9 +8,6 @@ import Section5 from "./section5";
 import Section6 from "./section6";
 import Section7 from "./section7";
 import Section8 from "./section8";
-import { currentSectionsState, navTextColorState } from "../store";
-import { useInView } from "framer-motion";
-import { useSetRecoilState } from "recoil";
 
 const sections = [
   { component: Section1, path: "/" },
@@ -29,8 +26,10 @@ const ScrollSections = () => {
 
   const [currentSection, setCurrentSection] = useState(0);
   const [divPosition, setDivPosition] = useState("below");
+  const [divPosition2, setDivPosition2] = useState("below2");
   const isScrolling = useRef(false);
   const hasScrolledInSection2 = useRef(false);
+  const hasScrolledInSection8 = useRef(false);
 
   const sectionRefs = useRef(sections.map(() => React.createRef()));
 
@@ -97,7 +96,28 @@ const ScrollSections = () => {
     }, 200);
   };
 
-  const getDivStyle = () => {
+  const handleWheel2 = (e) => {
+    if (isScrolling.current) return;
+    isScrolling.current = true;
+    setTimeout(() => {
+      if (e.deltaY > 0) {
+        if (currentSection === 7 && !hasScrolledInSection8.current) {
+          // Section8에서 첫 스크롤
+          setDivPosition2("bottom");
+          hasScrolledInSection8.current = true;
+        }
+      } else if (e.deltaY < 0) {
+        if (currentSection === 7 && divPosition2 === "bottom") {
+          // Section8에서 위로 스크롤
+          setCurrentSection(8);
+          setDivPosition2("below2");
+        }
+      }
+      isScrolling.current = false;
+    }, 200);
+  };
+
+  const getDivStyle1 = () => {
     switch (divPosition) {
       case "below":
         return "bottom-[-100vh]";
@@ -112,22 +132,16 @@ const ScrollSections = () => {
     }
   };
 
-  // const ref = useRef(null);
-  // const isInView = useInView(ref, {
-  //   amount: 0.5,
-  //   once: false,
-  // });
-  // const setCurrentSections = useSetRecoilState(currentSectionsState);
-  // const setNavTextColor = useSetRecoilState(navTextColorState);
-
-  // useEffect(() => {
-  //   if (isInView) {
-  //     setCurrentSections(1);
-  //     setNavTextColor("white");
-  //   } else {
-  //     setNavTextColor("#111");
-  //   }
-  // }, [isInView, setCurrentSections, setNavTextColor]);
+  const getDivStyle2 = () => {
+    switch (divPosition2) {
+      case "below2":
+        return "bottom-[-100vh]";
+      case "bottom":
+        return "bottom-0";
+      default:
+        return "bottom-[-100vh]";
+    }
+  };
 
   return (
     <div onWheel={handleWheel}>
@@ -137,7 +151,7 @@ const ScrollSections = () => {
         </div>
       ))}
       <div
-        className={`w-[100vw] fixed left-0 right-0 pt-[53px] pr-[232px] pb-[50px] pl-[159px] bg-black text-white z-10 transition-all duration-500 ${getDivStyle()}`}
+        className={`w-screen fixed left-0 right-0 pt-[53px] pr-[232px] pb-[50px] pl-[159px] bg-black text-white z-50 transition-all duration-500 ${getDivStyle1()}`}
       >
         <div className="font-medium text-[34px] leading-tight tracking-wide max-w-[1250px]">
           <p>
@@ -146,7 +160,7 @@ const ScrollSections = () => {
           </p>
         </div>
       </div>
-      <div className="left-0 right-0 bottom-0 bg-black text-white z-40 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center">
+      <div onWheel={handleWheel2} className={`fixed w-screen left-0 right-0 bottom-0 bg-black text-white pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center z-50 transition-all duration-500 ${getDivStyle2()}`}>
         <p className="text-[30px]">KHG PORTFOLIO</p>
         <p className="mt-16 mx-0 mb-[50px] max-w-[200px] text-base leading-tight whitespace-pre-line"></p>
         <div className="relative w-[165px] h-[143px]">

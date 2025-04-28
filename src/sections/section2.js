@@ -3,7 +3,7 @@ import eximg from "../assets/img/characters.png";
 
 const Section2 = () => {
   return (
-    <section className="w-full h-dvh flex pt-[100px] px-0 pb-[75px] top-0 bottom-0 relative bg-white">
+    <section className="w-full h-dvh flex pt-[100px] px-0 pb-[75px] top-0 bottom-0 relative">
       <div className="mt-auto mr-0 mb-[5px] ml-10">
         <div className="flex flex-col gap-7 w-60">
           <button className="flex h-[79px] w-[240px] overflow-hidden">

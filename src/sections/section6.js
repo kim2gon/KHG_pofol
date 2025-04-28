@@ -46,7 +46,7 @@ const Bubble = ({ children, x = 0, y = 0 }) => {
       style={{
         x, y
       }}
-      className="circlecontainer z-10 opacity-100"
+      className="circlecontainer z-40 opacity-100"
     >
       <div className="circleinner">
         {children}
@@ -101,7 +101,7 @@ const Bubble2 = ({ children, x = 0, y = 0 }) => {
       style={{
         x, y
       }}
-      className="circlecontainer z-10 opacity-100"
+      className="circlecontainer z-40 opacity-100"
     >
       <div className="circleinner">
         {children}
@@ -157,7 +157,7 @@ const Circle = ({ children, x = 0, y = 0 }) => {
       style={{
         x, y
       }}
-      className="circlecontainer z-0 opacity-100"
+      className="circlecontainer z-30 opacity-100"
     >
       <div className="circlespin">{children}</div>
     </motion.div>

@@ -1,8 +1,17 @@
 import React from "react";
+import Header from "../components/header";
 
 const Section1 = () => {
   return (
-    <section className="w-full h-dvh flex pt-[100px] px-0 pb-[75px] top-0 bottom-0 relative bg-white">
+    <section className="w-full h-dvh flex pt-[100px] px-0 pb-[75px] top-0 bottom-0 relative">
+      <Header />
+      <div className="w-dvw h-screen flex justify-between max-w-[1300px] mx-auto xl-px-[5%] fixed overflow-hidden z-[15] pointer-events-none top-0">
+        <div className="w-[1px] h-screen bg-[#eee]"></div>
+        <div className="w-[1px] h-screen bg-[#eee]"></div>
+        <div className="w-[1px] h-screen bg-[#eee]"></div>
+        <div className="w-[1px] h-screen bg-[#eee]"></div>
+        <div className="w-[1px] h-screen bg-[#eee]"></div>
+      </div>
       <div className="flex flex-col max-w-[460px] h-full pt-[10vh] px-0 pb-0 ">
         <h1 className="text-[109px] font-semibold text-left w-[460px] leading-tight">
           Portfolio
