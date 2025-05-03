@@ -1,11 +1,13 @@
-.container {
+.earthcon {
   background: #21223a;
-  position: absolute;
   scale: 0.35;
-  left: 165px;
-  /* left: 50%;
+}
+
+.container {
+  position: absolute;
+  left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
 }
 
 .sun {

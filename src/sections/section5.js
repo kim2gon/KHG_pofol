@@ -1,23 +1,21 @@
 import React from 'react'
-import eximg1 from '../assets/img/capsuleblue2.png'
-import eximg2 from '../assets/img/capsulebrown2.png'
-import eximg3 from '../assets/img/capsulegreen2.png'
-import eximg4 from '../assets/img/capsulepink2.png'
-import eximg5 from '../assets/img/capsulered2.png'
-import eximg6 from '../assets/img/characters.png'
-import Cssanimations from '../components/cssanimations'
+import Cssanimation1 from '../cssanimations/cssanimation1'
+import Cssanimation2 from '../cssanimations/cssanimation2';
+import Cssanimation3 from '../cssanimations/cssanimation3';
+import Cssanimation4 from '../cssanimations/cssanimation4';
+import Cssanimation5 from '../cssanimations/cssanimation5';
+import Cssanimation6 from '../cssanimations/cssanimation6';
 
 const Section5 = () => {
-  // const pofolimg = [eximg1, eximg2, eximg3, eximg4, eximg5, eximg6, eximg1, eximg2, eximg3, eximg4, eximg5, eximg6];
-  const pofolimg = [
-    <Cssanimations key={1} />,
-    <Cssanimations key={2} />,
-    <Cssanimations key={3} />,
-    <Cssanimations key={4} />,
-    <Cssanimations key={5} />,
-    <Cssanimations key={6} />,
+  const cssanimation = [
+    <Cssanimation1 />,
+    <Cssanimation2 />,
+    <Cssanimation3 />,
+    <Cssanimation4 />,
+    <Cssanimation5 />,
+    <Cssanimation6 />,
   ];
-
+// 12*2 24개 애니메이션 반복
 
   return (
     <section className='w-full h-dvh flex pt-[100px] pl-10 pb-[75px] !left-0 top-0 bottom-0 start-[--h-padding] end-[--h-padding] relative'>
@@ -30,18 +28,17 @@ const Section5 = () => {
 
       <div className='absolute top-0 bottom-[-75px] left-[324px] w-[324px] overflow-hidden'>
         <div className='w-full h-full'>
-          <div className='top-full flex-col absolute flex slide-up'>
-            <div className='w-full ani-delay relative'>
-              {/* {pofolimg.map((v, i) => (
-                <img key={`${v}-${i}`} src={v} className='block mt-[91px] object-cover w-[324px] h-[404px]' />
+          <div className='top-full flex-col absolute flex slide-up ani-delay'>
+            <div className='w-full'>
+              {cssanimation.map((v, i) => (
+                <div key={v} className='block mt-[91px] object-cover w-[324px] h-[404px]'>{v}</div>
               ))}
             </div>
             <div className='w-full'>
-              {pofolimg.map((v, i) => (
-                <img key={`${v}-${i}`} src={v} className='block mt-[91px] object-cover w-[324px] h-[404px]' />
-              ))} */}
+              {cssanimation.map((v, i) => (
+                <div key={v} className='block mt-[91px] object-cover w-[324px] h-[404px]'>{v}</div>
+              ))}
               <div className='flex flex-wrap'>
-                {pofolimg}
               </div>
             </div>
           </div>
@@ -50,18 +47,17 @@ const Section5 = () => {
 
       <div className='absolute top-0 bottom-[-300px] left-[739px] w-[324px] overflow-hidden'>
         <div className='w-full h-full'>
-          <div className='bottom-full flex-col absolute flex slide-down'>
-            <div className='w-full ani-delay'>
-              {/* {pofolimg.map((v, i) => (
-                <img key={`${v}-${i}`} src={v} className='block mt-[91px] object-cover w-[324px] h-[404px]' />
+          <div className='bottom-full flex-col absolute flex slide-down ani-delay'>
+            <div className='w-full'>
+              {cssanimation.map((v, i) => (
+                <div key={v} className='block mt-[91px] object-cover w-[324px] h-[404px]'>{v}</div>
               ))}
             </div>
             <div className='w-full'>
-              {pofolimg.map((v, i) => (
-                <img key={`${v}-${i}`} src={v} className='block mt-[91px] object-cover w-[324px] h-[404px]' />
-              ))} */}
+              {cssanimation.map((v, i) => (
+                <div key={v} className='block mt-[91px] object-cover w-[324px] h-[404px]'>{v}</div>
+              ))}
               <div className='flex flex-wrap'>
-                {pofolimg}
               </div>
             </div>
           </div>

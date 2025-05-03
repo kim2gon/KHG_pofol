@@ -17,7 +17,7 @@ const sections = [
   { component: Section5, path: "/pofol" },
   { component: Section6, path: "/skills" },
   { component: Section7, path: "/tools" },
-  { component: Section8, path: "/myself" },
+  { component: Section8, path: "/myself" }
 ];
 
 const ScrollSections = () => {
@@ -99,15 +99,16 @@ const ScrollSections = () => {
   const handleWheel2 = (e) => {
     if (isScrolling.current) return;
     isScrolling.current = true;
+
     setTimeout(() => {
       if (e.deltaY > 0) {
         if (currentSection === 7 && !hasScrolledInSection8.current) {
           // Section8에서 첫 스크롤
-          setDivPosition2("bottom");
+          setDivPosition2("bottom2");
           hasScrolledInSection8.current = true;
         }
       } else if (e.deltaY < 0) {
-        if (currentSection === 7 && divPosition2 === "bottom") {
+        if (currentSection === 7 && divPosition2 === "bottom2") {
           // Section8에서 위로 스크롤
           setCurrentSection(8);
           setDivPosition2("below2");
@@ -135,11 +136,11 @@ const ScrollSections = () => {
   const getDivStyle2 = () => {
     switch (divPosition2) {
       case "below2":
-        return "bottom-[-100vh]";
-      case "bottom":
-        return "bottom-0";
+        return "bottom2-[-100vh]";
+      case "bottom2":
+        return "bottom2-0";
       default:
-        return "bottom-[-100vh]";
+        return "bottom2-[-100vh]";
     }
   };
 
@@ -160,16 +161,19 @@ const ScrollSections = () => {
           </p>
         </div>
       </div>
-      <div onWheel={handleWheel2} className={`fixed w-screen left-0 right-0 bottom-0 bg-black text-white pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center z-50 transition-all duration-500 ${getDivStyle2()}`}>
+      <div onWheel={handleWheel2}
+        className={`fixed w-screen left-0 right-0 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center
+       bg-black text-white z-50 transition-all duration-500 ${getDivStyle2()}`}>
         <p className="text-[30px]">KHG PORTFOLIO</p>
         <p className="mt-16 mx-0 mb-[50px] max-w-[200px] text-base leading-tight whitespace-pre-line"></p>
         <div className="relative w-[165px] h-[143px]">
-          <img className="w-full h-full !rounded-full pointer-events-none footerani1"></img>
+          <img className="w-full h-full !rounded-full footerani1"></img>
           <div className="absolute w-full h-full pt-[100%] top-0 left-0 footerani2"></div>
         </div>
         <button className="flex flex-col gap-4 mt-[50px] mx-0 mb-10 text-inherit justify-items-center items-center">
           <svg className="w-[10px] h-[28px] fill-none scale-[-1]">
-            <path d="M9.924.924 5 7.314.076.924h9.848ZM9.308 12.308 5 17.9.692 12.31h8.616ZM8.693 22.693 5 27.485l-3.693-4.792h7.386Z" fill="currentColor"></path>
+            <path d="M9.924.924 5 7.314.076.924h9.848ZM9.308 12.308 5 17.9.692 12.31h8.616ZM8.693 22.693 5 27.485l-3.693-4.792h7.386Z"
+              fill="currentColor"></path>
           </svg>
           <span className="text-sm">Page top</span>
         </button>
