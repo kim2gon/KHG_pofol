@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/header";
+import { Link } from "react-router-dom";
 
 const Section1 = () => {
   return (
@@ -19,12 +20,12 @@ const Section1 = () => {
         <p className="mx-10 my-4 max-w-60 gap-8 flex flex-col items-start justify-items-center font-medium text-[11px] leading-tight tracking-wide text-[#111]">
           this is my portfolio thank you for visiting my site thank you.this is
           my portfolio thank you for visiting my site thank you.
-          <a
+          <Link
             href="/"
             className="pt-4 pb-[10px] px-7 text-white bg-black relative min-w-[16px] text-center text-sm leading-tight font-semibold"
           >
             click my profile
-          </a>
+          </Link>
         </p>
         <p className="max-w-[200px] top-[150px] right-[85px] font-medium text-[11px] leading-tight tracking-wide text-[#111] absolute">
           this is my portfolio thank you for visiting my site thank you.this is

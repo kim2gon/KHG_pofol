@@ -8,6 +8,9 @@ import Section5 from "./section5";
 import Section6 from "./section6";
 import Section7 from "./section7";
 import Section8 from "./section8";
+import { useInView } from "framer-motion";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { currentSectionsState, headerColorState } from "../store";
 
 const sections = [
   { component: Section1, path: "/" },
@@ -52,6 +55,24 @@ const ScrollSections = () => {
       ref.current.style.position = 'static';
     }
   }, [currentSection]);
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    amount: 0.5,
+    once: false,
+  });
+
+  const setheaderColor = useSetRecoilState(headerColorState);
+  const setCurrentSections = useSetRecoilState(currentSectionsState);
+
+  useEffect(() => {
+    if (isInView) {
+      setCurrentSections(5);
+      setheaderColor("white");
+    } else {
+      setheaderColor("");
+    }
+  }, [isInView, setCurrentSections, setheaderColor]);
 
   // 휠 스크롤 이벤트
   const handleWheel = (e) => {

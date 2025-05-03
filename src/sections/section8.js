@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Section8 = () => {
   return (
@@ -8,9 +9,9 @@ const Section8 = () => {
           This is my portfolio and this page is introduce my skills thank you for visiting my site thank you.</p>
         <div className='flex text-[80px] max-h-max justify-center'>
           <div className='-mt-32'>
-            <a href='/' className='relative font-semibold text-xs leading-tight text-center min-w-4 pt-4 px-[30px] pb-[11px] text-white bg-black'>
+            <Link href='/' className='relative font-semibold text-xs leading-tight text-center min-w-4 pt-4 px-[30px] pb-[11px] text-white bg-black'>
               Character
-            </a>
+            </Link>
           </div>
         </div>
         <div className='absolute w-full h-full start-0 end-0 pointer-events-none top-0 bottom-0'>

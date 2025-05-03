@@ -9,3 +9,8 @@ export const navTextColorState = atom({
     key: "navTextColorState",
     default: "#111",
 });
+
+export const headerColorState = atom({
+    key: "headerColorState",
+    default: "#fff",
+});
