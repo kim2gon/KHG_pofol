@@ -96,9 +96,11 @@ const ScrollSections = () => {
     }, 200);
   };
 
+  const isScrolling2 = useRef(false);
+
   const handleWheel2 = (e) => {
-    if (isScrolling.current) return;
-    isScrolling.current = true;
+    if (isScrolling2.current) return;
+    isScrolling2.current = true;
 
     setTimeout(() => {
       if (e.deltaY > 0) {
@@ -114,7 +116,7 @@ const ScrollSections = () => {
           setDivPosition2("below2");
         }
       }
-      isScrolling.current = false;
+      isScrolling2.current = false;
     }, 200);
   };
 
