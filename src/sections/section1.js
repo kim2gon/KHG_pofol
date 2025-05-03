@@ -12,7 +12,7 @@ const Section1 = () => {
         <div className="w-[1px] h-screen bg-[#eee]"></div>
         <div className="w-[1px] h-screen bg-[#eee]"></div>
       </div>
-      <div className="flex flex-col max-w-[460px] h-full pt-[10vh] px-0 pb-0 ">
+      <div className="flex flex-col max-w-[460px] h-full pt-[10vh] px-0 pb-0 z-20">
         <h1 className="text-[109px] font-semibold text-left w-[460px] leading-tight">
           Portfolio
         </h1>
