@@ -556,7 +556,6 @@
 .credit {
   text-align: center;
   color: #999;
-  font-family: "Roboto Mono";
 }
 
 a {
@@ -564,7 +563,6 @@ a {
 }
 
 h1, h2 {
-  font-family: "Roboto Mono";
   text-align: center;
   margin: 50px;
 }
