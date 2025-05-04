@@ -13,8 +13,8 @@ const sections = [
   { component: Section1, path: "/" },
   { component: Section2, path: "/about" },
   { component: Section3, path: "/awards" },
-  { component: Section4, path: "/animation" },
-  { component: Section5, path: "/pofol" },
+  { component: Section4, path: "/pofol" },
+  { component: Section5, path: "/animations" },
   { component: Section6, path: "/skills" },
   { component: Section7, path: "/tools" },
   { component: Section8, path: "/myself" },
@@ -50,6 +50,10 @@ const ScrollSections = () => {
     }
     if (ref?.current === 5) {
       ref.current.style.position = "static";
+    }
+    if (ref?.current !== 8) {
+      setDivPosition2("below");
+      hasScrolledInSection8.current = false;
     }
   }, [currentSection]);
 
@@ -132,8 +136,6 @@ const ScrollSections = () => {
 
   const handleClick = () => {
     setCurrentSection(0);
-    setDivPosition2("below");
-    hasScrolledInSection8.current = false;
   }
 
   return (

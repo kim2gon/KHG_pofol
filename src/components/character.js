@@ -25,10 +25,10 @@ const CameraController = ({
       const targetPosition = new THREE.Vector3();
       let targetRotationY = 0;
 
-      if (progress >= 0.1 && progress <= 0.5) {
+      if (progress >= 0.1 && progress <= 0.4) {
         targetPosition.set(2, -2, -3);
         targetRotationY = -(Math.PI / 180) * 10.8;
-      } else if (progress >= 0.5 && progress <= 0.9) {
+      } else if (progress >= 0.4 && progress <= 0.9) {
         targetPosition.set(0, 15, 5);
       } else if (progress >= 0.9 && progress <= 1) {
         targetPosition.set(0, 0, 0);
@@ -59,7 +59,7 @@ const Character = () => {
   }, [scrollYProgress]);
 
   return (
-    <motion.div ref={ref} className="w-full h-full absolute z-40" style={{ opacity: useTransform(scrollYProgress, [0.1, 0.4, 0.9, 1], [1, 1, 0, 1]) }}>
+    <motion.div className="w-full h-full absolute z-40" style={{ opacity: useTransform(scrollYProgress, [0.1, 0.4, 0.9, 1], [1, 1, 0, 1]) }}>
       <Canvas style={{ pointerEvents: 'none' }}>
         <CameraController scrollYProgress={scrollYProgress} />
         <ambientLight intensity={1.2} />
