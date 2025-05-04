@@ -8,9 +8,6 @@ import Section5 from "./section5";
 import Section6 from "./section6";
 import Section7 from "./section7";
 import Section8 from "./section8";
-import { useInView } from "framer-motion";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { currentSectionsState, headerColorState } from "../store";
 
 const sections = [
   { component: Section1, path: "/" },
@@ -60,7 +57,6 @@ const ScrollSections = () => {
   const handleWheel = (e) => {
     if (isScrolling.current) return;
     isScrolling.current = true;
-
     setTimeout(() => {
       if (e.deltaY > 0) {
         if (currentSection === 1 && !hasScrolledInSection2.current) {
@@ -104,6 +100,7 @@ const ScrollSections = () => {
         }
       }
       isScrolling.current = false;
+      
     }, 200);
   };
 
@@ -133,6 +130,12 @@ const ScrollSections = () => {
     }
   };
 
+  const handleClick = () => {
+    setCurrentSection(0);
+    setDivPosition2("below");
+    hasScrolledInSection8.current = false;
+  }
+
   return (
     <div onWheel={handleWheel}>
       {sections.map(({ component: Component }, index) => (
@@ -160,7 +163,7 @@ const ScrollSections = () => {
           <img className="w-full h-full !rounded-full footerani1"></img>
           <div className="absolute w-full h-full pt-[100%] top-0 left-0 footerani2"></div>
         </div>
-        <button className="flex flex-col gap-4 mt-[50px] mx-0 mb-10 text-inherit justify-items-center items-center">
+        <button onClick={handleClick} className="flex flex-col gap-4 mt-[50px] mx-0 mb-10 text-inherit justify-items-center items-center">
           <svg className="w-[10px] h-[28px] fill-none scale-[-1]">
             <path
               d="M9.924.924 5 7.314.076.924h9.848ZM9.308 12.308 5 17.9.692 12.31h8.616ZM8.693 22.693 5 27.485l-3.693-4.792h7.386Z"

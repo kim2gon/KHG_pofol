@@ -1,8 +1,3 @@
-## 5월 4일 3시
-flex-study designer, contact
-
----
-
 ## 5월 5일 1시
 모바일 완료
 (세익 footer보기)
@@ -23,6 +18,5 @@ contact
 3. 첫섹션
 4. 클릭 시 옷 바뀌기 
 5. 포트폴리오 섹션
-6. footer
 7. css애니메이션 어떻게 할지
 8. skill 터질때 내용 작성

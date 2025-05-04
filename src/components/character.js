@@ -57,8 +57,9 @@ const Character = () => {
     window.addEventListener("scroll", () => {
     });
   }, [scrollYProgress]);
+
   return (
-    <motion.div className="w-full h-full absolute z-40" style={{ opacity: useTransform(scrollYProgress, [0.1, 0.4, 0.9, 1], [1, 1, 0, 1]) }}>
+    <motion.div ref={ref} className="w-full h-full absolute z-40" style={{ opacity: useTransform(scrollYProgress, [0.1, 0.4, 0.9, 1], [1, 1, 0, 1]) }}>
       <Canvas style={{ pointerEvents: 'none' }}>
         <CameraController scrollYProgress={scrollYProgress} />
         <ambientLight intensity={1.2} />
