@@ -8,7 +8,7 @@ import aniimg6 from "../assets/img/robot.png";
 import { Link } from "react-router-dom";
 import { useInView } from "framer-motion";
 import { useSetRecoilState } from "recoil";
-import { currentSectionsState, headerColorState } from "../store";
+import { headerColorState } from "../store";
 
 const Section5 = () => {
   const cssanimation = [
@@ -63,12 +63,12 @@ const Section5 = () => {
           <div className="top-full flex-col absolute flex slide-up">
             <div className="w-full">
               {cssanimation.map((v, i) => (
-                <img key={v} src={v} className="block mt-[91px] object-contain w-[324px] h-[404px]" />
+                <img key={i} src={v} className="block mt-[91px] object-contain w-[324px] h-[404px]" />
               ))}
             </div>
             <div className="w-full">
               {cssanimation.map((v, i) => (
-                <img key={v} src={v} className="block mt-[91px] object-contain w-[324px] h-[404px]" />
+                <img key={i} src={v} className="block mt-[91px] object-contain w-[324px] h-[404px]" />
               ))}
               <div className="flex flex-wrap"></div>
             </div>
@@ -81,12 +81,12 @@ const Section5 = () => {
           <div className="bottom-full flex-col absolute flex slide-down">
             <div className="w-full">
               {cssanimation.map((v, i) => (
-                <img key={v} src={v} className="block mt-[91px] object-contain w-[324px] h-[404px]" />
+                <img key={i} src={v} className="block mt-[91px] object-contain w-[324px] h-[404px]" />
               ))}
             </div>
             <div className="w-full">
               {cssanimation.map((v, i) => (
-                <img key={v} src={v} className="block mt-[91px] object-contain w-[324px] h-[404px]" />
+                <img key={i} src={v} className="block mt-[91px] object-contain w-[324px] h-[404px]" />
               ))}
               <div className="flex flex-wrap"></div>
             </div>

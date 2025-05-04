@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const headerColor = useRecoilValue(headerColorState);
-  console.log(headerColor);
 
   return (
     // <nav className='flex items-center justify-between gap-9 top-0 w-[1300px] max-w-[100vw] max-h-[100px] py-[29px] px-2 fixed z-30'>
