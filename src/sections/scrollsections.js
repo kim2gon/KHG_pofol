@@ -20,7 +20,7 @@ const sections = [
   { component: Section5, path: "/pofol" },
   { component: Section6, path: "/skills" },
   { component: Section7, path: "/tools" },
-  { component: Section8, path: "/myself" }
+  { component: Section8, path: "/myself" },
 ];
 
 const ScrollSections = () => {
@@ -52,27 +52,9 @@ const ScrollSections = () => {
       navigate(sections[currentSection].path, { replace: true });
     }
     if (ref?.current === 5) {
-      ref.current.style.position = 'static';
+      ref.current.style.position = "static";
     }
   }, [currentSection]);
-
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    amount: 0.5,
-    once: false,
-  });
-
-  const setheaderColor = useSetRecoilState(headerColorState);
-  const setCurrentSections = useSetRecoilState(currentSectionsState);
-
-  useEffect(() => {
-    if (isInView) {
-      setCurrentSections(5);
-      setheaderColor("white");
-    } else {
-      setheaderColor("");
-    }
-  }, [isInView, setCurrentSections, setheaderColor]);
 
   // 휠 스크롤 이벤트
   const handleWheel = (e) => {
@@ -93,6 +75,10 @@ const ScrollSections = () => {
           // Section3에서 스크롤
           setCurrentSection(3);
           setDivPosition("above");
+        } else if (currentSection === 7 && !hasScrolledInSection8.current) {
+          // Section8에서 첫 스크롤
+          setDivPosition2("bottom");
+          hasScrolledInSection8.current = true;
         } else if (currentSection < sections.length - 1) {
           setCurrentSection((prev) => prev + 1);
         }
@@ -109,35 +95,15 @@ const ScrollSections = () => {
           // Section2에서 위로 스크롤
           setDivPosition("below");
           hasScrolledInSection2.current = false;
+        } else if (currentSection === 7 && divPosition2 === "bottom") {
+          // Section8에서 위로 스크롤
+          setDivPosition2("below");
+          hasScrolledInSection8.current = false;
         } else if (currentSection > 0) {
           setCurrentSection((prev) => prev - 1);
         }
       }
       isScrolling.current = false;
-    }, 200);
-  };
-
-  const isScrolling2 = useRef(false);
-
-  const handleWheel2 = (e) => {
-    if (isScrolling2.current) return;
-    isScrolling2.current = true;
-
-    setTimeout(() => {
-      if (e.deltaY > 0) {
-        if (currentSection === 7 && !hasScrolledInSection8.current) {
-          // Section8에서 첫 스크롤
-          setDivPosition2("bottom2");
-          hasScrolledInSection8.current = true;
-        }
-      } else if (e.deltaY < 0) {
-        if (currentSection === 7 && divPosition2 === "bottom2") {
-          // Section8에서 위로 스크롤
-          setCurrentSection(8);
-          setDivPosition2("below2");
-        }
-      }
-      isScrolling2.current = false;
     }, 200);
   };
 
@@ -158,12 +124,12 @@ const ScrollSections = () => {
 
   const getDivStyle2 = () => {
     switch (divPosition2) {
-      case "below2":
-        return "bottom2-[-100vh]";
-      case "bottom2":
-        return "bottom2-0";
+      case "below":
+        return "bottom-[-100vh]";
+      case "bottom":
+        return "bottom-0";
       default:
-        return "bottom2-[-100vh]";
+        return "bottom-[-100vh]";
     }
   };
 
@@ -184,9 +150,10 @@ const ScrollSections = () => {
           </p>
         </div>
       </div>
-      <div onWheel={handleWheel2}
+      <div
         className={`fixed w-screen left-0 right-0 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center
-       bg-black text-white z-50 transition-all duration-500 ${getDivStyle2()}`}>
+       bg-black text-white z-50 transition-all duration-500 ${getDivStyle2()}`}
+      >
         <p className="text-[30px]">KHG PORTFOLIO</p>
         <p className="mt-16 mx-0 mb-[50px] max-w-[200px] text-base leading-tight whitespace-pre-line"></p>
         <div className="relative w-[165px] h-[143px]">
@@ -195,8 +162,10 @@ const ScrollSections = () => {
         </div>
         <button className="flex flex-col gap-4 mt-[50px] mx-0 mb-10 text-inherit justify-items-center items-center">
           <svg className="w-[10px] h-[28px] fill-none scale-[-1]">
-            <path d="M9.924.924 5 7.314.076.924h9.848ZM9.308 12.308 5 17.9.692 12.31h8.616ZM8.693 22.693 5 27.485l-3.693-4.792h7.386Z"
-              fill="currentColor"></path>
+            <path
+              d="M9.924.924 5 7.314.076.924h9.848ZM9.308 12.308 5 17.9.692 12.31h8.616ZM8.693 22.693 5 27.485l-3.693-4.792h7.386Z"
+              fill="currentColor"
+            ></path>
           </svg>
           <span className="text-sm">Page top</span>
         </button>
