@@ -23,7 +23,7 @@ const Section4 = () => {
         </div>
       </div>
       <div className='absolute float-none overflow-visible w-1/2 right-1/2 p-0 items-center h-screen'>
-        <h3 className="font-bold text-base leading-tight mt-[40vh] mx-24 mb-[21px] text-[#111]">KRAFTON</h3>
+        <h3 className="font-bold text-base leading-tight mt-[40vh] mx-24 mb-[21px] text-[#111]">NESPRESSO</h3>
         <p className="mx-24 max-w-60 font-medium text-[11px] leading-[18px] tracking-wide">
           This is Nespresso. My second site
         </p>
