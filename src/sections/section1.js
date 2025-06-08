@@ -1,18 +1,21 @@
 import React from "react";
 import Header from "../components/header";
 import { Link } from "react-router-dom";
+import RainCanvas from "../components/raineffect";
 
 const Section1 = () => {
   return (
     <section className="w-full h-dvh flex pt-[100px] px-0 pb-[75px] top-0 bottom-0 relative">
       <Header />
-      <div className="w-dvw h-screen flex justify-between max-w-[1300px] mx-auto xl-px-[5%] fixed overflow-hidden pointer-events-none top-0">
-        <div className="w-[1px] h-screen bg-[#eee]"></div>
-        <div className="w-[1px] h-screen bg-[#eee]"></div>
-        <div className="w-[1px] h-screen bg-[#eee]"></div>
-        <div className="w-[1px] h-screen bg-[#eee]"></div>
-        <div className="w-[1px] h-screen bg-[#eee]"></div>
+      <RainCanvas />
+
+      <div className="w-dvw h-screen flex justify-between max-w-[1300px] mx-auto xl:px-[5%] fixed overflow-hidden pointer-events-none top-0 z-0">
+        {[...Array(5)].map((_, idx) => (
+          <div key={idx} className="rain-line w-[1px] h-screen bg-[#eee]" />
+        ))}
       </div>
+
+
       <div className="flex flex-col max-w-[460px] h-full pt-[10vh] px-0 pb-0 z-20">
         <h1 className="text-[109px] font-semibold text-left w-[460px] leading-tight">
           Portfolio
@@ -21,7 +24,7 @@ const Section1 = () => {
           this is my portfolio thank you for visiting my site thank you.this is
           my portfolio thank you for visiting my site thank you.
           <Link
-            href="/"
+            to="/"
             className="pt-4 pb-[10px] px-7 text-white bg-black relative min-w-[16px] text-center text-sm leading-tight font-semibold"
           >
             click my profile
