@@ -72,8 +72,11 @@ const Section8 = ({ onSectionWheel, currentSection }) => {
         </div>
       </div>
 
+      {/* 
+        나중에 body기준으로 absolute로 변경 Section8밖으로 빼기      
+      */}
       <div
-        className={`absolute w-full left-0 right-0 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center
+        className={`absolute w-screen bottom-0 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center
         bg-black text-white z-50 transition-transform duration-500 ${getDivStyle2()}`}
       >
         <p className="text-[30px]">KHG PORTFOLIO</p>

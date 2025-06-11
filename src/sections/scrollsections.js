@@ -8,7 +8,6 @@ import Section5 from "./section5";
 import Section6 from "./section6";
 import Section7 from "./section7";
 import Section8 from "./section8";
-import Loading from "../components/loading";
 
 const sections = [
   { component: Section1, path: "/" },
@@ -114,19 +113,12 @@ const ScrollSections = () => {
     setCurrentSection(0);
   }
 
-  // const loading = () => {
-
-  // }
-
   return (
     <div onWheel={handleWheel} >
-      <div>
-        <Loading />
-      </div>
       {sections.map(({ component: Component }, index) => (
         <div key={index} ref={sectionRefs.current[index]} style={{ height: "100vh" }}>
           {index === 7 ? (
-            <Component 
+            <Component
               onSectionWheel={handleWheel}
               currentSection={currentSection}
             />
