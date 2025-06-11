@@ -30,7 +30,6 @@ const ScrollSections = () => {
   const [divPosition2, setDivPosition2] = useState("below");
   const isScrolling = useRef(false);
   const hasScrolledInSection2 = useRef(false);
-  const hasScrolledInSection8 = useRef(false);
 
   const sectionRefs = useRef(sections.map(() => React.createRef()));
 
@@ -52,10 +51,6 @@ const ScrollSections = () => {
     if (ref?.current === 5) {
       ref.current.style.position = "static";
     }
-    if (ref?.current !== 8) {
-      setDivPosition2("below");
-      hasScrolledInSection8.current = false;
-    }
   }, [currentSection]);
 
   // 휠 스크롤 이벤트
@@ -76,10 +71,6 @@ const ScrollSections = () => {
           // Section3에서 스크롤
           setCurrentSection(3);
           setDivPosition("above");
-        } else if (currentSection === 7 && !hasScrolledInSection8.current) {
-          // Section8에서 첫 스크롤
-          setDivPosition2("bottom");
-          hasScrolledInSection8.current = true;
         } else if (currentSection < sections.length - 1) {
           setCurrentSection((prev) => prev + 1);
         }
@@ -96,16 +87,11 @@ const ScrollSections = () => {
           // Section2에서 위로 스크롤
           setDivPosition("below");
           hasScrolledInSection2.current = false;
-        } else if (currentSection === 7 && divPosition2 === "bottom") {
-          // Section8에서 위로 스크롤
-          setDivPosition2("below");
-          hasScrolledInSection8.current = false;
         } else if (currentSection > 0) {
           setCurrentSection((prev) => prev - 1);
         }
       }
       isScrolling.current = false;
-
     }, 200);
   };
 
@@ -119,17 +105,6 @@ const ScrollSections = () => {
         return "bottom-[64vh]";
       case "above":
         return "bottom-[100vh]";
-      default:
-        return "bottom-[-100vh]";
-    }
-  };
-
-  const getDivStyle2 = () => {
-    switch (divPosition2) {
-      case "below":
-        return "bottom-[-100vh]";
-      case "bottom":
-        return "bottom-0";
       default:
         return "bottom-[-100vh]";
     }
@@ -150,42 +125,24 @@ const ScrollSections = () => {
       </div>
       {sections.map(({ component: Component }, index) => (
         <div key={index} ref={sectionRefs.current[index]} style={{ height: "100vh" }}>
-          <Component />
+          {index === 7 ? (
+            <Component 
+              onSectionWheel={handleWheel}
+              currentSection={currentSection}
+            />
+          ) : (
+            <Component />
+          )}
         </div>
       ))}
       <div
-        className={`w-screen fixed left-0 right-0 pt-[53px] pr-[232px] pb-[50px] pl-[159px] bg-black text-white z-50 transition-all duration-500 ${getDivStyle1()}`}
+        className={`w-screen fixed left-0 right-0 pt-[53px] pr-[232px] pb-[50px] pl-[159px] bg-black text-white z-[51] transition-all duration-500 ${getDivStyle1()}`}
       >
         <div className="font-medium text-[34px] leading-tight tracking-wide max-w-[1250px]">
           <p>
             This is my portfolio thank you for visiting my site thank you.this is my portfolio thank you for visiting my
             site thank you. this is my portfolio thank you for visiting my site thank you for visiting my site.
           </p>
-        </div>
-      </div>
-      <div
-        className={`fixed w-screen left-0 right-0 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center
-       bg-black text-white z-50 transition-all duration-500 ${getDivStyle2()}`}
-      >
-        <p className="text-[30px]">KHG PORTFOLIO</p>
-        <p className="mt-16 mx-0 mb-[50px] max-w-[200px] text-base leading-tight whitespace-pre-line"></p>
-        <div className="relative w-[165px] h-[143px]">
-          <img className="w-full h-full !rounded-full footerani1"></img>
-          <div className="absolute w-full h-full pt-[100%] top-0 left-0 footerani2"></div>
-        </div>
-        <button onClick={handleClick} className="flex flex-col gap-4 mt-[50px] mx-0 mb-10 text-inherit justify-items-center items-center">
-          <svg className="w-[10px] h-[28px] fill-none scale-[-1]">
-            <path
-              d="M9.924.924 5 7.314.076.924h9.848ZM9.308 12.308 5 17.9.692 12.31h8.616ZM8.693 22.693 5 27.485l-3.693-4.792h7.386Z"
-              fill="currentColor"
-            ></path>
-          </svg>
-          <span className="text-sm">Page top</span>
-        </button>
-        <div className="flex flex-wrap-reverse gap-y-4 gap-x-5 text-left w-full">
-          <span className="font-normal text-[10px] leading-tight mr-auto tracking-wide"></span>
-          <a className="font-medium text-[10px] leading-tight tracking-wide"></a>
-          <a className="font-medium text-[10px] leading-tight tracking-wide"></a>
         </div>
       </div>
     </div>
