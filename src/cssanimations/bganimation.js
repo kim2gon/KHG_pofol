@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles/bganimation.css';
+// import styles from '../styles/bganimation.css';
 
 const Bganimation = () => {
     return (
