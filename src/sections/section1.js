@@ -7,24 +7,6 @@ import '../styles/loadinganimation.css';
 const Section1 = () => {
   return (
     <section className="w-full h-dvh flex pt-[100px] px-0 pb-[75px] top-0 bottom-0 relative">
-      <div className='absolute opacity-1 z-[20] w-screen h-screen left-[-24%] top-0' style={{clipPath: "inset(17vh 40vw)"}}>
-                <div className="loadingbg">
-                    <div className="stars"></div>
-                    <div className="twinkling"></div>
-                    <div className='fallingstars'>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
       <Header />
       <RainCanvas />
 

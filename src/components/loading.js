@@ -1,28 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import '../styles/loadinganimation.css';
 
-const Loading = () => {
+const Loading = ({ triggerScroll, onWheel }) => {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        if (triggerScroll) {
+            setIsScrolled(true);
+        }
+    }, [triggerScroll]);
+
     return (
-        <>
-            <div className='absolute opacity-1 z-20 w-screen h-screen top-0 bottom-0 left-0 right-0' style={{clipPath: "inset(17vh 40vw)"}}>
-                <div className="loadingbg">
-                    <div className="stars"></div>
-                    <div className="twinkling"></div>
-                    <div className='fallingstars'>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+        <div
+            className={`absolute w-screen h-screen left-0 top-0 loading-wrapper ${isScrolled ? 'scrolled' : ''} ${isScrolled ? 'z-20' : 'z-[99999]'}`}
+        >
+            <div className="loadingbg">
+                <div className="stars"></div>
+                <div className="twinkling"></div>
+                <div className="fallingstars">
+                    {[...Array(10)].map((_, i) => (
+                        <span key={i}></span>
+                    ))}
                 </div>
             </div>
-        </>
-    )
-}
-export default Loading
+        </div>
+    );
+};
+
+export default Loading;
