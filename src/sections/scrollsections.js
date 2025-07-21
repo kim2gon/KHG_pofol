@@ -11,7 +11,7 @@ import Section8 from "./section8";
 import Loading from "../components/loading";
 
 const sections = [
-  { component: Section1, path: "/" },
+  { component: Section1, path: "/home" },
   { component: Section2, path: "/about" },
   { component: Section3, path: "/awards" },
   { component: Section4, path: "/pofol" },
@@ -28,52 +28,77 @@ const ScrollSections = () => {
   const [currentSection, setCurrentSection] = useState(0);
   const [divPosition, setDivPosition] = useState("below");
   const [loadingScrollTriggered, setLoadingScrollTriggered] = useState(false);
-  // const [scrollEnabled, setScrollEnabled] = useState(true);
+  const [section4SlideIndex, setSection4SlideIndex] = useState(0);
+  const [disableSlideTransition, setDisableSlideTransition] = useState(false);
 
   const isScrolling = useRef(false);
   const hasScrolledInSection2 = useRef(false);
+  const prevSection = useRef(0);
+  const section4Visited = useRef(false);
   const sectionRefs = useRef(sections.map(() => React.createRef()));
 
+  // URL 경로 변경 감지 및 슬라이드 index 제어
   useEffect(() => {
     const index = sections.findIndex((s) => s.path === location.pathname);
-    if (index !== -1) setCurrentSection(index);
+    if (index === -1) return;
+
+    if (index === 3) {
+      if (prevSection.current < 3) {
+        // section4 미만 → section4 : 첫 슬라이드
+        setDisableSlideTransition(true);
+        setSection4SlideIndex(0);
+        setTimeout(() => setDisableSlideTransition(false), 50);
+      } else if (prevSection.current > 3) {
+        // section4 초과 → section4 : 마지막 슬라이드
+        setDisableSlideTransition(true);
+        setSection4SlideIndex(1);
+        setTimeout(() => setDisableSlideTransition(false), 50);
+      }
+    } else {
+      // section4 외 구간에선 첫번째 슬라이드
+      setDisableSlideTransition(true);
+      setSection4SlideIndex(0);
+      setTimeout(() => setDisableSlideTransition(false), 50);
+    }
+
+    setCurrentSection(index);
+    prevSection.current = index;
   }, [location.pathname]);
 
+  // currentSection 변경 시 스크롤 이동 및 Section4 지났는지 체크
   useEffect(() => {
     const ref = sectionRefs.current[currentSection];
     if (ref?.current) {
       ref.current.scrollIntoView({ behavior: "smooth" });
       navigate(sections[currentSection].path, { replace: true });
+
+      if (currentSection === 3) {
+        section4Visited.current = true;
+      }
     }
-  }, [currentSection]);
+  }, [currentSection, navigate]);
 
+  // 스크롤 휠 이벤트 처리
   const handleWheel = (e) => {
-
     if (!loadingScrollTriggered) {
       e.preventDefault();
       setLoadingScrollTriggered(true);
       return;
     }
-    // if (!scrollEnabled) {
-    //   // 스크롤 비활성화 상태면 이벤트 막기
-    //   console.log(scrollEnabled);
-    //   e.preventDefault();
-    //   return;
-    // }
-    // // 스크롤 활성화 상태일 때 로직 처리
-    // console.log('scrolling...');
-
-    // setScrollEnabled(false);
-    // setTimeout(() => {
-    //   setScrollEnabled(true);
-    // }, 1000);
 
     if (isScrolling.current) return;
-
     isScrolling.current = true;
+
     setTimeout(() => {
       if (e.deltaY > 0) {
-        if (currentSection === 1 && !hasScrolledInSection2.current) {
+        // 아래로 스크롤
+        if (currentSection === 3) {
+          if (section4SlideIndex < 1) {
+            setSection4SlideIndex((prev) => prev + 1);
+          } else {
+            setCurrentSection((prev) => Math.min(prev + 1, sections.length - 1));
+          }
+        } else if (currentSection === 1 && !hasScrolledInSection2.current) {
           setDivPosition("bottom");
           hasScrolledInSection2.current = true;
         } else if (currentSection === 1 && hasScrolledInSection2.current) {
@@ -86,7 +111,14 @@ const ScrollSections = () => {
           setCurrentSection((prev) => prev + 1);
         }
       } else if (e.deltaY < 0) {
-        if (currentSection === 3 && divPosition === "above") {
+        // 위로 스크롤
+        if (currentSection === 3) {
+          if (section4SlideIndex > 0) {
+            setSection4SlideIndex((prev) => prev - 1);
+          } else {
+            setCurrentSection((prev) => Math.max(prev - 1, 0));
+          }
+        } else if (currentSection === 3 && divPosition === "above") {
           setCurrentSection(2);
           setDivPosition("middle");
         } else if (currentSection === 2 && divPosition === "middle") {
@@ -123,7 +155,9 @@ const ScrollSections = () => {
       <Loading onWheel={handleWheel} triggerScroll={loadingScrollTriggered} />
       {sections.map(({ component: Component }, index) => (
         <div key={index} ref={sectionRefs.current[index]} style={{ height: "100vh" }}>
-          {index === 7 ? (
+          {index === 3 ? (
+            <Component currentIndex={section4SlideIndex} disableTransition={disableSlideTransition} />
+          ) : index === 7 ? (
             <Component onSectionWheel={handleWheel} currentSection={currentSection} />
           ) : (
             <Component />

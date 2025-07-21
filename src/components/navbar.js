@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const sectionText = [
-    { path: "/", label: "HOME", v: "01" },
+    { path: "/home", label: "HOME", v: "01" },
     { path: "/about", label: "ABOUT", v: "02" },
     { path: "/awards", label: "AWARDS", v: "03" },
     { path: "/pofol", label: "POFOL", v: "04" },

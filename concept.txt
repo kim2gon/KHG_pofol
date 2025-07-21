@@ -32,6 +32,14 @@ FOOTER 본인 연락처,..... (디자인은 벤치)
 
 
 
+section2에서 아래로 스크롤 > section3으로 이동하면서 검정바 below에서 bottom으로 이동
+bottom에서 한번 더 아래로 스크롤 > bottom 에서 middle로 이동
+middle에서 한번 더 아래로 스크롤 > section4로 이동하면서 검정바 above로 이동
+반대로 할 경우
+section4에서 위로 스크롤 > section3으로 이동하면서 검정바 above에서 middle로 이동
+middle에서 한번 더 위로 스크롤 > middle에서 bottom으로 이동
+bottom에서 한번 더 위로 스크롤 > section2로 이동하면서 검정바 below로 이동
+
 
 
 

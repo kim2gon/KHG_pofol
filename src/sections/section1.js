@@ -25,7 +25,7 @@ const Section1 = () => {
           this is my portfolio thank you for visiting my site thank you.this is
           my portfolio thank you for visiting my site thank you.
           <Link
-            to="/"
+            to="/home"
             className="pt-4 pb-[10px] px-7 text-white bg-black relative min-w-[16px] text-center text-sm leading-tight font-semibold"
           >
             click my profile

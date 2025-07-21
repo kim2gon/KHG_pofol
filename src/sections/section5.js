@@ -45,7 +45,7 @@ const Section5 = () => {
       <p className="mt-[15vh] m-0 max-w-60 font-medium text-[11px] leading-[18px] tracking-wide text-[#111]">
         this is my portfolio thank you for visiting my site thank you.
         <Link
-          to="/"
+          to="/home"
           className="block max-w-max min-w-40 mt-8 cursor-pointer font-semibold text-xs leading-tight text-center relative text-white pt-4 px-[30px] pb-[11px] bg-black"
         >
           click my profile

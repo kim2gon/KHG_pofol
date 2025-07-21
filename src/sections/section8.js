@@ -12,7 +12,7 @@ const Section8 = ({ onSectionWheel, currentSection }) => {
     if (divPosition2 === "bottom" || (e.deltaY > 0 && !hasScrolledInSection8.current)) {
       e.preventDefault();
       e.stopPropagation();
-      
+
       if (e.deltaY > 0 && !hasScrolledInSection8.current) {
         // Section8에서 첫 스크롤
         setDivPosition2("bottom");
@@ -52,7 +52,7 @@ const Section8 = ({ onSectionWheel, currentSection }) => {
   }
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className='relative w-full h-dvh bottom-0 !left-0 start-[--h-padding] end-[--h-padding] pt-[100px] px-0 pb-[75px] flex flex-col justify-between items-center z-20 overflow-hidden'
     >
