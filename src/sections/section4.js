@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import krafton from "../assets/img/egg1.png";
-import nespresso from "../assets/img/egg2.png";
+import krafton from "../assets/img/krafton.jpg";
+import nespresso from "../assets/img/nespresso.jpg";
 
 const Section4 = () => {
   return (
@@ -14,7 +14,7 @@ const Section4 = () => {
       </div>
       <div className='flex sticky float-none overflow-visible top-0 w-1/2 left-1/2 p-0 items-center h-screen'>
         <div className='flex relative w-[31vw] h-[31vw] overflow-hidden z-[100]'>
-          <Link href="/">
+          <Link href="https://kim2gon.github.io/nespresso/">
             <img
               className='absolute flex w-full h-full top-[-1px] left-[-1px] right-[-1px] bottom-[-1px] cursor-none object-cover z-[3]'
               src={krafton}
@@ -30,7 +30,7 @@ const Section4 = () => {
       </div>
       <div className='flex sticky float-none overflow-visible top-0 w-1/2 left-1/2 p-0 items-center h-screen'>
         <div className='flex relative w-[31vw] h-[31vw] overflow-hidden z-[100]'>
-          <Link href="/">
+          <Link href="https://kim2gon.github.io/krafton/">
             <img
               className='absolute flex w-full h-full top-[-1px] left-[-1px] right-[-1px] bottom-[-1px] cursor-none object-cover z-[2]'
               src={nespresso}

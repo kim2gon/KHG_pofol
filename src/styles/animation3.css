@@ -1,0 +1,777 @@
+.earthcon {
+  position: relative;
+  width: 324px;
+  height: 404px;
+  background: #21223a;
+}
+
+.earth-container {
+  scale: 0.4;
+  position: absolute;
+  left: 35%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+}
+
+.sun {
+  width: 150px;
+  height: 150px;
+  background: #fffaa9;
+  border-radius: 100%;
+  box-shadow: 0 0 60px #ffcfa9, 0 0 100px #b9a018;
+  position: relative;
+  left: 250px;
+}
+
+.sun .left-eye,
+.sun .left-eye::after {
+  position: relative;
+  border-top-right-radius: 90px;
+  border-top-left-radius: 90px;
+  background: #ffcfa9;
+  width: 25px;
+  height: 12.5px;
+  transform: scale(1.5);
+  top: 60px;
+  left: 30px;
+  animation: sun-lefteye 2.3s ease-in-out infinite;
+}
+
+.sun .left-eye::after {
+  content: "";
+  position: absolute;
+  background: #fffaa9;
+  left: 0px;
+  top: 3px;
+  transform: scale(0.9);
+  animation: sun-eye-smol 2.3s ease-in-out infinite;
+}
+
+.sun .right-eye,
+.sun .right-eye::after {
+  position: absolute;
+  border-top-right-radius: 90px;
+  border-top-left-radius: 90px;
+  background: #ffcfa9;
+  width: 25px;
+  height: 12.5px;
+  transform: scale(1.5);
+  top: 60px;
+  left: 90px;
+  animation: sun-righteye 2.3s ease-in-out infinite;
+}
+
+.sun .right-eye::after {
+  content: "";
+  position: absolute;
+  background: #fffaa9;
+  left: 0px;
+  top: 3px;
+  transform: scale(0.9);
+  animation: sun-eye-smol 2.3s ease-in-out infinite;
+}
+
+.left-eyelash,
+.right-eyelash::after,
+.left-eyelash::after,
+.right-eyelash {
+  position: relative;
+  width: 2.5px;
+  height: 8px;
+  background: #ffcfa9;
+  border-radius: 200px;
+}
+
+.left-eyelash,
+.right-eyelash::after,
+.left-eyelash::after {
+  top: 2px;
+  transform: rotate(-45deg);
+}
+
+.left-eyelash::after,
+.right-eyelash::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 3px;
+  transform: rotate(5deg);
+}
+
+.right-eyelash {
+  top: -1px;
+  left: 21px;
+  transform: rotate(45deg);
+}
+
+.right-eyelash::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 3px;
+}
+
+.rays {
+  position: absolute;
+  transform-origin: center;
+  margin: auto;
+  width: 150px;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: spin 120s linear infinite;
+}
+
+.beam {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0), #ffcfa9 40%, #ffcfa9);
+  margin-left: 10px;
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  opacity: 0.03;
+  height: 110px;
+}
+
+.beam:nth-child(1) {
+  width: 40px;
+  transform: rotate(180deg);
+  top: -90px;
+  left: 42px;
+}
+
+.beam:nth-child(2) {
+  width: 30px;
+  transform: rotate(210deg);
+  right: -5px;
+  top: -80px;
+}
+
+.beam:nth-child(3) {
+  width: 50px;
+  transform: rotate(255deg);
+  top: -20px;
+  right: -65px;
+}
+
+.beam:nth-child(4) {
+  width: 24px;
+  transform: rotate(300deg);
+  top: 60px;
+  left: 150px;
+}
+
+.beam:nth-child(5) {
+  width: 40px;
+  top: 135px;
+  left: 40px;
+}
+
+.beam:nth-child(6) {
+  width: 30px;
+  transform: rotate(-35deg);
+  top: 115px;
+  right: -12px;
+}
+
+.beam:nth-child(7) {
+  width: 45px;
+  transform: rotate(45deg);
+  top: 100px;
+  left: -45px;
+}
+
+.beam:nth-child(8) {
+  width: 20px;
+  transform: rotate(75deg);
+  top: 40px;
+  left: -70px;
+}
+
+.beam:nth-child(9) {
+  width: 50px;
+  transform: rotate(-250deg);
+  top: -30px;
+  left: -70px;
+}
+
+.beam:nth-child(10) {
+  width: 20px;
+  transform: rotate(145deg);
+  top: -80px;
+  left: -15px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sun-lefteye {
+  50% {
+    left: 40px;
+  }
+}
+
+@keyframes sun-eye-smol {
+  50% {
+    left: 0px;
+  }
+}
+
+@keyframes sun-righteye {
+  50% {
+    left: 100px;
+  }
+}
+
+.moon {
+  width: 80px;
+  height: 80px;
+  background: #e3e7ea;
+  border-radius: 100%;
+  position: absolute;
+  top: 110px;
+  right: 130px;
+  transform-origin: 200px center;
+  overflow: hidden;
+  transform: rotate(-20deg);
+  animation: moonOrbit 5s infinite 0.3s;
+}
+
+.moon::after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border-radius: 100%;
+  position: absolute;
+  box-shadow: inset 15px -3px 0px #637684;
+  z-index: 3;
+  opacity: 0.2;
+}
+
+.moon .craters {
+  position: absolute;
+  animation: moonScroll 5s linear infinite 0.3s;
+}
+
+.moon .craters:nth-child(1) {
+  width: 40px;
+  height: 40px;
+  background: #ccd3d9;
+  border-radius: 100%;
+}
+
+.moon .craters:nth-child(2) {
+  width: 10px;
+  height: 10px;
+  background: #ccd3d9;
+  border-radius: 100%;
+  left: 40px;
+  top: 35px;
+}
+
+.moon .craters:nth-child(3) {
+  width: 40px;
+  height: 40px;
+  background: #ccd3d9;
+  border-radius: 100%;
+  left: 60px;
+}
+
+.moon .craters:nth-child(4) {
+  width: 20px;
+  height: 20px;
+  background: #ccd3d9;
+  border-radius: 100%;
+  top: 45px;
+}
+
+.moon .craters:nth-child(5) {
+  width: 30px;
+  height: 30px;
+  background: #ccd3d9;
+  border-radius: 100%;
+  top: 55px;
+  left: 30px;
+}
+
+.moon .eyes {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 35px;
+  transform: translateX(-50);
+}
+
+.moon .eyes::before,
+.moon .eyes::after {
+  display: block;
+  content: "";
+  position: relative;
+  width: 20px;
+  height: 5px;
+  right: 25%;
+  border-radius: 200px;
+  background: #637684;
+  margin: 0 3px;
+  animation: earth-blink 3.5s infinite;
+}
+
+.moon .eyes::before {
+  transform: rotate(30deg);
+}
+
+.moon .eyes::after {
+  transform: rotate(-30deg);
+}
+
+@keyframes moonOrbit {
+
+  20%,
+  25% {
+    transform: rotate(50deg);
+  }
+
+  55%,
+  60% {
+    transform: rotate(-20deg);
+  }
+}
+
+@keyframes earth-blink {
+  0% {
+    top: 0px;
+    height: 5px;
+  }
+
+  18% {
+    top: 0px;
+    height: 5px;
+  }
+
+  20% {
+    top: 3px;
+    height: 2px;
+  }
+
+  25% {
+    top: 0px;
+    height: 5px;
+  }
+
+  38% {
+    top: 0px;
+    height: 5px;
+  }
+
+  40% {
+    top: 3px;
+    height: 2px;
+  }
+
+  45% {
+    top: 0px;
+    height: 5px;
+  }
+
+  80% {
+    top: 0px;
+    height: 5px;
+  }
+
+  100% {
+    top: 0px;
+    height: 5px;
+  }
+}
+
+.earth {
+  position: absolute;
+  display: block;
+  right: 300px;
+  top: 100px;
+  width: 120px;
+  height: 120px;
+  background: #6fd4dd;
+  border-radius: 100%;
+  transform: rotate(-20deg);
+  transform-origin: 400px center;
+  overflow: hidden;
+  animation: earthOrbit 5s infinite;
+}
+
+.earth::after {
+  content: "";
+  width: 120px;
+  height: 120px;
+  background: transparent;
+  border-radius: 100%;
+  position: absolute;
+  box-shadow: inset 10px 1px 0px #1d747c;
+  z-index: 3;
+  opacity: 0.2;
+}
+
+@keyframes earthOrbit {
+
+  20%,
+  25% {
+    transform: rotate(50deg);
+  }
+
+  55%,
+  60% {
+    transform: rotate(-20deg);
+  }
+}
+
+.countries {
+  position: absolute;
+  z-index: 1;
+  animation: scroll 5s linear alternate infinite;
+}
+
+.countries:nth-child(1) {
+  width: 40px;
+  height: 40px;
+  background: #62e5aa;
+  border-radius: 100%;
+  left: 5px;
+  top: 20px;
+}
+
+.countries:nth-child(2) {
+  width: 50px;
+  height: 50px;
+  background: #62e5aa;
+  border-radius: 100%;
+  left: 25px;
+  top: 45px;
+}
+
+.countries:nth-child(3) {
+  width: 35px;
+  height: 35px;
+  background: #62e5aa;
+  border-radius: 100%;
+  left: 60px;
+  top: 20px;
+}
+
+.countries:nth-child(4) {
+  width: 55px;
+  height: 55px;
+  background: #62e5aa;
+  border-radius: 100%;
+  left: 90px;
+  top: 50px;
+}
+
+.countries:nth-child(5) {
+  width: 60px;
+  height: 60px;
+  background: #62e5aa;
+  border-radius: 100%;
+  left: 75px;
+}
+
+.countries:nth-child(6) {
+  width: 50px;
+  height: 50px;
+  background: #62e5aa;
+  border-radius: 100%;
+  top: 110px;
+  left: 35px;
+}
+
+.countries:nth-child(7) {
+  width: 30px;
+  height: 30px;
+  background: #62e5aa;
+  border-radius: 100%;
+  top: 20px;
+  left: -50px;
+}
+
+.eyes {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 3;
+  top: 15px;
+  left: 25%;
+}
+
+.eyes .opened::before,
+.eyes .opened::after {
+  display: block;
+  content: "♥";
+  color: #f55020;
+  font-size: 40px;
+  margin: 0 8px;
+  animation: openBlink 5s linear infinite;
+}
+
+.eyes .closed::before,
+.eyes .closed::after {
+  display: block;
+  content: "";
+  background: transparent;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 0 0 #1d747c;
+  margin: 8px 8px;
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: closedEyes 5s linear infinite;
+}
+
+.tear {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 0 50% 50% 50%;
+  background: #54acb7;
+  top: 65px;
+  z-index: 3;
+  left: 35px;
+  opacity: 0;
+  transform: rotate(60deg);
+  animation: crying 5s infinite 3s;
+}
+
+@keyframes crying {
+  from {
+    opacity: 1;
+    transform: translateY(0px) rotate(60deg);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+
+@keyframes openBlink {
+  0% {
+    transform: scaleY(1);
+  }
+
+  18% {
+    transform: scaleY(1);
+  }
+
+  20% {
+    transform: scaleY(0);
+  }
+
+  25% {
+    transform: scaleY(1);
+  }
+
+  38% {
+    transform: scaleY(1);
+  }
+
+  40% {
+    transform: scaleY(0);
+  }
+
+  45% {
+    transform: scaleY(1);
+  }
+
+  48% {
+    transform: scaleY(0), scaleX(0);
+    opacity: 1;
+  }
+
+  50% {
+    margin-top: 8px;
+    opacity: 0;
+  }
+
+  72% {
+    opacity: 0;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes closedEyes {
+  45% {
+    opacity: 0;
+    margin-top: 8px;
+  }
+
+  49% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    margin-top: 15px;
+  }
+}
+
+.shadow {
+  width: 100px;
+  height: 100px;
+  background: #21223a;
+  border-radius: 100%;
+  z-index: 2;
+  position: absolute;
+  opacity: 0.2;
+  right: 270px;
+  top: 210px;
+  transform-origin: 650px center;
+  animation: shadowOrbit 5s infinite 0.3s;
+}
+
+@keyframes shadowOrbit {
+
+  20%,
+  25% {
+    transform: rotate(35deg);
+  }
+
+  55%,
+  60% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes scroll {
+  50% {
+    transform: translateX(-90px);
+  }
+}
+
+@keyframes moonScroll {
+  50% {
+    transform: translateX(-40px);
+  }
+}
+
+.excited {
+  position: absolute;
+  font-weight: bold;
+  font-family: Arial;
+  z-index: -1;
+  color: white;
+  top: 200px;
+  right: 400px;
+  font-size: 0px;
+  transform: rotate(-30deg);
+  animation: excited 5s infinite 4.5s;
+}
+
+@keyframes excited {
+  0% {
+    font-size: 0px;
+  }
+
+  2% {
+    font-size: 25px;
+  }
+
+  10% {
+    opacity: 1;
+    font-size: 25px;
+  }
+
+  20% {
+    opacity: 0;
+    font-size: 25px;
+  }
+
+  100% {
+    opacity: 0;
+    font-size: 0px;
+  }
+}
+
+@keyframes star-animation {
+  0% {
+    transform: rotate(-20deg) translateX(-1000px);
+  }
+
+  100% {
+    transform: rotate(-20deg) translateX(1000px);
+  }
+}
+
+.stars1 {
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  box-shadow: 355vh 698vh #FFF, 573vh 763vh #FFF, 86vh 118vh #FFF, 412vh 650vh #FFF, 795vh 161vh #FFF, 176vh 39vh #FFF, 438vh 625vh #FFF, 249vh 258vh #FFF, 664vh 468vh #FFF, 116vh 72vh #FFF, 766vh 382vh #FFF, 358vh 541vh #FFF, 341vh 11vh #FFF, 274vh 526vh #FFF, 179vh 135vh #FFF, 56vh 241vh #FFF, 202vh 392vh #FFF, 506vh 163vh #FFF, 97vh 571vh #FFF, 708vh 505vh #FFF, 574vh 871vh #FFF, 721vh 148vh #FFF, 240vh 172vh #FFF, 747vh 134vh #FFF, 939vh 856vh #FFF, 626vh 7vh #FFF, 974vh 294vh #FFF, 80vh 413vh #FFF, 996vh 718vh #FFF, 494vh 544vh #FFF, 989vh 700vh #FFF, 298vh 737vh #FFF, 259vh 601vh #FFF, 662vh 737vh #FFF, 765vh 126vh #FFF, 563vh 399vh #FFF, 345vh 322vh #FFF, 17vh 45vh #FFF, 132vh 128vh #FFF, 303vh 494vh #FFF, 598vh 472vh #FFF, 62vh 328vh #FFF, 752vh 606vh #FFF, 796vh 404vh #FFF, 381vh 233vh #FFF, 955vh 711vh #FFF, 417vh 144vh #FFF, 123vh 663vh #FFF, 843vh 672vh #FFF, 607vh 98vh #FFF, 897vh 474vh #FFF, 381vh 264vh #FFF, 643vh 895vh #FFF, 164vh 415vh #FFF, 552vh 108vh #FFF, 937vh 762vh #FFF, 787vh 276vh #FFF, 624vh 166vh #FFF, 465vh 508vh #FFF, 954vh 327vh #FFF, 980vh 886vh #FFF, 913vh 866vh #FFF, 489vh 743vh #FFF, 37vh 405vh #FFF, 770vh 496vh #FFF, 208vh 887vh #FFF, 920vh 847vh #FFF, 595vh 759vh #FFF, 102vh 764vh #FFF, 637vh 664vh #FFF, 557vh 65vh #FFF, 789vh 22vh #FFF, 596vh 653vh #FFF, 788vh 566vh #FFF, 326vh 65vh #FFF, 988vh 237vh #FFF, 201vh 435vh #FFF, 983vh 798vh #FFF, 569vh 198vh #FFF, 970vh 65vh #FFF, 128vh 319vh #FFF, 960vh 805vh #FFF, 265vh 647vh #FFF, 321vh 625vh #FFF, 153vh 558vh #FFF, 765vh 802vh #FFF, 191vh 286vh #FFF, 17vh 809vh #FFF, 991vh 747vh #FFF, 370vh 894vh #FFF, 687vh 48vh #FFF, 384vh 549vh #FFF, 237vh 46vh #FFF, 377vh 609vh #FFF, 731vh 315vh #FFF, 375vh 518vh #FFF, 238vh 540vh #FFF, 153vh 315vh #FFF, 270vh 174vh #FFF, 181vh 805vh #FFF, 81vh 570vh #FFF, 985vh 183vh #FFF, 727vh 828vh #FFF, 80vh 719vh #FFF, 784vh 437vh #FFF, 348vh 485vh #FFF, 713vh 335vh #FFF, 758vh 476vh #FFF, 101vh 7vh #FFF, 222vh 804vh #FFF, 348vh 807vh #FFF, 455vh 588vh #FFF, 928vh 524vh #FFF, 475vh 649vh #FFF, 78vh 167vh #FFF, 538vh 463vh #FFF, 592vh 51vh #FFF, 368vh 352vh #FFF, 49vh 668vh #FFF, 445vh 822vh #FFF, 863vh 158vh #FFF, 708vh 626vh #FFF, 823vh 303vh #FFF, 218vh 434vh #FFF, 773vh 687vh #FFF, 106vh 673vh #FFF, 348vh 331vh #FFF, 697vh 344vh #FFF, 439vh 698vh #FFF, 621vh 590vh #FFF, 688vh 181vh #FFF, 655vh 220vh #FFF, 633vh 3vh #FFF, 839vh 334vh #FFF, 165vh 396vh #FFF, 227vh 235vh #FFF, 469vh 435vh #FFF, 537vh 40vh #FFF, 870vh 315vh #FFF, 152vh 385vh #FFF, 586vh 418vh #FFF, 878vh 237vh #FFF, 423vh 154vh #FFF, 266vh 162vh #FFF, 329vh 547vh #FFF, 442vh 780vh #FFF, 980vh 299vh #FFF, 18vh 524vh #FFF, 436vh 864vh #FFF, 282vh 371vh #FFF, 647vh 353vh #FFF, 612vh 747vh #FFF, 864vh 881vh #FFF, 805vh 591vh #FFF, 190vh 397vh #FFF, 25vh 803vh #FFF, 415vh 636vh #FFF, 561vh 150vh #FFF, 665vh 638vh #FFF, 586vh 748vh #FFF, 24vh 472vh #FFF, 428vh 712vh #FFF, 88vh 380vh #FFF, 88vh 897vh #FFF, 748vh 77vh #FFF, 815vh 440vh #FFF, 728vh 813vh #FFF, 71vh 126vh #FFF, 904vh 794vh #FFF, 785vh 606vh #FFF, 307vh 724vh #FFF, 859vh 743vh #FFF, 77vh 681vh #FFF, 545vh 366vh #FFF, 988vh 423vh #FFF, 556vh 418vh #FFF, 522vh 363vh #FFF, 394vh 631vh #FFF, 811vh 478vh #FFF, 201vh 835vh #FFF, 790vh 155vh #FFF, 988vh 458vh #FFF, 979vh 659vh #FFF, 375vh 523vh #FFF, 562vh 223vh #FFF, 892vh 593vh #FFF, 405vh 577vh #FFF, 610vh 713vh #FFF, 934vh 761vh #FFF, 104vh 431vh #FFF, 107vh 641vh #FFF, 879vh 492vh #FFF, 74vh 769vh #FFF, 789vh 280vh #FFF, 522vh 30vh #FFF, 823vh 89vh #FFF, 141vh 58vh #FFF, 249vh 227vh #FFF, 339vh 73vh #FFF, 290vh 777vh #FFF, 374vh 328vh #FFF, 441vh 586vh #FFF, 124vh 626vh #FFF, 326vh 504vh #FFF, 786vh 762vh #FFF, 267vh 607vh #FFF, 811vh 144vh #FFF, 614vh 8vh #FFF, 252vh 68vh #FFF, 423vh 269vh #FFF, 548vh 629vh #FFF, 648vh 53vh #FFF, 576vh 47vh #FFF, 253vh 672vh #FFF, 433vh 476vh #FFF, 185vh 505vh #FFF, 502vh 83vh #FFF, 59vh 175vh #FFF, 889vh 701vh #FFF, 715vh 870vh #FFF, 641vh 222vh #FFF, 335vh 559vh #FFF, 667vh 431vh #FFF, 983vh 7vh #FFF, 278vh 731vh #FFF, 647vh 683vh #FFF, 872vh 887vh #FFF, 354vh 168vh #FFF, 952vh 847vh #FFF, 17vh 506vh #FFF, 339vh 302vh #FFF, 936vh 391vh #FFF, 224vh 882vh #FFF, 326vh 863vh #FFF, 526vh 738vh #FFF, 625vh 608vh #FFF, 597vh 384vh #FFF, 292vh 627vh #FFF, 904vh 523vh #FFF, 470vh 344vh #FFF, 414vh 647vh #FFF, 465vh 203vh #FFF, 710vh 536vh #FFF, 932vh 608vh #FFF, 535vh 130vh #FFF, 759vh 124vh #FFF, 271vh 674vh #FFF, 156vh 547vh #FFF, 81vh 269vh #FFF, 33vh 558vh #FFF, 770vh 703vh #FFF, 167vh 137vh #FFF, 225vh 881vh #FFF, 486vh 325vh #FFF, 273vh 416vh #FFF, 818vh 559vh #FFF, 776vh 275vh #FFF, 381vh 329vh #FFF, 680vh 593vh #FFF, 745vh 326vh #FFF, 172vh 226vh #FFF, 159vh 679vh #FFF, 813vh 417vh #FFF, 537vh 698vh #FFF, 468vh 601vh #FFF, 214vh 271vh #FFF, 622vh 599vh #FFF, 8vh 845vh #FFF, 751vh 275vh #FFF, 306vh 412vh #FFF, 65vh 672vh #FFF, 710vh 485vh #FFF, 74vh 241vh #FFF, 885vh 642vh #FFF, 805vh 429vh #FFF, 452vh 866vh #FFF, 716vh 352vh #FFF, 538vh 803vh #FFF, 656vh 278vh #FFF, 340vh 893vh #FFF, 595vh 528vh #FFF, 468vh 11vh #FFF, 720vh 295vh #FFF, 783vh 673vh #FFF, 624vh 627vh #FFF, 634vh 783vh #FFF, 918vh 424vh #FFF, 240vh 279vh #FFF, 152vh 749vh #FFF, 89vh 462vh #FFF, 585vh 365vh #FFF, 830vh 798vh #FFF, 590vh 109vh #FFF, 579vh 220vh #FFF, 184vh 332vh #FFF, 458vh 765vh #FFF, 180vh 283vh #FFF, 922vh 709vh #FFF, 750vh 188vh #FFF, 655vh 764vh #FFF, 156vh 163vh #FFF, 780vh 380vh #FFF, 520vh 798vh #FFF, 415vh 198vh #FFF, 125vh 718vh #FFF, 605vh 382vh #FFF, 220vh 7vh #FFF, 728vh 900vh #FFF, 548vh 899vh #FFF, 266vh 815vh #FFF, 207vh 851vh #FFF, 201vh 736vh #FFF, 195vh 228vh #FFF, 625vh 792vh #FFF, 745vh 80vh #FFF, 456vh 317vh #FFF, 239vh 511vh #FFF, 156vh 325vh #FFF, 788vh 653vh #FFF, 142vh 632vh #FFF, 62vh 10vh #FFF, 928vh 168vh #FFF, 237vh 583vh #FFF, 202vh 746vh #FFF, 35vh 207vh #FFF, 176vh 115vh #FFF, 904vh 892vh #FFF, 612vh 545vh #FFF, 100vh 720vh #FFF, 510vh 432vh #FFF, 296vh 180vh #FFF, 709vh 120vh #FFF, 251vh 770vh #FFF, 659vh 617vh #FFF, 309vh 538vh #FFF, 742vh 847vh #FFF, 675vh 266vh #FFF, 406vh 704vh #FFF, 597vh 156vh #FFF, 477vh 636vh #FFF, 736vh 241vh #FFF, 246vh 651vh #FFF, 294vh 414vh #FFF, 287vh 688vh #FFF, 843vh 263vh #FFF, 706vh 793vh #FFF, 106vh 712vh #FFF, 435vh 874vh #FFF, 602vh 718vh #FFF, 652vh 615vh #FFF, 223vh 453vh #FFF, 388vh 444vh #FFF, 494vh 325vh #FFF, 440vh 850vh #FFF, 287vh 458vh #FFF, 472vh 187vh #FFF, 970vh 788vh #FFF, 24vh 270vh #FFF, 595vh 49vh #FFF, 551vh 135vh #FFF, 445vh 534vh #FFF, 464vh 257vh #FFF, 463vh 403vh #FFF, 603vh 7vh #FFF, 813vh 759vh #FFF, 73vh 584vh #FFF, 751vh 329vh #FFF, 422vh 836vh #FFF, 655vh 427vh #FFF, 957vh 97vh #FFF, 416vh 820vh #FFF, 503vh 151vh #FFF, 439vh 115vh #FFF, 441vh 525vh #FFF, 517vh 726vh #FFF, 917vh 569vh #FFF, 193vh 491vh #FFF, 387vh 839vh #FFF, 364vh 34vh #FFF, 266vh 611vh #FFF, 565vh 399vh #FFF, 962vh 832vh #FFF, 611vh 400vh #FFF, 353vh 555vh #FFF, 153vh 85vh #FFF, 191vh 50vh #FFF, 261vh 875vh #FFF, 654vh 395vh #FFF, 725vh 691vh #FFF, 508vh 612vh #FFF, 124vh 548vh #FFF, 556vh 829vh #FFF, 298vh 541vh #FFF, 867vh 550vh #FFF, 560vh 620vh #FFF, 925vh 346vh #FFF, 549vh 787vh #FFF, 397vh 639vh #FFF, 162vh 162vh #FFF, 719vh 474vh #FFF;
+  animation: star-animation 100s linear infinite;
+}
+
+.stars1:after {
+  content: " ";
+  top: -900px;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 63vh 665vh #FFF, 402vh 313vh #FFF, 437vh 196vh #FFF, 388vh 577vh #FFF, 346vh 722vh #FFF, 423vh 574vh #FFF, 212vh 64vh #FFF, 43vh 167vh #FFF, 430vh 449vh #FFF, 191vh 24vh #FFF, 173vh 50vh #FFF, 258vh 473vh #FFF, 486vh 350vh #FFF, 299vh 521vh #FFF, 53vh 535vh #FFF, 401vh 220vh #FFF, 457vh 332vh #FFF, 51vh 531vh #FFF, 321vh 321vh #FFF, 167vh 90vh #FFF, 428vh 207vh #FFF, 297vh 767vh #FFF, 30vh 78vh #FFF, 477vh 616vh #FFF, 29vh 613vh #FFF, 349vh 770vh #FFF, 366vh 32vh #FFF, 89vh 211vh #FFF, 483vh 546vh #FFF, 27vh 746vh #FFF, 283vh 544vh #FFF, 186vh 690vh #FFF, 487vh 233vh #FFF, 351vh 191vh #FFF, 470vh 94vh #FFF, 103vh 530vh #FFF, 33vh 773vh #FFF, 51vh 29vh #FFF, 45vh 200vh #FFF, 477vh 283vh #FFF, 134vh 362vh #FFF, 408vh 109vh #FFF, 62vh 663vh #FFF, 171vh 86vh #FFF, 321vh 581vh #FFF, 185vh 368vh #FFF, 195vh 436vh #FFF, 194vh 288vh #FFF, 306vh 123vh #FFF, 177vh 571vh #FFF, 416vh 577vh #FFF, 224vh 602vh #FFF, 117vh 480vh #FFF, 66vh 693vh #FFF, 193vh 564vh #FFF, 475vh 410vh #FFF, 491vh 153vh #FFF, 249vh 646vh #FFF, 457vh 535vh #FFF, 410vh 678vh #FFF, 487vh 445vh #FFF, 361vh 384vh #FFF, 196vh 761vh #FFF, 144vh 769vh #FFF, 26vh 181vh #FFF, 453vh 439vh #FFF, 367vh 367vh #FFF, 190vh 477vh #FFF, 438vh 447vh #FFF, 124vh 383vh #FFF, 403vh 277vh #FFF, 173vh 668vh #FFF, 124vh 471vh #FFF, 45vh 604vh #FFF, 282vh 698vh #FFF, 106vh 346vh #FFF, 362vh 151vh #FFF, 281vh 111vh #FFF, 428vh 450vh #FFF, 116vh 627vh #FFF, 365vh 305vh #FFF, 74vh 241vh #FFF, 469vh 655vh #FFF, 59vh 299vh #FFF, 219vh 476vh #FFF, 136vh 339vh #FFF, 441vh 552vh #FFF, 129vh 431vh #FFF, 334vh 337vh #FFF, 287vh 190vh #FFF, 105vh 728vh #FFF, 208vh 272vh #FFF, 481vh 182vh #FFF, 99vh 540vh #FFF, 241vh 505vh #FFF, 477vh 501vh #FFF, 37vh 460vh #FFF, 247vh 298vh #FFF, 8vh 86vh #FFF, 9vh 759vh #FFF, 316vh 188vh #FFF, 471vh 274vh #FFF, 386vh 495vh #FFF, 139vh 742vh #FFF, 160vh 310vh #FFF, 442vh 432vh #FFF, 69vh 94vh #FFF, 189vh 494vh #FFF, 417vh 131vh #FFF, 426vh 63vh #FFF, 130vh 786vh #FFF, 10vh 199vh #FFF, 384vh 196vh #FFF, 353vh 136vh #FFF, 296vh 418vh #FFF, 484vh 202vh #FFF, 128vh 602vh #FFF, 274vh 340vh #FFF, 242vh 618vh #FFF, 102vh 714vh #FFF, 146vh 712vh #FFF, 254vh 360vh #FFF, 136vh 740vh #FFF, 352vh 82vh #FFF, 92vh 686vh #FFF, 306vh 596vh #FFF, 346vh 468vh #FFF, 22vh 499vh #FFF, 24vh 239vh #FFF, 408vh 535vh #FFF, 225vh 326vh #FFF, 25vh 265vh #FFF, 1vh 433vh #FFF, 265vh 513vh #FFF, 461vh 733vh #FFF, 363vh 391vh #FFF, 132vh 504vh #FFF, 61vh 640vh #FFF, 412vh 483vh #FFF, 265vh 17vh #FFF, 330vh 739vh #FFF, 363vh 35vh #FFF, 416vh 645vh #FFF, 412vh 409vh #FFF, 194vh 224vh #FFF, 42vh 397vh #FFF, 132vh 455vh #FFF, 470vh 630vh #FFF, 27vh 694vh #FFF, 219vh 43vh #FFF, 25vh 635vh #FFF, 156vh 232vh #FFF, 216vh 49vh #FFF, 306vh 174vh #FFF, 96vh 378vh #FFF, 193vh 158vh #FFF, 253vh 85vh #FFF, 242vh 451vh #FFF, 349vh 480vh #FFF, 201vh 240vh #FFF, 143vh 616vh #FFF, 384vh 540vh #FFF, 201vh 584vh #FFF, 183vh 529vh #FFF, 242vh 406vh #FFF, 476vh 158vh #FFF, 158vh 750vh #FFF, 362vh 179vh #FFF, 493vh 96vh #FFF, 341vh 601vh #FFF, 407vh 444vh #FFF, 486vh 406vh #FFF, 329vh 60vh #FFF, 200vh 453vh #FFF, 264vh 55vh #FFF, 21vh 145vh #FFF, 79vh 358vh #FFF, 38vh 645vh #FFF, 152vh 483vh #FFF, 370vh 57vh #FFF, 41vh 349vh #FFF, 53vh 257vh #FFF, 15vh 371vh #FFF, 202vh 569vh #FFF, 82vh 525vh #FFF, 36vh 729vh #FFF, 331vh 318vh #FFF, 372vh 765vh #FFF, 342vh 157vh #FFF, 489vh 781vh #FFF, 127vh 544vh #FFF, 111vh 544vh #FFF, 272vh 600vh #FFF, 33vh 392vh #FFF, 298vh 26vh #FFF, 215vh 16vh #FFF, 308vh 394vh #FFF, 403vh 172vh #FFF, 446vh 236vh #FFF, 420vh 672vh #FFF, 486vh 378vh #FFF, 398vh 489vh #FFF, 277vh 540vh #FFF, 62vh 584vh #FFF, 248vh 83vh #FFF, 27vh 31vh #FFF, 153vh 355vh #FFF, 159vh 240vh #FFF, 51vh 48vh #FFF, 439vh 262vh #FFF, 436vh 671vh #FFF, 252vh 509vh #FFF, 170vh 130vh #FFF, 86vh 604vh #FFF, 278vh 563vh #FFF, 431vh 320vh #FFF, 183vh 390vh #FFF, 430vh 393vh #FFF, 259vh 542vh #FFF, 487vh 227vh #FFF, 401vh 313vh #FFF, 138vh 533vh #FFF, 260vh 41vh #FFF, 421vh 336vh #FFF, 145vh 595vh #FFF, 205vh 640vh #FFF, 342vh 385vh #FFF, 286vh 718vh #FFF, 458vh 412vh #FFF, 356vh 9vh #FFF, 130vh 798vh #FFF, 147vh 445vh #FFF, 415vh 614vh #FFF, 405vh 573vh #FFF, 67vh 373vh #FFF, 146vh 215vh #FFF, 374vh 627vh #FFF, 105vh 617vh #FFF, 124vh 651vh #FFF, 250vh 704vh #FFF, 270vh 31vh #FFF, 123vh 29vh #FFF, 359vh 796vh #FFF, 128vh 76vh #FFF, 45vh 402vh #FFF, 8vh 432vh #FFF, 425vh 345vh #FFF, 390vh 676vh #FFF, 394vh 163vh #FFF, 230vh 337vh #FFF, 384vh 708vh #FFF, 442vh 780vh #FFF, 98vh 667vh #FFF, 420vh 267vh #FFF, 421vh 28vh #FFF, 434vh 191vh #FFF, 108vh 395vh #FFF, 280vh 332vh #FFF, 413vh 59vh #FFF, 304vh 694vh #FFF, 11vh 667vh #FFF, 284vh 188vh #FFF, 472vh 726vh #FFF, 57vh 374vh #FFF, 361vh 245vh #FFF, 361vh 77vh #FFF, 76vh 260vh #FFF, 250vh 379vh #FFF, 74vh 313vh #FFF, 364vh 424vh #FFF, 321vh 206vh #FFF, 249vh 209vh #FFF, 399vh 704vh #FFF, 74vh 211vh #FFF, 101vh 294vh #FFF, 388vh 567vh #FFF, 109vh 321vh #FFF, 44vh 536vh #FFF, 154vh 185vh #FFF, 110vh 186vh #FFF, 77vh 397vh #FFF, 404vh 407vh #FFF, 128vh 337vh #FFF, 364vh 690vh #FFF, 69vh 789vh #FFF, 334vh 282vh #FFF, 378vh 616vh #FFF, 101vh 492vh #FFF, 413vh 333vh #FFF, 209vh 21vh #FFF, 238vh 362vh #FFF, 462vh 499vh #FFF, 277vh 2vh #FFF, 355vh 500vh #FFF, 50vh 69vh #FFF, 385vh 7vh #FFF, 343vh 593vh #FFF, 115vh 336vh #FFF, 30vh 106vh #FFF, 408vh 83vh #FFF, 138vh 136vh #FFF, 29vh 223vh #FFF, 237vh 503vh #FFF, 453vh 86vh #FFF, 96vh 302vh #FFF, 373vh 311vh #FFF, 172vh 567vh #FFF, 459vh 676vh #FFF, 204vh 128vh #FFF, 283vh 24vh #FFF, 60vh 344vh #FFF, 350vh 125vh #FFF, 487vh 285vh #FFF, 225vh 70vh #FFF, 65vh 120vh #FFF, 189vh 28vh #FFF, 320vh 513vh #FFF, 234vh 274vh #FFF, 162vh 362vh #FFF, 413vh 593vh #FFF, 90vh 597vh #FFF, 322vh 422vh #FFF, 419vh 412vh #FFF, 217vh 263vh #FFF, 95vh 515vh #FFF, 181vh 670vh #FFF, 42vh 59vh #FFF, 210vh 279vh #FFF, 442vh 359vh #FFF, 229vh 176vh #FFF, 14vh 691vh #FFF, 414vh 19vh #FFF, 287vh 453vh #FFF, 375vh 538vh #FFF, 217vh 523vh #FFF, 109vh 162vh #FFF, 420vh 68vh #FFF, 268vh 260vh #FFF, 411vh 729vh #FFF, 355vh 62vh #FFF, 244vh 324vh #FFF, 299vh 337vh #FFF, 338vh 691vh #FFF, 216vh 127vh #FFF, 14vh 357vh #FFF, 321vh 172vh #FFF, 473vh 713vh #FFF, 113vh 600vh #FFF, 476vh 233vh #FFF, 288vh 9vh #FFF, 77vh 509vh #FFF, 396vh 542vh #FFF, 373vh 536vh #FFF, 341vh 385vh #FFF, 496vh 210vh #FFF, 152vh 28vh #FFF, 441vh 310vh #FFF, 364vh 131vh #FFF, 494vh 745vh #FFF, 392vh 159vh #FFF, 91vh 701vh #FFF, 86vh 547vh #FFF, 351vh 423vh #FFF, 399vh 708vh #FFF, 11vh 100vh #FFF, 376vh 427vh #FFF, 20vh 779vh #FFF, 27vh 580vh #FFF, 70vh 550vh #FFF, 107vh 12vh #FFF, 44vh 284vh #FFF, 287vh 665vh #FFF, 116vh 564vh #FFF, 413vh 88vh #FFF, 352vh 585vh #FFF, 360vh 252vh #FFF, 122vh 104vh #FFF, 436vh 319vh #FFF, 309vh 503vh #FFF, 131vh 781vh #FFF, 41vh 515vh #FFF, 176vh 732vh #FFF, 387vh 788vh #FFF, 425vh 303vh #FFF, 421vh 110vh #FFF, 490vh 189vh #FFF, 43vh 143vh #FFF, 16vh 26vh #FFF, 288vh 728vh #FFF, 489vh 19vh #FFF, 252vh 581vh #FFF, 331vh 514vh #FFF, 434vh 231vh #FFF, 302vh 396vh #FFF, 197vh 749vh #FFF, 115vh 235vh #FFF, 301vh 115vh #FFF, 327vh 442vh #FFF, 259vh 609vh #FFF, 166vh 299vh #FFF;
+}
+
+.stars2 {
+  z-index: -1;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  box-shadow: 519vh 147vh #FFF, 128vh 548vh #FFF, 848vh 239vh #FFF, 395vh 694vh #FFF, 84vh 548vh #FFF, 25vh 455vh #FFF, 626vh 80vh #FFF, 143vh 180vh #FFF, 323vh 789vh #FFF, 608vh 669vh #FFF, 583vh 614vh #FFF, 142vh 777vh #FFF, 870vh 510vh #FFF, 1vh 25vh #FFF, 335vh 111vh #FFF, 884vh 657vh #FFF, 936vh 269vh #FFF, 246vh 547vh #FFF, 924vh 482vh #FFF, 321vh 338vh #FFF, 685vh 320vh #FFF, 159vh 123vh #FFF, 500vh 430vh #FFF, 586vh 676vh #FFF, 556vh 401vh #FFF, 256vh 546vh #FFF, 533vh 201vh #FFF, 757vh 229vh #FFF, 65vh 343vh #FFF, 651vh 83vh #FFF, 640vh 464vh #FFF, 118vh 532vh #FFF, 142vh 875vh #FFF, 919vh 307vh #FFF, 644vh 798vh #FFF, 450vh 853vh #FFF, 372vh 792vh #FFF, 477vh 582vh #FFF, 982vh 589vh #FFF, 521vh 840vh #FFF, 715vh 76vh #FFF, 606vh 93vh #FFF, 613vh 727vh #FFF, 523vh 121vh #FFF, 264vh 259vh #FFF, 607vh 52vh #FFF, 229vh 684vh #FFF, 188vh 108vh #FFF, 8vh 647vh #FFF, 521vh 134vh #FFF, 146vh 124vh #FFF, 184vh 385vh #FFF, 111vh 105vh #FFF, 140vh 667vh #FFF, 508vh 760vh #FFF, 611vh 491vh #FFF, 533vh 562vh #FFF, 330vh 539vh #FFF, 472vh 318vh #FFF, 679vh 379vh #FFF, 255vh 642vh #FFF, 595vh 811vh #FFF, 113vh 829vh #FFF, 170vh 801vh #FFF, 38vh 13vh #FFF, 768vh 9vh #FFF, 300vh 433vh #FFF, 61vh 359vh #FFF, 232vh 180vh #FFF, 492vh 849vh #FFF, 847vh 219vh #FFF, 602vh 775vh #FFF, 231vh 421vh #FFF, 554vh 382vh #FFF, 39vh 247vh #FFF, 848vh 535vh #FFF, 762vh 569vh #FFF, 458vh 765vh #FFF, 84vh 422vh #FFF, 289vh 139vh #FFF, 299vh 648vh #FFF, 81vh 824vh #FFF, 503vh 806vh #FFF, 403vh 375vh #FFF, 243vh 76vh #FFF, 804vh 374vh #FFF, 478vh 569vh #FFF, 217vh 519vh #FFF, 928vh 187vh #FFF, 878vh 397vh #FFF, 479vh 704vh #FFF, 960vh 603vh #FFF, 2vh 782vh #FFF, 941vh 232vh #FFF, 566vh 646vh #FFF, 206vh 843vh #FFF, 619vh 27vh #FFF, 908vh 767vh #FFF, 989vh 231vh #FFF, 52vh 97vh #FFF, 968vh 111vh #FFF, 634vh 320vh #FFF, 7vh 508vh #FFF, 511vh 787vh #FFF, 347vh 422vh #FFF, 605vh 487vh #FFF, 577vh 867vh #FFF, 613vh 167vh #FFF, 981vh 14vh #FFF, 940vh 451vh #FFF, 845vh 15vh #FFF, 563vh 411vh #FFF, 319vh 663vh #FFF, 592vh 669vh #FFF, 341vh 656vh #FFF, 907vh 748vh #FFF, 705vh 444vh #FFF, 797vh 224vh #FFF, 701vh 453vh #FFF, 794vh 228vh #FFF, 188vh 240vh #FFF, 562vh 649vh #FFF, 230vh 468vh #FFF, 709vh 710vh #FFF, 832vh 424vh #FFF, 716vh 382vh #FFF, 102vh 198vh #FFF, 686vh 117vh #FFF, 102vh 814vh #FFF, 20vh 698vh #FFF, 125vh 612vh #FFF, 465vh 321vh #FFF, 770vh 285vh #FFF, 785vh 92vh #FFF, 897vh 190vh #FFF, 555vh 753vh #FFF, 596vh 396vh #FFF, 476vh 325vh #FFF, 648vh 147vh #FFF, 959vh 858vh #FFF, 308vh 434vh #FFF, 564vh 681vh #FFF, 994vh 469vh #FFF, 897vh 13vh #FFF, 916vh 213vh #FFF, 533vh 340vh #FFF, 819vh 216vh #FFF, 47vh 571vh #FFF, 372vh 215vh #FFF, 457vh 206vh #FFF, 670vh 272vh #FFF, 178vh 162vh #FFF, 188vh 128vh #FFF, 778vh 202vh #FFF, 915vh 490vh #FFF, 294vh 534vh #FFF, 793vh 505vh #FFF, 71vh 239vh #FFF, 441vh 757vh #FFF, 998vh 333vh #FFF, 386vh 679vh #FFF, 724vh 697vh #FFF, 398vh 520vh #FFF, 380vh 848vh #FFF, 335vh 73vh #FFF, 755vh 747vh #FFF, 424vh 703vh #FFF, 622vh 699vh #FFF, 182vh 878vh #FFF, 387vh 736vh #FFF, 962vh 73vh #FFF, 925vh 882vh #FFF, 782vh 285vh #FFF, 971vh 470vh #FFF, 986vh 630vh #FFF, 85vh 618vh #FFF, 222vh 166vh #FFF, 682vh 769vh #FFF, 13vh 316vh #FFF, 657vh 98vh #FFF, 430vh 640vh #FFF, 472vh 380vh #FFF, 523vh 753vh #FFF, 655vh 806vh #FFF, 864vh 791vh #FFF, 197vh 447vh #FFF, 704vh 690vh #FFF, 299vh 896vh #FFF, 286vh 214vh #FFF, 553vh 646vh #FFF, 962vh 405vh #FFF, 930vh 481vh #FFF, 436vh 90vh #FFF, 336vh 19vh #FFF, 331vh 828vh #FFF, 932vh 40vh #FFF, 122vh 265vh #FFF, 912vh 166vh #FFF, 640vh 83vh #FFF, 123vh 607vh #FFF, 471vh 33vh #FFF, 396vh 700vh #FFF, 744vh 381vh #FFF, 817vh 142vh #FFF, 184vh 643vh #FFF, 309vh 570vh #FFF, 336vh 453vh #FFF, 366vh 454vh #FFF, 486vh 692vh #FFF, 20vh 638vh #FFF, 92vh 552vh #FFF, 19vh 794vh #FFF, 553vh 12vh #FFF, 789vh 398vh #FFF, 744vh 457vh #FFF, 189vh 627vh #FFF, 361vh 184vh #FFF, 183vh 291vh #FFF, 774vh 553vh #FFF, 665vh 810vh #FFF, 805vh 217vh #FFF, 998vh 813vh #FFF, 10vh 834vh #FFF, 405vh 459vh #FFF, 909vh 714vh #FFF, 668vh 441vh #FFF, 870vh 715vh #FFF, 65vh 75vh #FFF, 601vh 627vh #FFF, 7vh 232vh #FFF, 770vh 514vh #FFF, 91vh 272vh #FFF, 671vh 519vh #FFF, 633vh 771vh #FFF, 99vh 566vh #FFF, 954vh 852vh #FFF, 253vh 54vh #FFF, 730vh 707vh #FFF, 728vh 30vh #FFF, 167vh 429vh #FFF, 946vh 445vh #FFF, 302vh 380vh #FFF, 88vh 139vh #FFF, 256vh 877vh #FFF, 290vh 834vh #FFF, 22vh 566vh #FFF, 83vh 277vh #FFF, 898vh 413vh #FFF, 502vh 328vh #FFF, 416vh 645vh #FFF;
+  animation: star-animation 125s linear infinite;
+}
+
+.stars2:after {
+  content: " ";
+  top: -900px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 348vh 164vh #FFF, 213vh 731vh #FFF, 340vh 100vh #FFF, 442vh 402vh #FFF, 265vh 139vh #FFF, 93vh 616vh #FFF, 157vh 642vh #FFF, 146vh 270vh #FFF, 350vh 647vh #FFF, 239vh 14vh #FFF, 456vh 517vh #FFF, 311vh 759vh #FFF, 187vh 577vh #FFF, 481vh 449vh #FFF, 446vh 464vh #FFF, 23vh 35vh #FFF, 148vh 411vh #FFF, 426vh 290vh #FFF, 210vh 382vh #FFF, 408vh 240vh #FFF, 293vh 445vh #FFF, 148vh 489vh #FFF, 21vh 37vh #FFF, 315vh 125vh #FFF, 105vh 3vh #FFF, 216vh 613vh #FFF, 159vh 395vh #FFF, 206vh 464vh #FFF, 125vh 193vh #FFF, 114vh 477vh #FFF, 498vh 710vh #FFF, 202vh 665vh #FFF, 486vh 63vh #FFF, 425vh 469vh #FFF, 163vh 493vh #FFF, 191vh 556vh #FFF, 67vh 501vh #FFF, 235vh 643vh #FFF, 329vh 299vh #FFF, 316vh 288vh #FFF, 350vh 258vh #FFF, 115vh 500vh #FFF, 394vh 712vh #FFF, 426vh 739vh #FFF, 44vh 537vh #FFF, 2vh 152vh #FFF, 335vh 454vh #FFF, 344vh 738vh #FFF, 421vh 107vh #FFF, 106vh 580vh #FFF, 57vh 426vh #FFF, 217vh 134vh #FFF, 330vh 408vh #FFF, 442vh 246vh #FFF, 441vh 54vh #FFF, 307vh 533vh #FFF, 372vh 506vh #FFF, 45vh 671vh #FFF, 208vh 468vh #FFF, 82vh 679vh #FFF, 34vh 735vh #FFF, 8vh 271vh #FFF, 460vh 452vh #FFF, 489vh 311vh #FFF, 215vh 85vh #FFF, 243vh 542vh #FFF, 497vh 166vh #FFF, 87vh 654vh #FFF, 250vh 753vh #FFF, 374vh 698vh #FFF, 42vh 501vh #FFF, 285vh 550vh #FFF, 199vh 157vh #FFF, 84vh 704vh #FFF, 433vh 772vh #FFF, 377vh 544vh #FFF, 449vh 675vh #FFF, 134vh 243vh #FFF, 463vh 422vh #FFF, 417vh 463vh #FFF, 364vh 371vh #FFF, 316vh 184vh #FFF, 431vh 158vh #FFF, 395vh 379vh #FFF, 419vh 148vh #FFF, 245vh 655vh #FFF, 2vh 224vh #FFF, 490vh 264vh #FFF, 33vh 31vh #FFF, 362vh 220vh #FFF, 386vh 384vh #FFF, 384vh 511vh #FFF, 240vh 663vh #FFF, 417vh 195vh #FFF, 175vh 745vh #FFF, 269vh 695vh #FFF, 70vh 196vh #FFF, 322vh 483vh #FFF, 73vh 113vh #FFF, 65vh 513vh #FFF, 96vh 516vh #FFF, 355vh 146vh #FFF, 205vh 591vh #FFF, 340vh 704vh #FFF, 100vh 177vh #FFF, 325vh 480vh #FFF, 493vh 267vh #FFF, 118vh 478vh #FFF, 58vh 498vh #FFF, 248vh 586vh #FFF, 20vh 500vh #FFF, 176vh 124vh #FFF, 421vh 641vh #FFF, 124vh 65vh #FFF, 283vh 719vh #FFF, 352vh 116vh #FFF, 133vh 579vh #FFF, 41vh 124vh #FFF, 8vh 484vh #FFF, 391vh 642vh #FFF, 175vh 617vh #FFF, 180vh 86vh #FFF, 152vh 227vh #FFF, 466vh 45vh #FFF, 156vh 288vh #FFF, 301vh 623vh #FFF, 46vh 716vh #FFF, 170vh 147vh #FFF, 262vh 3vh #FFF, 107vh 15vh #FFF, 98vh 420vh #FFF, 458vh 669vh #FFF, 441vh 154vh #FFF, 254vh 746vh #FFF, 155vh 694vh #FFF, 404vh 163vh #FFF, 203vh 293vh #FFF, 119vh 91vh #FFF, 166vh 639vh #FFF, 455vh 484vh #FFF, 485vh 40vh #FFF, 193vh 248vh #FFF, 461vh 491vh #FFF, 82vh 159vh #FFF, 395vh 428vh #FFF, 260vh 295vh #FFF, 492vh 2vh #FFF, 312vh 376vh #FFF, 189vh 707vh #FFF, 321vh 148vh #FFF, 281vh 503vh #FFF, 222vh 183vh #FFF, 332vh 299vh #FFF, 87vh 45vh #FFF, 207vh 78vh #FFF, 226vh 652vh #FFF, 368vh 715vh #FFF, 246vh 402vh #FFF, 422vh 298vh #FFF, 112vh 711vh #FFF, 480vh 227vh #FFF, 386vh 287vh #FFF, 22vh 362vh #FFF, 359vh 444vh #FFF, 23vh 83vh #FFF, 270vh 705vh #FFF, 380vh 202vh #FFF, 156vh 535vh #FFF, 279vh 235vh #FFF, 107vh 577vh #FFF, 315vh 555vh #FFF, 491vh 764vh #FFF, 181vh 24vh #FFF, 10vh 749vh #FFF, 385vh 342vh #FFF, 339vh 598vh #FFF, 240vh 792vh #FFF, 475vh 175vh #FFF, 195vh 407vh #FFF, 366vh 377vh #FFF, 105vh 624vh #FFF, 189vh 687vh #FFF, 297vh 744vh #FFF, 249vh 796vh #FFF, 435vh 580vh #FFF, 372vh 85vh #FFF, 258vh 447vh #FFF, 187vh 451vh #FFF, 246vh 297vh #FFF, 252vh 770vh #FFF, 327vh 557vh #FFF, 490vh 160vh #FFF, 112vh 739vh #FFF, 276vh 419vh #FFF, 110vh 132vh #FFF, 240vh 574vh #FFF, 165vh 355vh #FFF, 60vh 349vh #FFF, 166vh 222vh #FFF, 422vh 479vh #FFF, 440vh 200vh #FFF, 289vh 209vh #FFF, 224vh 163vh #FFF, 264vh 199vh #FFF, 172vh 341vh #FFF, 235vh 258vh #FFF, 319vh 356vh #FFF, 116vh 86vh #FFF, 452vh 20vh #FFF, 183vh 348vh #FFF, 60vh 743vh #FFF, 278vh 68vh #FFF, 219vh 336vh #FFF, 405vh 348vh #FFF, 5vh 297vh #FFF, 489vh 462vh #FFF, 415vh 651vh #FFF, 160vh 262vh #FFF, 137vh 752vh #FFF, 10vh 61vh #FFF, 54vh 732vh #FFF, 270vh 203vh #FFF, 136vh 701vh #FFF, 29vh 27vh #FFF, 170vh 271vh #FFF, 40vh 124vh #FFF, 79vh 159vh #FFF, 252vh 58vh #FFF, 92vh 786vh #FFF, 77vh 61vh #FFF, 259vh 632vh #FFF, 212vh 673vh #FFF, 56vh 460vh #FFF, 355vh 231vh #FFF, 347vh 407vh #FFF, 66vh 725vh #FFF, 195vh 175vh #FFF, 387vh 161vh #FFF, 344vh 43vh #FFF, 286vh 304vh #FFF, 342vh 417vh #FFF, 237vh 339vh #FFF, 254vh 287vh #FFF, 277vh 422vh #FFF, 7vh 592vh #FFF, 49vh 332vh #FFF, 404vh 108vh #FFF, 208vh 467vh #FFF, 66vh 309vh #FFF, 388vh 595vh #FFF;
+}
+
+.stars3 {
+  z-index: -1;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  box-shadow: 862vh 502vh #FFF, 159vh 484vh #FFF, 944vh 511vh #FFF, 43vh 242vh #FFF, 772vh 145vh #FFF, 804vh 831vh #FFF, 841vh 775vh #FFF, 915vh 773vh #FFF, 95vh 576vh #FFF, 997vh 182vh #FFF, 794vh 831vh #FFF, 834vh 534vh #FFF, 869vh 461vh #FFF, 783vh 158vh #FFF, 608vh 207vh #FFF, 470vh 825vh #FFF, 619vh 794vh #FFF, 229vh 656vh #FFF, 733vh 792vh #FFF, 637vh 276vh #FFF;
+  animation: star-animation 175s linear infinite;
+}
+
+.stars3:after {
+  content: " ";
+  top: -900px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 333vh 783vh #FFF, 160vh 230vh #FFF, 303vh 322vh #FFF, 500vh 723vh #FFF, 298vh 639vh #FFF, 302vh 214vh #FFF, 384vh 508vh #FFF, 313vh 586vh #FFF, 253vh 550vh #FFF, 209vh 609vh #FFF, 301vh 85vh #FFF, 210vh 733vh #FFF, 472vh 390vh #FFF, 290vh 558vh #FFF, 12vh 447vh #FFF, 453vh 691vh #FFF, 19vh 690vh #FFF, 315vh 223vh #FFF, 457vh 627vh #FFF, 100vh 584vh #FFF;
+}

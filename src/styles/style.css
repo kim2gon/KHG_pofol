@@ -30,6 +30,10 @@ body {
         transform: translateY(0%);
     }
 
+    50% {
+        transform: translateY(-100%);
+    }
+
     100% {
         transform: translateY(-200%);
     }
@@ -40,21 +44,25 @@ body {
         transform: translateY(0%);
     }
 
+    50% {
+        transform: translateY(100%);
+    }
+
     100% {
         transform: translateY(200%);
     }
 }
 
 .slide-up {
-    animation: slide-up 475200ms linear infinite;
+    animation: slide-up 100s linear infinite;
 }
 
 .slide-down {
-    animation: slide-down 475200ms linear infinite;
+    animation: slide-down 100s linear infinite;
 }
 
-.ani-delay {
-    animation-delay: -237600ms;
+.second-slide {
+    animation-delay: -50s;
 }
 
 .circlecontainer {
