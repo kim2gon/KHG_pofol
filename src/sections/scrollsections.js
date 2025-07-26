@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Section1 from "./section1";
 import Section2 from "./section2";
 import Section3 from "./section3";
-import Section4 from "./section4";
+import Section4, { slides as section4Slides } from "./section4";
 import Section5 from "./section5";
 import Section6 from "./section6";
 import Section7 from "./section7";
@@ -25,6 +25,8 @@ const ScrollSections = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const totalSlidesInSection4 = section4Slides.length;
+
   const [currentSection, setCurrentSection] = useState(0);
   const [divPosition, setDivPosition] = useState("below");
   const [loadingScrollTriggered, setLoadingScrollTriggered] = useState(false);
@@ -44,18 +46,15 @@ const ScrollSections = () => {
 
     if (index === 3) {
       if (prevSection.current < 3) {
-        // section4 미만 → section4 : 첫 슬라이드
         setDisableSlideTransition(true);
         setSection4SlideIndex(0);
         setTimeout(() => setDisableSlideTransition(false), 50);
       } else if (prevSection.current > 3) {
-        // section4 초과 → section4 : 마지막 슬라이드
         setDisableSlideTransition(true);
-        setSection4SlideIndex(1);
+        setSection4SlideIndex(totalSlidesInSection4 - 1);
         setTimeout(() => setDisableSlideTransition(false), 50);
       }
     } else {
-      // section4 외 구간에선 첫번째 슬라이드
       setDisableSlideTransition(true);
       setSection4SlideIndex(0);
       setTimeout(() => setDisableSlideTransition(false), 50);
@@ -63,9 +62,9 @@ const ScrollSections = () => {
 
     setCurrentSection(index);
     prevSection.current = index;
-  }, [location.pathname]);
+  }, [location.pathname, totalSlidesInSection4]);
 
-  // currentSection 변경 시 스크롤 이동 및 Section4 지났는지 체크
+  // currentSection 변경 시 스크롤 이동
   useEffect(() => {
     const ref = sectionRefs.current[currentSection];
     if (ref?.current) {
@@ -78,7 +77,7 @@ const ScrollSections = () => {
     }
   }, [currentSection, navigate]);
 
-  // 스크롤 휠 이벤트 처리
+  // 스크롤 이벤트 핸들링
   const handleWheel = (e) => {
     if (!loadingScrollTriggered) {
       e.preventDefault();
@@ -93,7 +92,7 @@ const ScrollSections = () => {
       if (e.deltaY > 0) {
         // 아래로 스크롤
         if (currentSection === 3) {
-          if (section4SlideIndex < 1) {
+          if (section4SlideIndex < totalSlidesInSection4 - 1) {
             setSection4SlideIndex((prev) => prev + 1);
           } else {
             setCurrentSection((prev) => Math.min(prev + 1, sections.length - 1));
@@ -131,6 +130,7 @@ const ScrollSections = () => {
           setCurrentSection((prev) => prev - 1);
         }
       }
+
       isScrolling.current = false;
     }, 200);
   };
@@ -153,10 +153,14 @@ const ScrollSections = () => {
   return (
     <div onWheel={handleWheel}>
       <Loading onWheel={handleWheel} triggerScroll={loadingScrollTriggered} />
+
       {sections.map(({ component: Component }, index) => (
         <div key={index} ref={sectionRefs.current[index]} style={{ height: "100vh" }}>
           {index === 3 ? (
-            <Component currentIndex={section4SlideIndex} disableTransition={disableSlideTransition} />
+            <Component
+              currentIndex={section4SlideIndex}
+              disableTransition={disableSlideTransition}
+            />
           ) : index === 7 ? (
             <Component onSectionWheel={handleWheel} currentSection={currentSection} />
           ) : (
