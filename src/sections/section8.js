@@ -48,7 +48,7 @@ const Section8 = ({ onSectionWheel, currentSection }) => {
   };
 
   const handleClick = () => {
-    navigate('/');
+    navigate('/home');
   }
 
   return (
@@ -61,7 +61,7 @@ const Section8 = ({ onSectionWheel, currentSection }) => {
           This is my portfolio and this page is introduce my skills thank you for visiting my site thank you.</p>
         <div className='flex text-[80px] max-h-max justify-center'>
           <div className='-mt-32'>
-            <Link to='/' className='relative font-semibold text-xs leading-tight text-center min-w-4 pt-4 px-[30px] pb-[11px] text-white bg-black'>
+            <Link to='/home' className='relative font-semibold text-xs leading-tight text-center min-w-4 pt-4 px-[30px] pb-[11px] text-white bg-black'>
               Character
             </Link>
           </div>
