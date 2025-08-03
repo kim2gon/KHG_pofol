@@ -1,6 +1,6 @@
 import React from "react";
 import flex from "../assets/img/flex.jpg";
-import krafton from "../assets/img/krafton.jpg";
+import krafton from "../assets/img/krafton.png";
 import nespresso from "../assets/img/nespresso.jpg";
 
 export const slides = [
