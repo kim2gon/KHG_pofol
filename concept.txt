@@ -74,4 +74,4 @@ https://codepen.io/natewiley/pen/NNgqVJ
 - 휠 스크롤 관련해서
 - 섹션 이동 관련해서 (네비바 포함)
 - css애니메이션 연속으로 나오는 딜레이 조정
-- 
+- 캐릭터 색상 변경 포토샵
