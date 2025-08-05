@@ -1,11 +1,11 @@
 import React from "react";
 
-const colorsTop = ["#fbc02b", "#e64a18", "#512ca8", "#1876d2", "#0097a7"];
-const colorsBottom = ["#c21f5b", "#d32f2f", "#378e3b", "#5d4037", "#616161"];
+const Section2 = ({ setModelColor }) => {
+  const colorsTop = ["#fbc02b", "#e64a18", "#512ca8", "#1876d2", "#0097a7"];
+  const colorsBottom = ["#c21f5b", "#d32f2f", "#378e3b", "#5d4037", "#616161"];
 
-const Section2 = () => {
   const handleClick = (color) => {
-    alert(`클릭됨: ${color}`);
+    setModelColor(color);
   };
 
   const changeColor = (colors) =>

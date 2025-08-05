@@ -21,7 +21,7 @@ const sections = [
   { component: Section8, path: "/myself" },
 ];
 
-const ScrollSections = () => {
+const ScrollSections = ({ setModelColor }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const totalSlidesInSection4 = section4Slides.length;
@@ -170,7 +170,9 @@ const ScrollSections = () => {
           ref={sectionRefs.current[index]}
           style={{ height: "100vh" }}
         >
-          {index === 3 ? (
+          {index === 1 ? (
+            <Component setModelColor={setModelColor} />
+          ) : index === 3 ? (
             <Component
               currentIndex={section4SlideIndex}
               disableTransition={disableSlideTransition}

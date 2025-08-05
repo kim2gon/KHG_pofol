@@ -15,7 +15,7 @@ const Header = () => {
       <Link href="/home" className="text-[30px] text-black text-left">
         HEADER
       </Link>
-      <div className="text-[30px] bg-yellow-300 text-black">SNS IMG</div>
+      <div className="text-[30px] bg-yellow-300 text-black">Logo</div>
       <Link
         href="/home"
         className="pt-4 pb-[10px] px-7 text-white bg-black relative min-w-[16px] text-center text-sm leading-tight font-semibold"

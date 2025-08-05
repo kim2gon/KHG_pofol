@@ -8,7 +8,13 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 import { SkeletonUtils } from 'three-stdlib'
 import { useGraph } from '@react-three/fiber'
 
-const Model = ({ animation = "Idle", ...props }) => {
+const Model = ({
+  animation = "Idle",
+  colorMap = {
+    color_spec: "#fbc02b",
+  },
+  ...props
+}) => {
   const { scene, animations } = useGLTF('/m_2.glb')
   const group = useRef()
   const clone = useMemo(() => SkeletonUtils.clone(scene), [scene])
@@ -16,19 +22,30 @@ const Model = ({ animation = "Idle", ...props }) => {
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
-    // 모든 애니메이션 stop 후, 원하는 애니메이션 실행
     Object.values(actions).forEach((action) => action?.stop())
-
     if (actions[animation]) {
       actions[animation].reset().fadeIn(0).play()
     } else {
       console.warn(`애니메이션 "${animation}"을 찾을 수 없습니다.`)
     }
-
     return () => {
       actions[animation]?.fadeOut(0).stop()
     }
   }, [animation, actions])
+
+  useEffect(() => {
+    if (materials.color_spec) {
+      if (materials.color_spec.map) {
+        materials.color_spec.map = null
+        materials.color_spec.needsUpdate = true
+      }
+      try {
+        materials.color_spec.color.set(colorMap.color_spec)
+      } catch (e) {
+        console.error('Invalid color code:', colorMap.color_spec)
+      }
+    }
+  }, [colorMap.color_spec, materials])
 
   return (
     <group ref={group} {...props} dispose={null}>

@@ -45,7 +45,7 @@ const CameraController = ({ scrollYProgress }) => {
 }
 
 // Character 컴포넌트
-const Character = ({ scrollTarget }) => {
+const Character = ({ scrollTarget, modelColor }) => {
   const { scrollYProgress } = useScroll({
     target: scrollTarget,
     offset: ["start start", "end end"],
@@ -77,7 +77,7 @@ const Character = ({ scrollTarget }) => {
         <CameraController scrollYProgress={scrollYProgress} />
         <ambientLight intensity={1.2} />
         <directionalLight position={[1, 2, 3]} intensity={1} />
-        <Model scale={2.5} position={[2, -3.5, 0]} animation={animation} />
+        <Model colorMap={{ color_spec: modelColor }} scale={2.5} position={[2, -3.5, 0]} animation={animation} />
       </Canvas>
     </motion.div>
   )
