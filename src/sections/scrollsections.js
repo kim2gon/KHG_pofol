@@ -21,7 +21,7 @@ const sections = [
   { component: Section8, path: "/myself" },
 ];
 
-const ScrollSections = ({ setModelColor }) => {
+const ScrollSections = ({ setModelColor, setModelAnimation }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const totalSlidesInSection4 = section4Slides.length;
@@ -33,7 +33,6 @@ const ScrollSections = ({ setModelColor }) => {
   const [disableSlideTransition, setDisableSlideTransition] = useState(false);
 
   const isScrolling = useRef(false);
-  const hasScrolledInSection2 = useRef(false);
   const prevSection = useRef(0);
   const sectionRefs = useRef(sections.map(() => React.createRef()));
 
@@ -41,16 +40,17 @@ const ScrollSections = ({ setModelColor }) => {
     const index = sections.findIndex((s) => s.path === location.pathname);
     if (index === -1) return;
 
-    const prev = prevSection.current;
+    if (prevSection.current === 1 && index !== 1) {
+      setModelAnimation(null);
+    }
 
+    const prev = prevSection.current;
     if (index === 2) {
-      if (prev < 2) {
-        setDivPosition("bottom");
-      } else if (prev > 2) {
-        setDivPosition("middle");
-      }
+      if (prev < 2) setDivPosition("bottom");
+      else if (prev > 2) setDivPosition("middle");
     }
     prevSection.current = index;
+
     if (index === 3) {
       setDisableSlideTransition(true);
       if (prev < 3) setSection4SlideIndex(0);
@@ -63,7 +63,7 @@ const ScrollSections = ({ setModelColor }) => {
     }
 
     setCurrentSection(index);
-  }, [location.pathname]);
+  }, [location.pathname, setModelAnimation]);
 
   useEffect(() => {
     const ref = sectionRefs.current[currentSection];
@@ -75,39 +75,31 @@ const ScrollSections = ({ setModelColor }) => {
 
   const handleWheel = (e) => {
     e.preventDefault();
-
     if (!loadingScrollTriggered) {
       setLoadingScrollTriggered(true);
       return;
     }
-
     if (isScrolling.current) return;
     isScrolling.current = true;
 
     const isDown = e.deltaY > 0;
-
     setTimeout(() => {
       if (currentSection === 2) {
         if (isDown) {
-          if (divPosition === "below") {
-            setDivPosition("bottom");
-          } else if (divPosition === "bottom") {
-            setDivPosition("middle");
-          } else if (divPosition === "middle") {
+          if (divPosition === "below") setDivPosition("bottom");
+          else if (divPosition === "bottom") setDivPosition("middle");
+          else if (divPosition === "middle") {
             setDivPosition("above");
             setTimeout(() => setCurrentSection(3), 50);
           }
         } else {
-          if (divPosition === "above") {
-            setDivPosition("middle");
-          } else if (divPosition === "middle") {
-            setDivPosition("bottom");
-          } else if (divPosition === "bottom") {
+          if (divPosition === "above") setDivPosition("middle");
+          else if (divPosition === "middle") setDivPosition("bottom");
+          else if (divPosition === "bottom") {
             setDivPosition("below");
             setTimeout(() => setCurrentSection(1), 50);
           }
         }
-
         isScrolling.current = false;
         return;
       }
@@ -130,7 +122,6 @@ const ScrollSections = ({ setModelColor }) => {
             }, 50);
           }
         }
-
         isScrolling.current = false;
         return;
       }
@@ -141,7 +132,6 @@ const ScrollSections = ({ setModelColor }) => {
           : Math.max(prev - 1, 0);
         return next;
       });
-
       isScrolling.current = false;
     }, 100);
   };
@@ -171,17 +161,17 @@ const ScrollSections = ({ setModelColor }) => {
           style={{ height: "100vh" }}
         >
           {index === 1 ? (
-            <Component setModelColor={setModelColor} />
+            <Component
+              setModelColor={setModelColor}
+              setModelAnimation={setModelAnimation}
+            />
           ) : index === 3 ? (
             <Component
               currentIndex={section4SlideIndex}
               disableTransition={disableSlideTransition}
             />
           ) : index === 7 ? (
-            <Component
-              onSectionWheel={handleWheel}
-              currentSection={currentSection}
-            />
+            <Component onSectionWheel={handleWheel} currentSection={currentSection} />
           ) : (
             <Component />
           )}

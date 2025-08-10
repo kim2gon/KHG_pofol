@@ -3,55 +3,55 @@ import '../styles/animation3.css'
 
 const Cssanimation3 = () => {
     return (
-        <div class="earthcon">
-            <div class="earth-container">
-                <div class="earth">
-                    <div class="countries"></div>
-                    <div class="countries"></div>
-                    <div class="countries"></div>
-                    <div class="countries"></div>
-                    <div class="countries"></div>
-                    <div class="countries"></div>
-                    <div class="countries"></div>
-                    <div class="eyes">
-                        <div class="eyes opened"></div>
-                        <div class="eyes closed"></div>
+        <div className="earthcon">
+            <div className="earth-container">
+                <div className="earth">
+                    <div className="countries"></div>
+                    <div className="countries"></div>
+                    <div className="countries"></div>
+                    <div className="countries"></div>
+                    <div className="countries"></div>
+                    <div className="countries"></div>
+                    <div className="countries"></div>
+                    <div className="eyes">
+                        <div className="eyes opened"></div>
+                        <div className="eyes closed"></div>
                     </div>
-                    <div class="tear"></div>
+                    <div className="tear"></div>
                 </div>
-                <div class="excited">!</div>
-                <div class="shadow"></div>
-                <div class="moon">
-                    <div class="craters"></div>
-                    <div class="craters"></div>
-                    <div class="craters"></div>
-                    <div class="craters"></div>
-                    <div class="craters"></div>
-                    <div class="eyes"></div>
+                <div className="excited">!</div>
+                <div className="shadow"></div>
+                <div className="moon">
+                    <div className="craters"></div>
+                    <div className="craters"></div>
+                    <div className="craters"></div>
+                    <div className="craters"></div>
+                    <div className="craters"></div>
+                    <div className="eyes"></div>
                 </div>
-                <div class="sun">
-                    <div class="left-eye">
-                        <div class="left-eyelash"></div>
+                <div className="sun">
+                    <div className="left-eye">
+                        <div className="left-eyelash"></div>
                     </div>
-                    <div class="right-eye">
-                        <div class="right-eyelash"></div>
+                    <div className="right-eye">
+                        <div className="right-eyelash"></div>
                     </div>
-                    <div class="rays">
-                        <div class="beam"></div>
-                        <div class="beam"></div>
-                        <div class="beam"></div>
-                        <div class="beam"></div>
-                        <div class="beam"></div>
-                        <div class="beam"></div>
-                        <div class="beam"></div>
-                        <div class="beam"></div>
-                        <div class="beam"></div>
-                        <div class="beam"></div>
+                    <div className="rays">
+                        <div className="beam"></div>
+                        <div className="beam"></div>
+                        <div className="beam"></div>
+                        <div className="beam"></div>
+                        <div className="beam"></div>
+                        <div className="beam"></div>
+                        <div className="beam"></div>
+                        <div className="beam"></div>
+                        <div className="beam"></div>
+                        <div className="beam"></div>
                     </div>
                 </div>
-                <div class="stars1"></div>
-                <div class="stars2"></div>
-                <div class="stars3"></div>
+                <div className="stars1"></div>
+                <div className="stars2"></div>
+                <div className="stars3"></div>
             </div>
         </div>
     );

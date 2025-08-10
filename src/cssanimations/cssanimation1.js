@@ -4,13 +4,13 @@ import '../styles/animation1.css'
 
 const Cssanimation1 = () => {
     return (
-        <div class="pokecon">
-            <div class="poke-container">
-                <div class="center pokeball animate">
-                    <div class="pokeball-button"></div>
-                    <div class="pokeball-ring"></div>
-                    <div class="pokeball-shine"></div>
-                    <div class="pokeball-shine-small"></div>
+        <div className="pokecon">
+            <div className="poke-container">
+                <div className="center pokeball animate">
+                    <div className="pokeball-button"></div>
+                    <div className="pokeball-ring"></div>
+                    <div className="pokeball-shine"></div>
+                    <div className="pokeball-shine-small"></div>
                 </div>
             </div>
         </div>

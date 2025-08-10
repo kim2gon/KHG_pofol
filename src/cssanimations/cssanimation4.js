@@ -3,24 +3,24 @@ import '../styles/animation4.css'
 
 const Cssanimation4 = () => {
     return (
-        <div class="flowercon">
-            <div class="flower-container">
-                <div class="glass">
-                    <div class="shine"></div>
+        <div className="flowercon">
+            <div className="flower-container">
+                <div className="glass">
+                    <div className="shine"></div>
                 </div>
-                <div class="thorns">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="leaves">
+                <div className="thorns">
                     <div></div>
                     <div></div>
                     <div></div>
                     <div></div>
                 </div>
-                <div class="petals">
+                <div className="leaves">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div className="petals">
                     <div></div>
                     <div></div>
                     <div></div>
@@ -29,7 +29,7 @@ const Cssanimation4 = () => {
                     <div></div>
                     <div></div>
                 </div>
-                <div class="deadPetals">
+                <div className="deadPetals">
                     <div></div>
                     <div></div>
                     <div></div>

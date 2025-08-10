@@ -4,14 +4,14 @@ import '../styles/animation5.css'
 
 const Cssanimation5 = () => {
     return (
-        <div class="pendulum-container">
-            <div class="pendulum">
-                <div class="pendulum_box">
-                    <div class="ball first"></div>
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                    <div class="ball"></div>
-                    <div class="ball last"></div>
+        <div className="pendulum-container">
+            <div className="pendulum">
+                <div className="pendulum_box">
+                    <div className="ball first"></div>
+                    <div className="ball"></div>
+                    <div className="ball"></div>
+                    <div className="ball"></div>
+                    <div className="ball last"></div>
                 </div>
             </div>
         </div>

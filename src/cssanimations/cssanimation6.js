@@ -3,16 +3,16 @@ import '../styles/animation6.css'
 
 const Cssanimation6 = () => {
     return (
-        <div class="truck-container">
-            <div class="loop-wrapper">
-                <div class="mountain"></div>
-                <div class="hill"></div>
-                <div class="tree"></div>
-                <div class="tree"></div>
-                <div class="tree"></div>
-                <div class="rock"></div>
-                <div class="truck"></div>
-                <div class="wheels"></div>
+        <div className="truck-container">
+            <div className="loop-wrapper">
+                <div className="mountain"></div>
+                <div className="hill"></div>
+                <div className="tree"></div>
+                <div className="tree"></div>
+                <div className="tree"></div>
+                <div className="rock"></div>
+                <div className="truck"></div>
+                <div className="wheels"></div>
             </div>
         </div>
     );

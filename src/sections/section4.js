@@ -12,17 +12,17 @@ export const slides = [
     zIndex: 4,
   },
   {
-    title: "KRAFTON",
-    desc: "리디자인 한 크래프톤의 사이트 입니다.\nhtml,css를 사용하여 제작하였습니다.",
-    image: krafton,
-    link: "https://kim2gon.github.io/krafton/",
-    zIndex: 3,
-  },
-  {
     title: "NESPRESSO",
     desc: "네스프레소를 소개하는 마이크로사이트 입니다.\nhtml,css,javascrip를 사용하여 제작하였습니다.",
     image: nespresso,
     link: "https://kim2gon.github.io/nespresso/",
+    zIndex: 3,
+  },
+  {
+    title: "KRAFTON",
+    desc: "리디자인 한 크래프톤의 사이트 입니다.\nhtml,css를 사용하여 제작하였습니다.",
+    image: krafton,
+    link: "https://kim2gon.github.io/krafton/",
     zIndex: 2,
   },
 ];

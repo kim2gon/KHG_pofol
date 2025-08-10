@@ -175,6 +175,10 @@ body {
     animation: 60s linear infinite none running spin;
 }
 
+/* .imgspin {
+    animation: 60s linear reverse infinite none running spin;
+} */
+
 .bigdotspin2 {
     background: url(../assets/img/orbit-dots.svg);
     animation: 40s linear infinite none running spin2;
