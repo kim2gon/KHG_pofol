@@ -11,7 +11,7 @@ import { useGraph } from '@react-three/fiber'
 const Model = ({
   animation = "Idle",
   colorMap = {
-    color_spec: "#fbc02b",
+    color_spec: "#f0c05a",
   },
   ...props
 }) => {

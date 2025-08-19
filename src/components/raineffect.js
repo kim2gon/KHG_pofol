@@ -20,11 +20,11 @@ function RainCanvas() {
       color: "rgba(200, 200, 200, 0.8)",
       vy: 3,
       size: 3,
-      hit: random(h * 0.8, h * 0.9),
+      hit: random(h * 0.9, h * 1),
       init() {
         this.y = -random(0, h); // 초기화 시에도 랜덤 딜레이 위치 적용
         this.vy = 3;
-        this.hit = random(h * 0.8, h * 1); // 떨어지는 위치
+        this.hit = random(h * 0.9, h * 1); // 떨어지는 위치
       },
       draw(ctx) {
         ctx.fillStyle = this.color;

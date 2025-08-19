@@ -7,7 +7,7 @@ import ScrollSections from "./sections/scrollsections";
 
 function App() {
   const scrollRef = useRef(null);
-  const [modelColor, setModelColor] = useState("#fbc02b");
+  const [modelColor, setModelColor] = useState("#f0c05a");
   const [modelAnimation, setModelAnimation] = useState(null);
 
   return (
