@@ -211,17 +211,6 @@ ul li {
 }
 
 .ghost::before,
-.ghost.heart::after {
-    content: "";
-    width: 175px;
-    height: 220px;
-    border-radius: 100px 100px 0px 0px;
-    background: #fdfeff;
-    position: relative;
-    display: inline-block;
-    position: absolute;
-    box-shadow: inset -15px 1px 0px #efefef;
-}
 
 .ghost .face {
     width: 130px;
@@ -267,8 +256,7 @@ ul li {
     top: 55px;
 }
 
-.ghost .face .smile::before,
-.ghost .face .smile.heart::after {
+.ghost .face .smile::before::after {
     background: #fdfeff;
     width: 30px;
     height: 7px;
@@ -341,62 +329,6 @@ ul li {
 .ghost li:nth-child(9) {
     box-shadow: inset -15px 4px #efefef;
     animation: ghostani 3s ease-out infinite 2s;
-}
-
-.heart,
-.heart::after {
-    position: absolute;
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background: red;
-    left: 45%;
-    transform: rotate(45deg);
-    animation: beat 0.7s linear infinite;
-}
-
-.heart::before,
-.heart::after {
-    position: absolute;
-    content: "";
-    width: 30px;
-    height: 30px;
-    background: red;
-    border-radius: 100%;
-    top: -50%;
-    animation: beat 0.7s linear infinite;
-}
-
-.heart::after {
-    top: 0%;
-    left: -50%;
-}
-
-.heart .light,
-.heart::after .light {
-    width: 5px;
-    height: 12px;
-    background: white;
-    position: absolute;
-    border-radius: 200px;
-    z-index: 3;
-    left: -11px;
-    top: 13px;
-    transform: rotate(-10deg);
-    animation: lightshift 0.7s linear infinite;
-}
-
-.heart .light::after,
-.heart::after .light::after {
-    content: "";
-    position: absolute;
-    z-index: 3;
-    width: 5px;
-    height: 5px;
-    background: white;
-    border-radius: 200px;
-    top: -5px;
-    left: 1.5px;
 }
 
 .egg-container .shadow {

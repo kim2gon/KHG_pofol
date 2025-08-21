@@ -1,0 +1,218 @@
+@keyframes wing {
+  0% {
+    transform: scale(1) rotateY(180deg);
+  }
+
+  100% {
+    transform: scale(0.8) rotateY(-180deg);
+  }
+}
+
+@keyframes ff {
+  0% {
+    transform: scale(1) rotateZ(-60deg);
+  }
+
+  50% {
+    transform: scale(0.8) rotateZ(0deg);
+  }
+
+  100% {
+    transform: scale(0.8) rotateZ(-60deg);
+  }
+}
+
+@keyframes fff {
+  0% {
+    transform: scale(1) rotateZ(60deg);
+  }
+
+  50% {
+    transform: scale(0.8) rotateZ(0deg);
+  }
+
+  100% {
+    transform: scale(0.8) rotateZ(60deg);
+  }
+}
+
+@keyframes ffff {
+  0% {
+    transform: scale(1) rotateZ(0deg);
+  }
+
+  50% {
+    transform: scale(0.8) rotateZ(0deg);
+  }
+
+  100% {
+    transform: scale(0.8) rotateZ(1800deg);
+  }
+}
+
+@keyframes a {
+  0% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+.birdcon {
+  background-color: skyblue;
+  position: relative;
+  width: 324px;
+  height: 404px;
+}
+
+.bird {
+  position: absolute;
+  left: 28%;
+  top: 28%;
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  border-top-left-radius: 65px;
+  border-top-right-radius: 65px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  text-align: center;
+}
+
+.bird:before {
+  animation: fff 0.3s infinite;
+  content: "";
+  display: block;
+  width: 25px;
+  height: 60px;
+  background-color: pink;
+  position: absolute;
+  left: 30px;
+  right: 0;
+  top: -50px;
+  margin: auto;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transform-origin: bottom;
+  transform: rotateZ(30deg);
+  border-top: 5px solid yellow;
+  border-right: 5px solid yellow;
+}
+
+.bird .feather02 {
+  animation: ff 0.3s infinite;
+  width: 25px;
+  height: 60px;
+  background-color: yellow;
+  position: absolute;
+  left: -30px;
+  right: 0;
+  top: -50px;
+  margin: auto;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transform-origin: bottom;
+  transform: rotateZ(-30deg);
+  border-top: 5px solid pink;
+  border-right: 5px solid pink;
+}
+
+.bird .feather01 {
+  animation: ffff 2s infinite;
+  width: 25px;
+  height: 60px;
+  background-color: green;
+  position: absolute;
+  left: 0px;
+  right: 0;
+  top: -50px;
+  margin: auto;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transform-origin: bottom;
+  border-top: 5px solid white;
+  border-right: 5px solid white;
+}
+
+.bird .eye:before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 16px;
+  background-color: blue;
+  position: relative;
+  top: 18px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.bird .eye {
+  width: 15px;
+  height: 15px;
+  background-color: #000;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 40px 17px;
+}
+
+.bird .mouth {
+  animation: a 0.1s infinite;
+  width: 0;
+  height: 0;
+  border: 20px solid orange;
+  margin: 0 auto;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  border-color: orange transparent transparent transparent;
+  position: relative;
+  top: -20px;
+  border-bottom: 10px dotted red;
+}
+
+.bird .wing {
+  width: 70px;
+  height: 100px;
+  background-color: orange;
+  position: absolute;
+  top: 50px;
+  left: 0;
+}
+
+.bird .wing.left {
+  left: 0;
+  border-bottom-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom: 5px solid yellow;
+  transform-origin: left top;
+  transform: rotateY(180deg);
+  animation: wing 0.3s infinite alternate;
+}
+
+.bird .wing.right {
+  left: auto;
+  right: 0;
+  border-bottom-right-radius: 50px;
+  border-top-left-radius: 50px;
+  border-bottom: 5px solid yellow;
+  transform-origin: right top;
+  transform: rotateY(180deg);
+  animation: wing 0.3s infinite alternate;
+}
+
+.bird:after {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 50px;
+  background-color: red;
+  margin: 40px 10px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  position: relative;
+  top: -10px;
+}

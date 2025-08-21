@@ -9,6 +9,8 @@ import Cssanimation3 from "../cssanimations/cssanimation3";
 import Cssanimation4 from "../cssanimations/cssanimation4";
 import Cssanimation5 from "../cssanimations/cssanimation5";
 import Cssanimation6 from "../cssanimations/cssanimation6";
+import Cssanimation7 from "../cssanimations/cssanimation7";
+import Cssanimation8 from "../cssanimations/cssanimation8";
 
 const Section5 = () => {
   const cssanimation = [
@@ -17,7 +19,7 @@ const Section5 = () => {
     <Cssanimation3 />,
     <Cssanimation4 />,
     <Cssanimation5 />,
-    <Cssanimation6 />
+    <Cssanimation8 />
   ];
   // 애니메이션 반복
 

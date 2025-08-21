@@ -23,9 +23,6 @@ const Cssanimation2 = () => {
                     </ul>
                 </div>
                 <div className="shadow" id="egg-shadow"></div>
-                <div className="heart">
-                    <div className="light"></div>
-                </div>
                 <div className="ghost">
                     <ul>
                         <li></li>
