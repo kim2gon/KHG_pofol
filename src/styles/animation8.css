@@ -1,18 +1,23 @@
-.dinocon {
-  background: aqua;
+.dinoanimation {
+  background: burlywood;
   position: relative;
   width: 324px;
   height: 404px;
+}
+
+.dinocon {
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.prairie {
+
+.grass {
   display: inline-block;
   background-image: url(../assets/img/grass.png);
   margin: 0;
   position: absolute;
+  top: 25%;
   width: 100%;
   height: 260px;
 }
@@ -20,9 +25,6 @@
 .body {
   background: #fff;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100px;
   height: 200px;
   border-radius: 50px;
@@ -32,12 +34,14 @@
 /* 공룡 전체  */
 .content {
   z-index: 1;
+  position: absolute;
+  top: 25%;
   cursor: pointer;
   transition: transform 1s linear;
 }
 
 .content.jump {
-  transform: translateY(-150px);
+  transform: translateY(-100px);
 }
 
 /* 공룡 크기 */
@@ -96,6 +100,7 @@
   grid-template-columns: 40px 80px;
   justify-content: flex-start;
 }
+
 .dino-stom {
   width: 60px;
   height: 60px;
@@ -103,6 +108,7 @@
   margin-left: 50px;
   border-radius: 20px;
 }
+
 .dino-arm {
   width: 20px;
   height: 40px;
@@ -112,13 +118,14 @@
   position: relative;
   z-index: 1;
   transform-origin: top;
-  animation: dino-foot1 3s linear infinite alternate;
+  animation: dino-arm 3s linear infinite alternate;
 }
 
 @keyframes dino-arm {
   0% {
     transform: rotatez(20deg) scale(1);
   }
+
   100% {
     transform: rotateZ(-20deg) scale(1);
   }
@@ -130,12 +137,14 @@
   display: flex;
   justify-content: space-around;
 }
+
 .dino-foot div {
   width: 20px;
   background-color: #596f26;
   border-radius: 10px 10px 30px 30px;
   transform-origin: top;
 }
+
 .dino .dino-foot div:nth-child(1) {
   animation: dino-foot1 2s linear infinite alternate;
 }
@@ -148,6 +157,7 @@
   0% {
     transform: rotatez(-30deg) scale(1);
   }
+
   100% {
     transform: rotateZ(30deg) scale(1);
   }
@@ -157,6 +167,7 @@
   0% {
     transform: rotatez(30deg) scale(1);
   }
+
   100% {
     transform: rotateZ(-30deg) scale(1);
   }
@@ -183,6 +194,7 @@
   display: flex;
   flex-direction: row-reverse;
 }
+
 .dino-shape-right {
   width: 20px;
   height: 120px;
@@ -202,6 +214,7 @@
 .momton .dino-shape-right div:nth-child(1) {
   transform: rotateZ(6deg);
 }
+
 .momton .dino-shape-right div:nth-child(3) {
   transform: rotateZ(-6deg);
 }

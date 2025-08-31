@@ -19,7 +19,9 @@ const Section5 = () => {
     <Cssanimation3 />,
     <Cssanimation4 />,
     <Cssanimation5 />,
-    <Cssanimation8 />
+    <Cssanimation6 />,
+    <Cssanimation7 />,
+    <Cssanimation8 />,
   ];
   // 애니메이션 반복
 

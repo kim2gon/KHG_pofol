@@ -172,16 +172,16 @@ body {
 
 .bigdotspin1 {
     background: url(../assets/img/orbit-dots.svg);
-    animation: 60s linear infinite none running spin;
 }
-
-/* .imgspin {
-    animation: 60s linear reverse infinite none running spin;
-} */
 
 .bigdotspin2 {
     background: url(../assets/img/orbit-dots.svg);
     animation: 40s linear infinite none running spin2;
+}
+
+.bigdotspin3 {
+    background: url(../assets/img/circlegradient.png) 0% 0% / cover;
+    animation: 60s linear reverse infinite none running spin
 }
 
 @keyframes spin2 {
