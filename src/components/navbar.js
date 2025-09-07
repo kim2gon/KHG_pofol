@@ -9,7 +9,7 @@ const Navbar = () => {
     { path: "/pofol", label: "POFOL", v: "04" },
     { path: "/animations", label: "ANIMATIONS", v: "05" },
     { path: "/skills", label: "SKILLS", v: "06" },
-    { path: "/tools", label: "TOOLS", v: "07" },
+    { path: "/carrer", label: "CARRER", v: "07" },
     { path: "/myself", label: "MYSELF", v: "08" },
   ];
 

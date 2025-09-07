@@ -46,15 +46,20 @@ const Section5 = () => {
       ref={ref}
       className="w-full h-dvh flex pt-[100px] pl-10 pb-[75px] !left-0 top-0 bottom-0 start-[--h-padding] end-[--h-padding] relative"
     >
-      <p className="mt-[15vh] m-0 max-w-60 font-medium text-[11px] leading-[18px] tracking-wide text-[#111]">
-        this is my portfolio thank you for visiting my site thank you.
-        <Link
+
+      <div className="mt-[15vh] m-0  text-[#111]">
+        <h3 className="font-bold text-2xl leading-tight mb-[21px]">
+          CSS Animation
+        </h3>
+        <p className='max-w-60 font-medium text-xs leading-[18px] tracking-wide'>CSS애니메이션을 구현하여 슬라이더로 정리해두었습니다.</p>
+
+        {/* <Link
           to="/home"
           className="block max-w-max min-w-40 mt-8 cursor-pointer font-semibold text-xs leading-tight text-center relative text-white pt-4 px-[30px] pb-[11px] bg-black"
         >
           click my profile
-        </Link>
-      </p>
+        </Link> */}
+      </div>
 
       <div className="absolute top-0 bottom-[-75px] left-[326px] w-[324px] overflow-hidden">
         <div className="w-full h-full">

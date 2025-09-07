@@ -107,8 +107,9 @@ const Section2 = ({ setModelColor, setModelAnimation, scrollRootRef }) => {
               <div className="w-full h-[27px] flex">{changeColor(colorsBottom)}</div>
             </div>
           </button>
-          <p className="m-0 max-w-60 gap-8 flex flex-col items-start font-medium text-[11px] leading-tight tracking-wide text-[#111]">
-            버튼을 누르면 애니메이션이 변경됩니다. 섹션을 떠나면 초기화됩니다.
+          <p className="m-0 max-w-60 gap-8 flex flex-col items-start font-medium text-xs leading-tight tracking-wide whitespace-pre-line text-[#111]">
+            {`버튼을 누르면 애니메이션이 변경됩니다.
+            섹션을 떠나면 초기화됩니다.`}
           </p>
         </div>
       </div>

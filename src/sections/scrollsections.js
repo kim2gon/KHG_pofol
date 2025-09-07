@@ -17,7 +17,7 @@ const sections = [
   { component: Section4, path: "/pofol" },
   { component: Section5, path: "/animations" },
   { component: Section6, path: "/skills" },
-  { component: Section7, path: "/tools" },
+  { component: Section7, path: "/carrer" },
   { component: Section8, path: "/myself" },
 ];
 
