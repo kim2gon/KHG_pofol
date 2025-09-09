@@ -33,7 +33,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://kim2gon.github.io/KHG_pofol/",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -54,5 +53,6 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
-  }
+  },
+  "homepage": "https://kim2gon.github.io/KHG_pofol/"
 }
