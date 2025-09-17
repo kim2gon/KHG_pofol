@@ -36,6 +36,7 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
   const prevSection = useRef(0);
   const sectionRefs = useRef(sections.map(() => React.createRef()));
 
+  // 경로 변경 시 currentSection 업데이트 및 divPosition, Section4 초기화
   useEffect(() => {
     const index = sections.findIndex((s) => s.path === location.pathname);
     if (index === -1) return;
@@ -44,17 +45,20 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
       setModelAnimation(null);
     }
 
-    const prev = prevSection.current;
+    // Section3 divPosition 초기화
     if (index === 2) {
-      if (prev < 2) setDivPosition("bottom");
-      else if (prev > 2) setDivPosition("middle");
+      if (prevSection.current < 2) setDivPosition("bottom"); // 아래에서 올라올 때
+      else if (prevSection.current > 2) setDivPosition("middle"); // 위에서 내려올 때
+    } else {
+      if (index < 2) setDivPosition("below");
+      else if (index > 2) setDivPosition("above");
     }
-    prevSection.current = index;
 
+    // Section4 진입 시 슬라이드 초기화
     if (index === 3) {
       setDisableSlideTransition(true);
-      if (prev < 3) setSection4SlideIndex(0);
-      else if (prev > 3) setSection4SlideIndex(totalSlidesInSection4 - 1);
+      if (prevSection.current < 3) setSection4SlideIndex(0); // 이전 섹션에서 아래로 들어오면 첫 슬라이드
+      else if (prevSection.current > 3) setSection4SlideIndex(totalSlidesInSection4 - 1); // 이후 섹션에서 위로 들어오면 마지막 슬라이드
       setTimeout(() => setDisableSlideTransition(false), 50);
     } else {
       setDisableSlideTransition(true);
@@ -62,9 +66,11 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
       setTimeout(() => setDisableSlideTransition(false), 50);
     }
 
+    prevSection.current = index;
     setCurrentSection(index);
   }, [location.pathname, setModelAnimation]);
 
+  // currentSection 변경 시 scrollIntoView
   useEffect(() => {
     const ref = sectionRefs.current[currentSection];
     if (ref?.current) {
@@ -73,37 +79,43 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
     }
   }, [currentSection, navigate]);
 
+  // Wheel 이벤트
   const handleWheel = (e) => {
     e.preventDefault();
+
     if (!loadingScrollTriggered) {
       setLoadingScrollTriggered(true);
       return;
     }
+
     if (isScrolling.current) return;
     isScrolling.current = true;
 
     const isDown = e.deltaY > 0;
+
     setTimeout(() => {
+      // Section3 스크롤 처리
       if (currentSection === 2) {
         if (isDown) {
           if (divPosition === "below") setDivPosition("bottom");
           else if (divPosition === "bottom") setDivPosition("middle");
           else if (divPosition === "middle") {
             setDivPosition("above");
-            setTimeout(() => setCurrentSection(3), 50);
+            setCurrentSection(3);
           }
         } else {
           if (divPosition === "above") setDivPosition("middle");
           else if (divPosition === "middle") setDivPosition("bottom");
           else if (divPosition === "bottom") {
             setDivPosition("below");
-            setTimeout(() => setCurrentSection(1), 50);
+            setCurrentSection(1);
           }
         }
         isScrolling.current = false;
         return;
       }
 
+      // Section4 슬라이드 처리
       if (currentSection === 3) {
         if (isDown) {
           if (section4SlideIndex < totalSlidesInSection4 - 1) {
@@ -118,7 +130,7 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
             setDivPosition("above");
             setTimeout(() => {
               setDivPosition("middle");
-              setTimeout(() => setCurrentSection(2), 50);
+              setCurrentSection(2);
             }, 50);
           }
         }
@@ -126,29 +138,16 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
         return;
       }
 
+      // 나머지 섹션
       setCurrentSection((prev) => {
         const next = isDown
           ? Math.min(prev + 1, sections.length - 1)
           : Math.max(prev - 1, 0);
         return next;
       });
+
       isScrolling.current = false;
     }, 100);
-  };
-
-  const getDivStyle1 = () => {
-    switch (divPosition) {
-      case "below":
-        return "bottom-[-100vh]";
-      case "bottom":
-        return "bottom-0";
-      case "middle":
-        return "bottom-[64vh]";
-      case "above":
-        return "bottom-[100vh]";
-      default:
-        return "bottom-[-100vh]";
-    }
   };
 
   return (
@@ -165,30 +164,25 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
               setModelColor={setModelColor}
               setModelAnimation={setModelAnimation}
             />
+          ) : index === 2 ? (
+            <Component
+              divPosition={divPosition}
+            />
           ) : index === 3 ? (
             <Component
               currentIndex={section4SlideIndex}
               disableTransition={disableSlideTransition}
             />
           ) : index === 7 ? (
-            <Component onSectionWheel={handleWheel} currentSection={currentSection} />
+            <Component
+              onSectionWheel={handleWheel}
+              currentSection={currentSection}
+            />
           ) : (
             <Component />
           )}
         </div>
       ))}
-      <div
-        className={`w-screen fixed left-0 right-0 pt-[53px] pr-[232px] pb-[50px] pl-[159px] bg-black text-white z-[51] transition-all duration-500 ${getDivStyle1()}`}
-      >
-        <div className="font-medium text-[34px] leading-tight tracking-wide max-w-[1250px]">
-          <p>
-            This is my portfolio thank you for visiting my site thank you. This
-            is my portfolio thank you for visiting my site thank you. This is my
-            portfolio thank you for visiting my site thank you for visiting my
-            site.
-          </p>
-        </div>
-      </div>
     </div>
   );
 };
