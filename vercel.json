@@ -1,0 +1,10 @@
+{
+  "buildCommand": "GENERATE_SOURCEMAP=false npm run build",
+  "outputDirectory": "build",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

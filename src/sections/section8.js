@@ -18,7 +18,7 @@ const icons = [
   },
   {
     name: "010-7697-5713",
-    position: "bottom-1/2 left-1/4",
+    position: "top-3/4 right-1/2",
     svg: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#5254e2" className="size-10 group-hover:opacity-100 opacity-55 duration-300 transition-opacity">
         <path
@@ -32,7 +32,7 @@ const icons = [
   {
     name: "RESUME",
     bg: "black",
-    position: "top-3/4 right-1/2",
+    position: "bottom-1/2 left-1/4",
     svg: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#fff" className="size-10 group-hover:opacity-100 opacity-55 duration-300 transition-opacity">
         <path
@@ -109,7 +109,7 @@ const Section8 = ({ onSectionWheel }) => {
           각 아이콘을 클릭하면 확인가능합니다.`}
         </p>
         <div className="flex text-[80px] max-h-max justify-center">
-          <div className="relative font-semibold text-2xl leading-tight text-center min-w-4 pt-4 px-[30px] pb-[11px] text-white bg-black">
+          <div className="relative font-semibold text-2xl leading-tight text-center min-w-4 pt-4 px-[30px] pb-[11px] text-white bg-black z-[9999]">
             {centerText}
           </div>
         </div>
