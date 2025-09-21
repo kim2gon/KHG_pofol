@@ -6,21 +6,21 @@ import nespresso from "../assets/img/nespresso.jpg";
 export const slides = [
   {
     title: "Flex-study",
-    desc: "플렉스 스터디 입니다.\nhtml,css,javascrip,react를 사용하여 제작하였습니다.",
+    desc: "플렉스 스터디 입니다.\nHTML, CSS, JavaScript, React를 사용하여 제작한 웹사이트입니다.\n반응형 레이아웃과 사용자 중심의 인터페이스를 구현하여 직관적으로 제작하였습니다.\n컴포넌트 기반 구조와 효율적인 코드 설계를 통해 유지보수성과 확장성을 고려하여 제작하였습니다.",
     image: flex,
     link: "https://study.fl-ex.co.kr/",
     zIndex: 4,
   },
   {
     title: "NESPRESSO",
-    desc: "네스프레소를 소개하는 마이크로사이트 입니다.\nhtml,css,javascrip를 사용하여 제작하였습니다.",
+    desc: "네스프레소를 소개하는 마이크로사이트 입니다.\nHTML, CSS, JavaScript를 사용하여 제작한 웹사이트입니다.\n핵심 정보나 콘텐츠를 간결하게 전달하기위해 직관적인 UI와 빠른 접근성을 초점을 맞춰 제작하였습니다.\n경량화된 구조와 깔끔한 인터랙션및 애니메이션을 활용하여 눈길을 사로잡는 사이트를 제작하였습니다.",
     image: nespresso,
     link: "https://kim2gon.github.io/nespresso/",
     zIndex: 3,
   },
   {
     title: "KRAFTON",
-    desc: "리디자인 한 크래프톤의 사이트 입니다.\nhtml,css를 사용하여 제작하였습니다.",
+    desc: "리디자인 한 크래프톤의 사이트 입니다.\nHTML, CSS를 사용하여 제작한 웹사이트입니다.\n기존의 사이트를 다른 방식의 사이트로 제작해보았습니다.\n반응형 디자인을 적용해 다양한 디바이스에서도 최적의 사용 경험을 제공하도록 제작하였습니다.",
     image: krafton,
     link: "https://kim2gon.github.io/krafton/",
     zIndex: 2,

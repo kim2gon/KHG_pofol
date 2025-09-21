@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const icons = [
   {
@@ -61,6 +61,7 @@ const icons = [
 
 const Section8 = ({ onSectionWheel }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [divPosition2, setDivPosition2] = useState("below");
   const hasScrolledInSection8 = useRef(false);
   const sectionRef = useRef(null);
@@ -98,6 +99,15 @@ const Section8 = ({ onSectionWheel }) => {
   const getDivStyle2 = () =>
     divPosition2 === "bottom" ? "translate-y-0" : "translate-y-[100vh]";
 
+  const isCurrentRoute = location.pathname === "/myself";
+
+  useEffect(() => {
+    if (!isCurrentRoute) {
+      setDivPosition2("below");
+      hasScrolledInSection8.current = false;
+    }
+  }, [location.pathname]);
+
   return (
     <section
       ref={sectionRef}
@@ -134,24 +144,27 @@ const Section8 = ({ onSectionWheel }) => {
       </div>
 
       {/* footer */}
-      <div
-        className={`absolute w-screen bottom-0 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center
-        bg-black text-white z-50 transition-transform duration-500 ${getDivStyle2()}`}
-      >
-        <p className="text-[30px]">KHG PORTFOLIO</p>
-        <button
-          onClick={() => navigate("/home")}
-          className="flex flex-col gap-4 mt-[50px] mx-0 mb-10 text-inherit justify-items-center items-center"
+      {isCurrentRoute && (
+        <div
+          className={`fixed w-screen left-0 bottom-0 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center 
+            bg-black text-white z-50 transition-transform duration-500 ${getDivStyle2()}`}
         >
-          <svg className="w-[10px] h-[28px] fill-none scale-[-1]">
-            <path
-              d="M9.924.924 5 7.314.076.924h9.848ZM9.308 12.308 5 17.9.692 12.31h8.616ZM8.693 22.693 5 27.485l-3.693-4.792h7.386Z"
-              fill="currentColor"
-            ></path>
-          </svg>
-          <span className="text-sm">Page top</span>
-        </button>
-      </div>
+
+          <p className="text-[30px]">KHG PORTFOLIO</p>
+          <button
+            onClick={() => navigate("/home")}
+            className="flex flex-col gap-4 mt-[50px] mx-0 mb-10 text-inherit justify-items-center items-center"
+          >
+            <svg className="w-[10px] h-[28px] fill-none scale-[-1]">
+              <path
+                d="M9.924.924 5 7.314.076.924h9.848ZM9.308 12.308 5 17.9.692 12.31h8.616ZM8.693 22.693 5 27.485l-3.693-4.792h7.386Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span className="text-sm">Page top</span>
+          </button>
+        </div>
+      )}
     </section>
   );
 };

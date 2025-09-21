@@ -21,14 +21,11 @@ const Section3 = ({ divPosition }) => {
     <section className="w-full h-dvh flex items-center justify-center text-black relative">
       <div className="w-4/5 xl:w-[960px] mx-auto text-center">
         <div
-          className={`w-screen fixed left-0 right-0 pt-[53px] pr-[232px] pb-[50px] pl-[159px] bg-black text-white z-[51] transition-all duration-500 ${getDivStyle1()}`}
+          className={`w-screen fixed left-0 right-0 pt-[53px] pb-[50px]  bg-black text-white z-[51] transition-all duration-500 ${getDivStyle1()}`}
         >
-          <div className="font-medium text-[34px] leading-tight tracking-wide max-w-[1250px]">
+          <div className="font-medium text-[34px] leading-tight tracking-wide max-w-[1250px] left-0 right-0 translate-x-1/4">
             <p>
-              This is my portfolio thank you for visiting my site thank you. This
-              is my portfolio thank you for visiting my site thank you. This is my
-              portfolio thank you for visiting my site thank you for visiting my
-              site.
+              웹 프론트엔드 개발자 김희곤 입니다.<br />제 포트폴리오 사이트에 방문해주신 모든분께 감사합니다.<br />앞으로 더 배우고 노력하는 모습을 보여드리겠습니다. 감사합니다.
             </p>
           </div>
         </div>

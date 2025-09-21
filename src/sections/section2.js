@@ -108,7 +108,7 @@ const Section2 = ({ setModelColor, setModelAnimation, scrollRootRef }) => {
             </div>
           </button>
           <p className="m-0 max-w-80 gap-8 flex flex-col items-start font-medium text-xs leading-tight tracking-wide whitespace-pre-line text-[#111]">
-            {`플레이 버튼과 색상변경 버튼을 눌러보세요!`}
+            {`상단의 플레이 버튼과 색상변경 버튼을 눌러보세요!`}
           </p>
         </div>
       </div>
