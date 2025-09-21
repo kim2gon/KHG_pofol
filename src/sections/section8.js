@@ -99,7 +99,7 @@ const Section8 = ({ onSectionWheel }) => {
   const getDivStyle2 = () =>
     divPosition2 === "bottom" ? "translate-y-0" : "translate-y-[100vh]";
 
-  const isCurrentRoute = location.pathname === "/myself";
+  const isCurrentRoute = location.pathname === "/contact";
 
   useEffect(() => {
     if (!isCurrentRoute) {
@@ -108,14 +108,62 @@ const Section8 = ({ onSectionWheel }) => {
     }
   }, [location.pathname]);
 
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [hovered, setHovered] = useState(false);
+  const [hoverfooter, setHoverfooter] = useState(false);
+  const [circlePos, setCirclePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    let animationFrame;
+
+    const followMouse = () => {
+      setCirclePos((prev) => {
+        const ease = 0.05;
+        return {
+          x: prev.x + (mousePos.x - prev.x) * ease,
+          y: prev.y + (mousePos.y - prev.y) * ease,
+        };
+      });
+      animationFrame = requestAnimationFrame(followMouse);
+    };
+
+    followMouse();
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [mousePos]);
+
   return (
     <section
       ref={sectionRef}
       className="relative w-full h-dvh bottom-0 !left-0 start-[--h-padding] end-[--h-padding] pt-[100px] px-0 pb-[75px] flex flex-col justify-between items-center overflow-hidden"
     >
+      {hovered && (
+        <div
+          className="fixed rounded-full pointer-events-none flex items-center justify-center text-xl font-semibold mix-blend-difference"
+          style={{
+            width: "40px",
+            height: "40px",
+            background: "rgba(255,255,255,1)",
+            left: mousePos.x - 20,
+            top: mousePos.y - 20,
+            zIndex: 9999,
+          }}
+        ></div>
+      )}
       <div className="relative w-full h-full flex justify-center items-center">
-        <p className="m-0 max-w-[200px] absolute right-[100px] top-[180px] font-medium text-xs leading-[18px] tracking-wide whitespace-pre-line text-[#111]">
-          {`상세 정보들 입니다.
+        <p className="m-0 max-w-[200px] absolute right-[100px] top-[180px] font-medium text-sm leading-[18px] tracking-wide whitespace-pre-line text-[#111]">
+          {`연락처 및 상세 정보들 입니다.
           각 아이콘을 클릭하면 확인가능합니다.`}
         </p>
         <div className="flex text-[80px] max-h-max justify-center">
@@ -132,6 +180,8 @@ const Section8 = ({ onSectionWheel }) => {
           {icons.map(({ name, bg, url, position, svg }) => (
             <div
               key={name}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
               onClick={() => handleIconClick(name, url)}
               className={` absolute size-[120px] rounded-full ${position} cursor-pointer flex items-center justify-center z-50 group ${bg === "black" ? 'bigdotspin4 bg-black' : 'bigdotspin3'}`}
             >
@@ -144,13 +194,28 @@ const Section8 = ({ onSectionWheel }) => {
       </div>
 
       {/* footer */}
+      {hoverfooter && (
+        <div
+          className="fixed rounded-full pointer-events-none flex items-center justify-center text-xl font-semibold mix-blend-difference"
+          style={{
+            width: "80px",
+            height: "80px",
+            background: "rgba(255,255,255,1)",
+            left: circlePos.x - 40,
+            top: circlePos.y - 40,
+            zIndex: 9999,
+          }}
+        ></div>
+      )}
       {isCurrentRoute && (
         <div
+          onMouseEnter={() => setHoverfooter(true)}
+          onMouseLeave={() => setHoverfooter(false)}
           className={`fixed w-screen left-0 bottom-0 pt-[88px] px-[--footerpd] pb-4 flex flex-col items-center text-center 
             bg-black text-white z-50 transition-transform duration-500 ${getDivStyle2()}`}
         >
-
-          <p className="text-[30px]">KHG PORTFOLIO</p>
+          <p className="text-[30px] leading-none mb-2">KIM HEEGON</p>
+          <p className="text-lg leading-none">2001.01.22</p>
           <button
             onClick={() => navigate("/home")}
             className="flex flex-col gap-4 mt-[50px] mx-0 mb-10 text-inherit justify-items-center items-center"

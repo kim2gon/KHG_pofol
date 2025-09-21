@@ -19,21 +19,20 @@ const Section1 = () => {
       <Header />
       <RainCanvas />
 
-      <div className="w-dvw h-screen flex justify-between max-w-[1300px] mx-auto xl:px-[5%] fixed overflow-hidden pointer-events-none top-0 z-0">
+      <div className="w-dvw h-screen lg:flex hidden justify-between lg:max-w-[1300px] mx-auto xl:px-[5%] fixed overflow-hidden pointer-events-none top-0 z-0">
         {[...Array(5)].map((_, idx) => (
           <div key={idx} className="rain-line w-[1px] h-screen bg-[#eee]" />
         ))}
       </div>
 
-      <div className="flex flex-col max-w-[460px] h-full pt-[10vh] px-0 pb-0 z-20">
+      <div className="flex flex-col w-full lg:max-w-[460px] h-full pt-[10vh] px-0 pb-0 z-20">
         <h1 className="text-[109px] font-semibold text-left w-[460px] leading-tight">
           Portfolio
         </h1>
-        <p className="my-4 max-w-80 gap-8 flex flex-col items-start justify-items-center font-regular text-xs leading-tight tracking-wide text-[#111]">
-          {`웹 프론트엔드 개발자 김희곤의 포토폴리오 입니다.
-          아래로 스크롤다운 하며 감상해주시면 감사하겠습니다.`}
+        <p className="my-4 w-full lg:max-w-96 gap-8 flex flex-col items-start justify-items-center font-regular text-sm leading-tight tracking-wide whitespace-pre-line text-[#111]">
+          {`웹 프론트엔드 개발자 김희곤의 포토폴리오 입니다.\n아래로 스크롤다운 하며 감상해주시면 감사하겠습니다.`}
           {/* <Link
-            to="/myself"
+            to="/contact"
             className="pt-4 pb-[10px] px-7 text-white bg-black relative min-w-[16px] text-center text-sm leading-tight font-semibold"
           >
             상세정보 바로가기

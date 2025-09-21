@@ -169,8 +169,8 @@ const Section6 = () => {
   return (
     <section className="w-full h-dvh flex flex-col pt-[100px] pl-10 pb-[75px] !left-0 top-0 bottom-0 start-[--h-padding] end-[--h-padding] relative overflow-hidden">
       <h3 className="font-bold text-2xl leading-tight mt-[10vh] mx-0 mb-[21px] text-[#111]">My skills</h3>
-      <p className="m-0 max-w-60 font-medium text-xs leading-[18px] tracking-wide">
-        제가 가진 기술들을 애니메이션을 이용하여 재밌게 표현했습니다.
+      <p className="m-0 max-w-60 font-medium text-sm leading-[18px] tracking-wide">
+        제가 가진 기술들을 애니메이션을 이용하여 재밌게 표현해보았습니다.
       </p>
       <div className="absolute -left-[70px] bottom-0 right-0 h-[1000px] overflow-hidden">
         <Bubble2 x={668} y={380}>
@@ -214,17 +214,17 @@ const Section6 = () => {
           ThreeJS
         </Bubble2>
         <Bubble x={1171} y={954}>
-          AndroidStudio
+          Typescript
         </Bubble>
         <Bubble x={559} y={999}>
-          Eclipse
+          NextJS
         </Bubble>
         <Circle x={1075} y={993}></Circle>
         <Bubble x={230} y={1010}>
           Java
         </Bubble>
         <Bubble x={851} y={1013}>
-          Python
+          tailwindCSS
         </Bubble>
       </div>
     </section>

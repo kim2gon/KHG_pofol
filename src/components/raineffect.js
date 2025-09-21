@@ -93,7 +93,7 @@ function RainCanvas() {
     <canvas
       id="canvas-club"
       ref={canvasRef}
-      style={{ display: "block", position: "fixed", top: 0, left: 0 }}
+      className="hidden lg:block fixed top-0 left-0 w-full h-full"
     />
   );
 }

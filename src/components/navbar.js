@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const sectionText = [
     { path: "/home", label: "HOME", v: "01" },
-    { path: "/about", label: "ABOUT", v: "02" },
-    { path: "/awards", label: "AWARDS", v: "03" },
+    { path: "/character", label: "CHARACTER", v: "02" },
+    { path: "/intro", label: "INTRO", v: "03" },
     { path: "/pofol", label: "POFOL", v: "04" },
     { path: "/animations", label: "ANIMATIONS", v: "05" },
     { path: "/skills", label: "SKILLS", v: "06" },
     { path: "/carrer", label: "CARRER", v: "07" },
-    { path: "/myself", label: "MYSELF", v: "08" },
+    { path: "/contact", label: "CONTACT", v: "08" },
   ];
 
   return (
@@ -23,10 +23,10 @@ const Navbar = () => {
           to={section.path}
           className="mb-5 flex justify-between items-center gap-[53px]"
         >
-          <span className="font-medium text-[10px] leading-normal text-right self-end text-white">
+          <span className="font-medium text-[10px] leading-normal text-center self-end text-white">
             {section.label}
           </span>
-          <span className="font-medium text-xs leading-tight text-center text-white">
+          <span className="hidden lg:block font-medium text-xs leading-tight text-center text-white">
             {section.v}
           </span>
         </Link>

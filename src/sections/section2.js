@@ -92,7 +92,7 @@ const Section2 = ({ setModelColor, setModelAnimation, scrollRootRef }) => {
     >
       <div className="mt-auto mr-0 mb-[5px] ml-10">
         <div className="flex flex-col gap-7 w-96">
-          <button className="flex h-20 w-[332px] overflow-hidden">
+          <button className="flex h-20 w-[332px] overflow-hidden z-40">
             <div
               className="w-20 h-full bg-black flex-shrink-0 relative flex items-center justify-center"
               onClick={handleAnimationChange}

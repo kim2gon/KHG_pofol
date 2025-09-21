@@ -51,7 +51,7 @@ const Section5 = () => {
         <h3 className="font-bold text-2xl leading-tight mb-[21px]">
           CSS Animation
         </h3>
-        <p className='max-w-60 font-medium text-xs leading-[18px] tracking-wide'>CSS애니메이션을 구현하여 슬라이더로 정리해두었습니다.</p>
+        <p className='max-w-60 font-medium text-sm leading-[18px] tracking-wide'>CSS애니메이션을 구현하여 슬라이더로 정리해두었습니다.</p>
 
         {/* <Link
           to="/home"

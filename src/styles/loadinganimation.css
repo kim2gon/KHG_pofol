@@ -203,3 +203,10 @@
     clip-path: inset(17vh 40vw);
     z-index: 20;
 }
+
+@media (max-width: 1024px) {
+    .loading-wrapper.scrolled {
+        clip-path: inset(40vh 2vw);
+        z-index: 20;
+    }
+}

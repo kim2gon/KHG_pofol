@@ -12,13 +12,13 @@ import Loading from "../components/loading";
 
 const sections = [
   { component: Section1, path: "/home" },
-  { component: Section2, path: "/about" },
-  { component: Section3, path: "/awards" },
+  { component: Section2, path: "/character" },
+  { component: Section3, path: "/intro" },
   { component: Section4, path: "/pofol" },
   { component: Section5, path: "/animations" },
   { component: Section6, path: "/skills" },
   { component: Section7, path: "/carrer" },
-  { component: Section8, path: "/myself" },
+  { component: Section8, path: "/contact" },
 ];
 
 const ScrollSections = ({ setModelColor, setModelAnimation }) => {

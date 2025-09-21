@@ -17,7 +17,7 @@ const Section7 = () => {
   return (
     <section className='w-full h-dvh flex flex-col pt-[100px] pl-10 pb-[75px] relative'>
       <h3 className='font-bold text-2xl leading-tight mt-[10vh] mx-0 mb-[21px] text-[#111]'>Carrer</h3>
-      <p className='m-0 max-w-60 font-medium text-xs leading-[18px] tracking-wide whitespace-pre-line'>
+      <p className='m-0 max-w-60 font-medium text-sm leading-[18px] tracking-wide whitespace-pre-line'>
         {`졸엽 경력과 자격증 입니다. 각 항목을 클릭하시면 상세 정보가 나옵니다.`}
       </p>
 
