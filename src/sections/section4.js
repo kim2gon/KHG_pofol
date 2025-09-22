@@ -7,7 +7,17 @@ export const slides = [
   {
     title: "Flex-study",
     desc: "플렉스 스터디 웹사이트입니다.\nNext.js를 기반으로 제작하였으며, 3D홈페이지를 구현하였습니다.\n\nthree.js, @react-three/fiber, @react-three/drei를 활용하여 3D 인터랙션을 구현하고, 로딩 페이지에서는 glb 파일을 효율적으로 로드하도록 최적화했습니다.\n인트로 화면에서는 빛 효과를 적용해 몰입감 있는 경험을 제공하였습니다.\n\n또한 디자이너가 Blender로 제작한 3D 오브젝트를 웹 환경에 최적화하는 과정에 주력하여 퍼포먼스와 시각적 완성도를 모두 확보했습니다.\n컴포넌트 기반 아키텍처와 효율적인 코드 구조를 적용해 유지보수성과 확장성까지 고려한 프로젝트입니다.",
-    skills: ["Next.js", "React", "Typescript", "tailwindCSS", "motion", "GSAP", "three.js", "fiber", "drei"],
+    skills: [
+      "Next.js",
+      "React",
+      "Typescript",
+      "tailwindCSS",
+      "motion",
+      "GSAP",
+      "three.js",
+      "fiber",
+      "drei",
+    ],
     image: flex,
     link: "https://study.fl-ex.co.kr/",
     zIndex: 4,
@@ -48,7 +58,7 @@ const Section4 = ({ currentIndex = 0, disableTransition = false }) => {
   }, []);
 
   return (
-    <section className="w-full h-screen overflow-hidden relative pt-[100px] pl-10 pb-[75px]">
+    <section className="w-full h-screen overflow-hidden relative pt-[100px] lg:pl-10 pb-[75px]">
       {hovered && (
         <div
           className="fixed rounded-full pointer-events-none flex items-center justify-center text-xl font-semibold mix-blend-difference"
@@ -60,34 +70,29 @@ const Section4 = ({ currentIndex = 0, disableTransition = false }) => {
             top: mousePos.y - 80,
             zIndex: 9999,
           }}
-        >CLICK</div>
+        >
+          CLICK
+        </div>
       )}
       <div
-        className={`
-    flex h-full
-    transition-transform duration-700 ease-in-out
-    ${disableTransition ? "transition-none" : ""}
-    flex-col lg:flex-row
-  `}
+        className={`flex h-full transition-transform duration-700 ease-in-out
+          ${disableTransition ? "transition-none" : ""}`}
         style={{
           width: `${slides.length * 100}%`,
-          height: `auto`,
-          transform: window.innerWidth >= 1024
-            ? `translateX(-${currentIndex * slideWidthPercent}%)`
-            : `translateY(-${currentIndex * slideHeightPercent}%)`,
+          transform: `translateX(-${currentIndex * slideWidthPercent}%)`,
         }}
       >
         {slides.map((slide, idx) => (
           <div
             key={idx}
-            className="h-full flex flex-shrink-0"
+            className="h-full flex flex-shrink-0 mt-12 lg:mt-24"
             style={{
               width: `${slideWidthPercent}%`,
             }}
           >
-            <div className="flex items-center justify-center h-full lg:space-x-40">
+            <div className="flex flex-col-reverse lg:flex-row lg:items-start lg:justify-start items-center justify-end h-full lg:space-x-40 mr-16 lg:mx-0">
               <div className="w-full lg:w-[300px] font-medium text-sm leading-[18px] tracking-wide text-[#111] whitespace-pre-wrap break-words">
-                <h3 className="font-bold text-2xl leading-tight mb-[21px]">
+                <h3 className="font-bold text-2xl leading-tight text-center lg:text-left mt-4 lg:mt-0 mb-[21px]">
                   {slide.title}
                 </h3>
                 <p>{slide.desc}</p>
@@ -120,7 +125,7 @@ const Section4 = ({ currentIndex = 0, disableTransition = false }) => {
           </div>
         ))}
       </div>
-    </section >
+    </section>
   );
 };
 
