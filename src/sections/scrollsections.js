@@ -37,7 +37,6 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
   const sectionRefs = useRef(sections.map(() => React.createRef()));
   const containerRef = useRef(null);
 
-  // 경로 변경 시 currentSection 업데이트 및 divPosition, Section4 초기화
   useEffect(() => {
     const index = sections.findIndex((s) => s.path === location.pathname);
     if (index === -1) return;
@@ -70,7 +69,6 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
     setCurrentSection(index);
   }, [location.pathname, setModelAnimation]);
 
-  // currentSection 변경 시 scrollIntoView
   useEffect(() => {
     const ref = sectionRefs.current[currentSection];
     if (ref?.current) {
@@ -79,9 +77,8 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
     }
   }, [currentSection, navigate]);
 
-  // Wheel 이벤트 핸들러
   const handleWheel = (e) => {
-    e.preventDefault();
+    e.preventDefault?.();
 
     if (!loadingScrollTriggered) {
       setLoadingScrollTriggered(true);
@@ -147,14 +144,36 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
     }, 100);
   };
 
+  // --- Wheel + Touch Event Handling ---
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     container.addEventListener("wheel", handleWheel, { passive: false });
 
+    let touchStartY = 0;
+
+    const handleTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e) => {
+      const touchEndY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+
+      if (Math.abs(deltaY) > 50) {
+        handleWheel({ deltaY });
+        touchStartY = touchEndY;
+      }
+    };
+
+    container.addEventListener("touchstart", handleTouchStart, { passive: true });
+    container.addEventListener("touchmove", handleTouchMove, { passive: false });
+
     return () => {
       container.removeEventListener("wheel", handleWheel);
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchmove", handleTouchMove);
     };
   }, [handleWheel]);
 
@@ -162,11 +181,7 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
     <div ref={containerRef}>
       <Loading onWheel={handleWheel} triggerScroll={loadingScrollTriggered} />
       {sections.map(({ component: Component }, index) => (
-        <div
-          key={index}
-          ref={sectionRefs.current[index]}
-          style={{ height: "100vh" }}
-        >
+        <div key={index} ref={sectionRefs.current[index]} style={{ height: "100vh" }}>
           {index === 1 ? (
             <Component
               setModelColor={setModelColor}
@@ -180,10 +195,7 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
               disableTransition={disableSlideTransition}
             />
           ) : index === 7 ? (
-            <Component
-              onSectionWheel={handleWheel}
-              currentSection={currentSection}
-            />
+            <Component onSectionWheel={handleWheel} currentSection={currentSection} />
           ) : (
             <Component />
           )}

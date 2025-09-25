@@ -87,181 +87,118 @@ const Section8 = ({ onSectionWheel }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [divPosition2, setDivPosition2] = useState("below");
-  const hasScrolledInSection8 = useRef(false);
   const sectionRef = useRef(null);
   const [centerText, setCenterText] = useState("KIM2GON");
+  const [hovered, setHovered] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [circlePos, setCirclePos] = useState({ x: 0, y: 0 });
 
   const handleIconClick = (name, url) => {
-    setCenterText((prev) => (prev === name ? "KIM2GON" : name));
+    setCenterText(prev => (prev === name ? "KIM2GON" : name));
     if (url) window.open(url, "_blank");
   };
 
-  const handleWheel = (e) => {
-    if (
-      divPosition2 === "bottom" ||
-      (e.deltaY > 0 && !hasScrolledInSection8.current)
-    ) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (e.deltaY > 0 && !hasScrolledInSection8.current) {
-        setDivPosition2("bottom");
-        hasScrolledInSection8.current = true;
-      } else if (e.deltaY < 0 && divPosition2 === "bottom") {
-        setDivPosition2("below");
-        hasScrolledInSection8.current = false;
-      }
-    } else if (divPosition2 === "below" && e.deltaY < 0) {
-      onSectionWheel(e);
-    }
-  };
+  const touchStartY = useRef(0);
+  const touchHandled = useRef(false);
 
   useEffect(() => {
     const element = sectionRef.current;
-    if (element) {
-      element.addEventListener("wheel", handleWheel, { passive: false });
-      return () => element.removeEventListener("wheel", handleWheel);
-    }
-  }, [divPosition2, onSectionWheel]);
+    if (!element) return;
 
-  const getDivStyle2 = () =>
-    divPosition2 === "bottom" ? "translate-y-0" : "translate-y-[100vh]";
+    const handleWheelEvent = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.deltaY > 0 && divPosition2 === "below") {
+        setDivPosition2("bottom");
+      } else if (e.deltaY < 0 && divPosition2 === "bottom") {
+        setDivPosition2("below");
+      }
+    };
+
+    const handleTouchStart = (e) => {
+      touchStartY.current = e.touches[0].clientY;
+      touchHandled.current = false;
+    };
+
+    const handleTouchEnd = (e) => {
+      const deltaY = touchStartY.current - e.changedTouches[0].clientY;
+      if (!touchHandled.current) {
+        if (deltaY > 0 && divPosition2 === "below") {
+          setDivPosition2("bottom");
+        } else if (deltaY < 0 && divPosition2 === "bottom") {
+          setDivPosition2("below");
+        }
+        touchHandled.current = true;
+      }
+    };
+
+    element.addEventListener("wheel", handleWheelEvent, { passive: false });
+    element.addEventListener("touchstart", handleTouchStart, { passive: true });
+    element.addEventListener("touchend", handleTouchEnd, { passive: false });
+
+    return () => {
+      element.removeEventListener("wheel", handleWheelEvent);
+      element.removeEventListener("touchstart", handleTouchStart);
+      element.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [divPosition2]);
+
+  const getDivStyle2 = () => ({
+    transform: divPosition2 === "bottom" ? "translateY(0)" : "translateY(100vh)",
+    transition: "transform 0.5s ease"
+  });
 
   const isCurrentRoute = location.pathname === "/contact";
 
   useEffect(() => {
     if (!isCurrentRoute) {
       setDivPosition2("below");
-      hasScrolledInSection8.current = false;
+      touchHandled.current = false;
+    } else {
+      touchHandled.current = false;
     }
   }, [location.pathname]);
 
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [hovered, setHovered] = useState(false);
-  const [hoverfooter, setHoverfooter] = useState(false);
-  const [circlePos, setCirclePos] = useState({ x: 0, y: 0 });
-
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-
+    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   useEffect(() => {
     let animationFrame;
-
     const followMouse = () => {
-      setCirclePos((prev) => {
-        const ease = 0.05;
-        return {
-          x: prev.x + (mousePos.x - prev.x) * ease,
-          y: prev.y + (mousePos.y - prev.y) * ease,
-        };
-      });
+      setCirclePos(prev => ({ x: prev.x + (mousePos.x - prev.x) * 0.05, y: prev.y + (mousePos.y - prev.y) * 0.05 }));
       animationFrame = requestAnimationFrame(followMouse);
     };
-
     followMouse();
-
     return () => cancelAnimationFrame(animationFrame);
   }, [mousePos]);
 
-  useEffect(() => {
-    setHoverfooter(false);
-  }, [location.pathname]);
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full h-dvh bottom-0 !left-0 start-[--h-padding] end-[--h-padding] pt-[100px] px-0 pb-[75px] flex flex-col justify-between items-center overflow-hidden"
-    >
-      {hovered && (
-        <div
-          className="fixed rounded-full pointer-events-none flex items-center justify-center text-xl font-semibold mix-blend-difference"
-          style={{
-            width: "40px",
-            height: "40px",
-            background: "rgba(255,255,255,1)",
-            left: mousePos.x - 20,
-            top: mousePos.y - 20,
-            zIndex: 9999,
-          }}
-        ></div>
-      )}
+    <section ref={sectionRef} className="relative w-full h-dvh bottom-0 left-0 pt-[100px] px-0 pb-[75px] flex flex-col justify-between items-center overflow-hidden">
+      {hovered && <div className="fixed rounded-full pointer-events-none flex items-center justify-center text-xl font-semibold mix-blend-difference" style={{ width: 40, height: 40, background: 'rgba(255,255,255,1)', left: mousePos.x - 20, top: mousePos.y - 20, zIndex: 9999 }}></div>}
+
       <div className="relative w-full h-full flex justify-center items-center">
-        <p className="m-0 max-w-[200px] absolute right-[100px] top-[180px] font-medium text-sm leading-[18px] tracking-wide whitespace-pre-line text-[#111]">
-          {`연락처 및 상세 정보들 입니다.
-          각 아이콘을 클릭하면 확인가능합니다.`}
-        </p>
-        <div className="flex text-[80px] max-h-max justify-center">
-          <div className="relative font-semibold text-2xl leading-tight text-center min-w-4 pt-4 px-[30px] pb-[11px] text-white bg-black z-[9999]">
-            {centerText}
-          </div>
+        <p className="absolute right-[100px] top-[180px] text-[#111] text-sm leading-[18px]">연락처 및 상세 정보들 입니다. 각 아이콘을 클릭하면 확인가능합니다.</p>
+
+        <div className="flex text-[80px] justify-center">
+          <div className="relative font-semibold text-2xl leading-tight text-center min-w-4 pt-4 px-[30px] pb-[11px] text-white bg-black z-[9999]">{centerText}</div>
         </div>
-        <div
-          className="absolute w-full h-full start-0 end-0 top-0 bottom-0"
-          style={{ animation: "60s linear infinite none running spin" }}
-        >
-          <div className="absolute w-[735px] h-[735px] top-[--dotspinsize] left-[--dotspinsize] bigdotspin1"></div>
 
+        <div className="absolute w-full h-full top-0 left-0" style={{ animation: "60s linear infinite none running spin" }}>
           {icons.map(({ name, bg, url, position, svg }) => (
-            <div
-              key={name}
-              onMouseEnter={() => setHovered(true)}
-              onMouseLeave={() => setHovered(false)}
-              onClick={() => handleIconClick(name, url)}
-              className={` absolute size-[120px] rounded-full ${position} cursor-pointer flex items-center justify-center z-50 group ${
-                bg === "black" ? "bigdotspin4 bg-black" : "bigdotspin3"
-              }`}
-            >
-              {svg}
-            </div>
+            <div key={name} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => handleIconClick(name, url)} className={`absolute size-[120px] rounded-full ${position} cursor-pointer flex items-center justify-center z-50 group ${bg === "black" ? "bigdotspin4 bg-black" : "bigdotspin3"}`}>{svg}</div>
           ))}
-
-          <div className="absolute w-[735px] h-[735px] top-[--dotspinsize] left-[--dotspinsize] bigdotspin2"></div>
         </div>
       </div>
 
-      {/* footer */}
-      {hoverfooter && (
-        <div
-          className="fixed rounded-full pointer-events-none flex items-center justify-center text-xl font-semibold mix-blend-difference"
-          style={{
-            width: "80px",
-            height: "80px",
-            background: "rgba(255,255,255,1)",
-            left: circlePos.x - 40,
-            top: circlePos.y - 40,
-            zIndex: 9999,
-          }}
-        ></div>
-      )}
       {isCurrentRoute && (
-        <div
-          onMouseEnter={() => setHoverfooter(true)}
-          onMouseLeave={() => setHoverfooter(false)}
-          className={`fixed w-screen left-0 bottom-0 pt-24 px-[--footerpd] pb-10 flex flex-col items-center text-center 
-            bg-black text-white z-50 transition-transform duration-500 ${getDivStyle2()}`}
-        >
+        <div style={getDivStyle2()} className="fixed w-screen left-0 bottom-0 pt-24 px-[--footerpd] pb-10 flex flex-col items-center text-center bg-black text-white z-50">
           <p className="text-[30px] leading-none mb-2">KIM HEEGON</p>
           <p className="text-lg leading-none">2001.01.22</p>
-          <button
-            onClick={() => {
-              navigate("/home");
-              setHoverfooter(false);
-            }}
-            className="flex flex-col gap-4 mt-[50px] mx-0 mb-10 text-inherit justify-items-center items-center"
-          >
-            <svg className="w-[10px] h-[28px] fill-none scale-[-1]">
-              <path
-                d="M9.924.924 5 7.314.076.924h9.848ZM9.308 12.308 5 17.9.692 12.31h8.616ZM8.693 22.693 5 27.485l-3.693-4.792h7.386Z"
-                fill="currentColor"
-              ></path>
-            </svg>
+          <button onClick={() => { navigate("/home"); }} className="flex flex-col gap-4 mt-[50px] items-center">
+            <svg className="w-[10px] h-[28px] fill-none scale-[-1]"><path d="M9.924.924 5 7.314.076.924h9.848ZM9.308 12.308 5 17.9.692 12.31h8.616ZM8.693 22.693 5 27.485l-3.693-4.792h7.386Z" fill="currentColor"></path></svg>
             <span className="text-sm">Page top</span>
           </button>
         </div>

@@ -16,10 +16,21 @@ function App() {
       <div className="flex flex-col w-full h-full my-0 mx-auto bg-white ">
         <div className="flex justify-center">
           <div className="lg:px-0 w-full xl:w-[1300px] h-full fixed pointer-events-none z-30">
-            <Character scrollTarget={scrollRef} modelColor={modelColor} animation={modelAnimation} />
+            <Character
+              scrollTarget={scrollRef}
+              modelColor={modelColor}
+              animation={modelAnimation}
+            />
           </div>
-          <div className="px-4 xl:px-0 w-full xl:w-[1300px] h-full" ref={scrollRef}>
-            <ScrollSections scrollRootRef={scrollRef} setModelColor={setModelColor} setModelAnimation={setModelAnimation} />
+          <div
+            className="px-4 xl:px-0 w-full xl:w-[1300px] h-full"
+            ref={scrollRef}
+          >
+            <ScrollSections
+              scrollRootRef={scrollRef}
+              setModelColor={setModelColor}
+              setModelAnimation={setModelAnimation}
+            />
           </div>
         </div>
       </div>
