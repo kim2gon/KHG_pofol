@@ -15,7 +15,7 @@ function App() {
       <Navbar />
       <div className="flex flex-col w-full h-full my-0 mx-auto bg-white ">
         <div className="flex justify-center">
-          <div className="px-4 lg:px-0 w-full xl:w-[1300px] h-full fixed pointer-events-none z-30">
+          <div className="lg:px-0 w-full xl:w-[1300px] h-full fixed pointer-events-none z-30">
             <Character scrollTarget={scrollRef} modelColor={modelColor} animation={modelAnimation} />
           </div>
           <div className="px-4 xl:px-0 w-full xl:w-[1300px] h-full" ref={scrollRef}>

@@ -35,6 +35,7 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
   const isScrolling = useRef(false);
   const prevSection = useRef(0);
   const sectionRefs = useRef(sections.map(() => React.createRef()));
+  const containerRef = useRef(null);
 
   // 경로 변경 시 currentSection 업데이트 및 divPosition, Section4 초기화
   useEffect(() => {
@@ -45,20 +46,19 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
       setModelAnimation(null);
     }
 
-    // Section3 divPosition 초기화
     if (index === 2) {
-      if (prevSection.current < 2) setDivPosition("bottom"); // 아래에서 올라올 때
-      else if (prevSection.current > 2) setDivPosition("middle"); // 위에서 내려올 때
+      if (prevSection.current < 2) setDivPosition("bottom");
+      else if (prevSection.current > 2) setDivPosition("middle");
     } else {
       if (index < 2) setDivPosition("below");
       else if (index > 2) setDivPosition("above");
     }
 
-    // Section4 진입 시 슬라이드 초기화
     if (index === 3) {
       setDisableSlideTransition(true);
-      if (prevSection.current < 3) setSection4SlideIndex(0); // 이전 섹션에서 아래로 들어오면 첫 슬라이드
-      else if (prevSection.current > 3) setSection4SlideIndex(totalSlidesInSection4 - 1); // 이후 섹션에서 위로 들어오면 마지막 슬라이드
+      if (prevSection.current < 3) setSection4SlideIndex(0);
+      else if (prevSection.current > 3)
+        setSection4SlideIndex(totalSlidesInSection4 - 1);
       setTimeout(() => setDisableSlideTransition(false), 50);
     } else {
       setDisableSlideTransition(true);
@@ -79,7 +79,7 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
     }
   }, [currentSection, navigate]);
 
-  // Wheel 이벤트
+  // Wheel 이벤트 핸들러
   const handleWheel = (e) => {
     e.preventDefault();
 
@@ -94,7 +94,6 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
     const isDown = e.deltaY > 0;
 
     setTimeout(() => {
-      // Section3 스크롤 처리
       if (currentSection === 2) {
         if (isDown) {
           if (divPosition === "below") setDivPosition("bottom");
@@ -115,7 +114,6 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
         return;
       }
 
-      // Section4 슬라이드 처리
       if (currentSection === 3) {
         if (isDown) {
           if (section4SlideIndex < totalSlidesInSection4 - 1) {
@@ -138,7 +136,6 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
         return;
       }
 
-      // 나머지 섹션
       setCurrentSection((prev) => {
         const next = isDown
           ? Math.min(prev + 1, sections.length - 1)
@@ -150,8 +147,19 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
     }, 100);
   };
 
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+    };
+  }, [handleWheel]);
+
   return (
-    <div onWheel={handleWheel}>
+    <div ref={containerRef}>
       <Loading onWheel={handleWheel} triggerScroll={loadingScrollTriggered} />
       {sections.map(({ component: Component }, index) => (
         <div
@@ -165,9 +173,7 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
               setModelAnimation={setModelAnimation}
             />
           ) : index === 2 ? (
-            <Component
-              divPosition={divPosition}
-            />
+            <Component divPosition={divPosition} />
           ) : index === 3 ? (
             <Component
               currentIndex={section4SlideIndex}

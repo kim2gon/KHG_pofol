@@ -52,13 +52,6 @@ const Section5 = () => {
           CSS Animation
         </h3>
         <p className='max-w-60 font-medium text-sm leading-[18px] tracking-wide'>CSS애니메이션을 구현하여 슬라이더로 정리해두었습니다.</p>
-
-        {/* <Link
-          to="/home"
-          className="block max-w-max min-w-40 mt-8 cursor-pointer font-semibold text-xs leading-tight text-center relative text-white pt-4 px-[30px] pb-[11px] bg-black"
-        >
-          click my profile
-        </Link> */}
       </div>
 
       <div className="absolute top-0 bottom-[-75px] left-[326px] w-[324px] overflow-hidden">
