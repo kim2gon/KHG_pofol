@@ -90,27 +90,25 @@ const Section2 = ({ setModelColor, setModelAnimation, scrollRootRef }) => {
       ref={sectionRef}
       className="w-full h-dvh flex pt-[100px] px-0 pb-[75px] top-0 bottom-0 relative"
     >
-      <div className="mt-auto mr-0 mb-[5px] ml-10">
-        <div className="flex flex-col gap-7 w-96">
-          <button className="flex h-20 w-[332px] overflow-hidden z-40">
-            <div
-              className="w-20 h-full bg-black flex-shrink-0 relative flex items-center justify-center"
-              onClick={handleAnimationChange}
-            >
-              <div className="bg-white rounded-full size-[39px] flex items-center justify-center">
-                <div className="bg-black w-[12px] h-[12px] triangle absolute left-9" />
-              </div>
+      <div className="flex flex-col gap-7 w-96 scale-75 lg:scale-100 m-0 mt-auto lg:mr-0 lg:mb-[5px] lg:ml-10 z-50">
+        <button className="flex h-20 w-[332px] overflow-hidden z-40">
+          <div
+            className="w-20 h-full bg-black flex-shrink-0 relative flex items-center justify-center"
+            onClick={handleAnimationChange}
+          >
+            <div className="bg-white rounded-full size-[39px] flex items-center justify-center">
+              <div className="bg-black w-[12px] h-[12px] triangle absolute left-9" />
             </div>
-            <div className="w-full h-full flex flex-col justify-center items-center">
-              <div className="w-full h-[27px] flex">{changeColor(colorsTop)}</div>
-              <div className="w-full h-[26px] flex">{changeColor(colorsMiddle)}</div>
-              <div className="w-full h-[27px] flex">{changeColor(colorsBottom)}</div>
-            </div>
-          </button>
-          <p className="m-0 max-w-80 gap-8 flex flex-col items-start font-medium text-xs leading-tight tracking-wide whitespace-pre-line text-[#111]">
-            {`상단의 플레이 버튼과 색상변경 버튼을 눌러보세요!`}
-          </p>
-        </div>
+          </div>
+          <div className="w-full h-full flex flex-col justify-center items-center">
+            <div className="w-full h-[27px] flex">{changeColor(colorsTop)}</div>
+            <div className="w-full h-[26px] flex">{changeColor(colorsMiddle)}</div>
+            <div className="w-full h-[27px] flex">{changeColor(colorsBottom)}</div>
+          </div>
+        </button>
+        <p className="m-0 max-w-80 gap-8 flex flex-col items-start font-medium text-xs leading-tight tracking-wide whitespace-pre-line text-[#111]">
+          {`상단의 플레이 버튼과 색상변경 버튼을 눌러보세요!`}
+        </p>
       </div>
     </section>
   );

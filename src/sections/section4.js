@@ -61,7 +61,7 @@ const Section4 = ({ currentIndex = 0, disableTransition = false }) => {
     <section className="w-full h-screen overflow-hidden relative pt-[100px] lg:pl-10 pb-[75px]">
       {hovered && (
         <div
-          className="fixed rounded-full pointer-events-none flex items-center justify-center text-xl font-semibold mix-blend-difference"
+          className="fixed rounded-full pointer-events-none hidden lg:flex items-center justify-center text-xl font-semibold mix-blend-difference"
           style={{
             width: "160px",
             height: "160px",

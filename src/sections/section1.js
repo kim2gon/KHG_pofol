@@ -26,10 +26,10 @@ const Section1 = () => {
       </div>
 
       <div className="flex flex-col w-full lg:max-w-[460px] h-full pt-[10vh] px-0 pb-0 z-20">
-        <h1 className="text-[109px] font-semibold text-left w-[460px] leading-tight">
+        <h1 className="text-8xl font-semibold text-left w-[460px] leading-tight">
           Portfolio
         </h1>
-        <p className="my-4 w-full lg:max-w-96 gap-8 flex flex-col items-start justify-items-center font-regular text-sm leading-tight tracking-wide whitespace-pre-line text-[#111]">
+        <p className="my-4 w-full lg:max-w-96 gap-8 hidden lg:flex flex-col items-start justify-items-center font-regular text-sm leading-tight tracking-wide whitespace-pre-line text-[#111]">
           {`웹 프론트엔드 개발자 김희곤의 포토폴리오 입니다.\n아래로 스크롤다운 하며 감상해주시면 감사하겠습니다.`}
           {/* <Link
             to="/contact"

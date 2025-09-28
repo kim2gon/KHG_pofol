@@ -47,20 +47,22 @@ const Section5 = () => {
       className="w-full h-dvh flex pt-[100px] pl-10 pb-[75px] !left-0 top-0 bottom-0 start-[--h-padding] end-[--h-padding] relative"
     >
 
-      <div className="mt-[15vh] m-0  text-[#111]">
+      <div className="hidden lg:block mt-[15vh] m-0 text-[#111]">
         <h3 className="font-bold text-2xl leading-tight mb-[21px]">
           CSS Animation
         </h3>
         <p className='max-w-60 font-medium text-sm leading-[18px] tracking-wide'>CSS애니메이션을 구현하여 슬라이더로 정리해두었습니다.</p>
       </div>
 
-      <div className="absolute top-0 bottom-[-75px] left-[326px] w-[324px] overflow-hidden">
+      <div className="absolute top-0 bottom-0 lg:bottom-[-75px] left-[10px] lg:left-[326px] w-40 lg:w-[324px] overflow-hidden">
         <div className="w-full h-full">
           <div className="top-full flex-col absolute flex slide-up">
             <div className="w-full">
               {cssanimation.map((Component, i) => (
-                <div key={i} className="block mt-[91px] w-[324px] h-[404px]">
-                  {Component}
+                <div key={i} className="block mt-10 lg:mt-24 w-44 lg:w-[324px] h-40 lg:h-[404px] origin-top-left">
+                  <div className="scale-[0.4] lg:scale-100 origin-top-left">
+                    {Component}
+                  </div>
                 </div>
               ))}
             </div>
@@ -68,8 +70,10 @@ const Section5 = () => {
           <div className="top-full flex-col absolute flex slide-up second-slide">
             <div className="w-full">
               {cssanimation.map((Component, i) => (
-                <div key={i} className="block mt-[91px] w-[324px] h-[404px]">
-                  {Component}
+                <div key={i} className="block mt-10 lg:mt-24 w-44 lg:w-[324px] h-40 lg:h-[404px] origin-top-left">
+                  <div className="scale-[0.4] lg:scale-100 origin-top-left">
+                    {Component}
+                  </div>
                 </div>
               ))}
             </div>
@@ -77,13 +81,15 @@ const Section5 = () => {
         </div>
       </div>
 
-      <div className="absolute top-0 bottom-[-300px] left-[739px] w-[324px] overflow-hidden">
+      <div className="absolute top-0 bottom-0 lg:bottom-[-300px] left-[170px] lg:left-[739px] w-40 lg:w-[324px] overflow-hidden">
         <div className="w-full h-full">
           <div className="bottom-full flex-col absolute flex slide-down">
             <div className="w-full">
               {cssanimation.map((Component, i) => (
-                <div key={i} className="block mt-[91px] w-[324px] h-[404px]">
-                  {Component}
+                <div key={i} className="block mt-10 lg:mt-24 w-40 lg:w-[324px] h-40 lg:h-[404px] origin-top-left">
+                  <div className="scale-[0.4] lg:scale-100 origin-top-left">
+                    {Component}
+                  </div>
                 </div>
               ))}
             </div>
@@ -91,8 +97,10 @@ const Section5 = () => {
           <div className="bottom-full flex-col absolute flex slide-down second-slide">
             <div className="w-full">
               {cssanimation.map((Component, i) => (
-                <div key={i} className="block mt-[91px] w-[324px] h-[404px]">
-                  {Component}
+                <div key={i} className="block mt-10 lg:mt-24 w-40 lg:w-[324px] h-40 lg:h-[404px] origin-top-left">
+                  <div className="scale-[0.4] lg:scale-100 origin-top-left">
+                    {Component}
+                  </div>
                 </div>
               ))}
             </div>

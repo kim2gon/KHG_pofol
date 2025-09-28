@@ -22,7 +22,6 @@ body {
 
 .bgsquare {
     clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%);
-    /* 스크롤 하면 60 40 40 60*/
 }
 
 @keyframes slide-up {
@@ -102,8 +101,8 @@ body {
     position: absolute;
     width: 109px;
     height: 109px;
-    left: calc(50% - 109px / 2);
     top: calc(50% - 109px / 2);
+    left: calc(50% - 109px / 2);
     background: #111;
     border-radius: 100%;
     font-weight: 600;
@@ -149,13 +148,45 @@ body {
 
 .dotspin {
     position: absolute;
-    left: calc(50% - 155px / 2);
-    top: calc(50% - 155px / 2);
     width: 155px;
     height: 155px;
+    top: calc(50% - 155px / 2);
+    left: calc(50% - 155px / 2);
     background: url(../assets/img/orbit-dots-xs.svg);
     animation: 30s linear infinite none running spin;
     pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+    .circlecontainer {
+        width: 100px;
+        height: 100px;
+        /* top: calc(-1 * 200px);
+        left: calc(-1 * 200px); */
+    }
+
+    .circleinner {
+        width: 70px;
+        height: 70px;
+        /* top: calc(50% - 109px / 2);
+        left: calc(50% - 109px / 2); */
+        font-size: 10px;
+    }
+
+    .circlespin {
+        width: 70px;
+        height: 70px;
+        /* left: calc(50% - 117px / 2);
+        top: calc(50% - 117px / 2); */
+    }
+
+    .dotspin {
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+        top: calc(50% - 155px / 2);
+        left: calc(50% - 155px / 2);
+    }
 }
 
 .boxtext {

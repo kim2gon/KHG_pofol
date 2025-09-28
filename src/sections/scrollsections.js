@@ -144,7 +144,6 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
     }, 100);
   };
 
-  // --- Wheel + Touch Event Handling ---
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
