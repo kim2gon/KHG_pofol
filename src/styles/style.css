@@ -157,27 +157,21 @@ body {
     pointer-events: none;
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
     .circlecontainer {
         width: 100px;
         height: 100px;
-        /* top: calc(-1 * 200px);
-        left: calc(-1 * 200px); */
     }
 
     .circleinner {
         width: 70px;
         height: 70px;
-        /* top: calc(50% - 109px / 2);
-        left: calc(50% - 109px / 2); */
         font-size: 10px;
     }
 
     .circlespin {
         width: 70px;
         height: 70px;
-        /* left: calc(50% - 117px / 2);
-        top: calc(50% - 117px / 2); */
     }
 
     .dotspin {
@@ -187,7 +181,7 @@ body {
         top: calc(50% - 155px / 2);
         left: calc(50% - 155px / 2);
     }
-}
+} */
 
 .boxtext {
     font-weight: 700;
