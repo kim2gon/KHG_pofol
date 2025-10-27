@@ -143,7 +143,7 @@ const Section6 = () => {
   return (
     <section className="w-full h-dvh flex flex-col pt-[100px] pl-10 pb-[75px] !left-0 top-0 bottom-0 start-[--h-padding] end-[--h-padding] relative overflow-hidden">
       <h3 className="font-bold text-2xl leading-tight mt-[10vh] mx-0 mb-[21px] text-[#111]">My skills</h3>
-      <p className="m-0 max-w-60 font-medium text-xs leading-[18px] tracking-wide">
+      <p className="m-0 max-w-60 font-medium text-xs leading-[18px] tracking-wide hidden lg:block">
         제가 가진 기술들을 애니메이션을 이용하여 재밌게 표현했습니다.
       </p>
       <div className="absolute left-0 bottom-0 right-0 h-[1000px] overflow-hidden">
@@ -168,7 +168,7 @@ const Section6 = () => {
         <Bubble x={642} y={732}>
           Figma
         </Bubble>
-        <Bubble2 x={300} y={820} xLg={1193} yLg={732}>
+        <Bubble2 x={310} y={830} xLg={1193} yLg={732}>
           React
         </Bubble2>
         <Circle x={710} y={803}></Circle>
@@ -181,13 +181,13 @@ const Section6 = () => {
         <Bubble x={1031} y={881}>
           Drei
         </Bubble>
-        <Bubble x={360} y={940} xLg={306} yLg={941}>
+        <Bubble x={320} y={990} xLg={306} yLg={941}>
           Framer Motion
         </Bubble>
         <Bubble2 x={648} y={941}>
           ThreeJS
         </Bubble2>
-        <Bubble x={200} y={950} xLg={1171} yLg={954}>
+        <Bubble x={200} y={930} xLg={1171} yLg={954}>
           Typescript
         </Bubble>
         <Bubble x={1500} y={1500} xLg={559} yLg={999}>
@@ -197,7 +197,7 @@ const Section6 = () => {
         <Bubble x={1500} y={1500} xLg={230} yLg={1010}>
           Python
         </Bubble>
-        <Bubble x={340} y={690} xLg={851} yLg={1013}>
+        <Bubble x={350} y={690} xLg={851} yLg={1013}>
           tailwind CSS
         </Bubble>
       </div>

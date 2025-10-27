@@ -95,7 +95,7 @@ const Section4 = ({ currentIndex = 0, disableTransition = false }) => {
                 <h3 className="font-bold text-2xl leading-tight text-center lg:text-left mt-4 lg:mt-0 mb-[21px]">
                   {slide.title}
                 </h3>
-                <p className="line-clamp-[17] lg:line-clamp-none">{slide.desc}</p>
+                <p>{slide.desc}</p>
                 <div className="mt-4 flex flex-wrap gap-1">
                   {slide.skills.map((skill, i) => (
                     <p
