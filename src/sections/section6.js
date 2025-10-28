@@ -142,7 +142,7 @@ export { Bubble, Bubble2, Circle };
 const Section6 = () => {
   return (
     <section className="w-full h-dvh flex flex-col pt-[100px] pl-10 pb-[75px] !left-0 top-0 bottom-0 start-[--h-padding] end-[--h-padding] relative overflow-hidden">
-      <h3 className="font-bold text-2xl leading-tight mt-[10vh] mx-0 mb-[21px] text-[#111]">My skills</h3>
+      <h3 className="font-bold text-2xl leading-tight mt-[10vh] mx-0 mb-[21px] text-[#111] hidden lg:block">My skills</h3>
       <p className="m-0 max-w-60 font-medium text-xs leading-[18px] tracking-wide hidden lg:block">
         제가 가진 기술들을 애니메이션을 이용하여 재밌게 표현했습니다.
       </p>

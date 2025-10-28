@@ -77,67 +77,69 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
     }
   }, [currentSection, navigate]);
 
-  const handleSectionMove = (isDown) => {
-    if (currentSection === 2) {
-      if (isDown) {
-        if (divPosition === "below") setDivPosition("bottom");
-        else if (divPosition === "bottom") setDivPosition("middle");
-        else if (divPosition === "middle") {
-          setDivPosition("above");
-          setCurrentSection(3);
-        }
-      } else {
-        if (divPosition === "above") setDivPosition("middle");
-        else if (divPosition === "middle") setDivPosition("bottom");
-        else if (divPosition === "bottom") {
-          setDivPosition("below");
-          setCurrentSection(1);
-        }
-      }
-      return;
-    }
-
-    if (currentSection === 3) {
-      if (isDown) {
-        if (section4SlideIndex < totalSlidesInSection4 - 1) {
-          setSection4SlideIndex((prev) => prev + 1);
-        } else {
-          setCurrentSection(4);
-        }
-      } else {
-        if (section4SlideIndex > 0) {
-          setSection4SlideIndex((prev) => prev - 1);
-        } else {
-          setDivPosition("above");
-          setTimeout(() => {
-            setDivPosition("middle");
-            setCurrentSection(2);
-          }, 50);
-        }
-      }
-      return;
-    }
-
-    setCurrentSection((prev) => {
-      const next = isDown
-        ? Math.min(prev + 1, sections.length - 1)
-        : Math.max(prev - 1, 0);
-      return next;
-    });
-  };
-
   const handleWheel = (e) => {
     e.preventDefault?.();
+
     if (!loadingScrollTriggered) {
       setLoadingScrollTriggered(true);
       return;
     }
-    if (isScrolling.current) return;
 
+    if (isScrolling.current) return;
     isScrolling.current = true;
+
     const isDown = e.deltaY > 0;
+
     setTimeout(() => {
-      handleSectionMove(isDown);
+      if (currentSection === 2) {
+        if (isDown) {
+          if (divPosition === "below") setDivPosition("bottom");
+          else if (divPosition === "bottom") setDivPosition("middle");
+          else if (divPosition === "middle") {
+            setDivPosition("above");
+            setCurrentSection(3);
+          }
+        } else {
+          if (divPosition === "above") setDivPosition("middle");
+          else if (divPosition === "middle") setDivPosition("bottom");
+          else if (divPosition === "bottom") {
+            setDivPosition("below");
+            setCurrentSection(1);
+          }
+        }
+        isScrolling.current = false;
+        return;
+      }
+
+      if (currentSection === 3) {
+        if (isDown) {
+          if (section4SlideIndex < totalSlidesInSection4 - 1) {
+            setSection4SlideIndex((prev) => prev + 1);
+          } else {
+            setCurrentSection(4);
+          }
+        } else {
+          if (section4SlideIndex > 0) {
+            setSection4SlideIndex((prev) => prev - 1);
+          } else {
+            setDivPosition("above");
+            setTimeout(() => {
+              setDivPosition("middle");
+              setCurrentSection(2);
+            }, 50);
+          }
+        }
+        isScrolling.current = false;
+        return;
+      }
+
+      setCurrentSection((prev) => {
+        const next = isDown
+          ? Math.min(prev + 1, sections.length - 1)
+          : Math.max(prev - 1, 0);
+        return next;
+      });
+
       isScrolling.current = false;
     }, 100);
   };
@@ -145,6 +147,8 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
 
     let touchStartY = 0;
 
@@ -156,17 +160,12 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
       const touchEndY = e.touches[0].clientY;
       const deltaY = touchStartY - touchEndY;
 
-      if (Math.abs(deltaY) > 50 && !isScrolling.current) {
-        isScrolling.current = true;
-        handleSectionMove(deltaY > 0);
-        setTimeout(() => {
-          isScrolling.current = false;
-        }, 300);
+      if (Math.abs(deltaY) > 50) {
+        handleWheel({ deltaY });
         touchStartY = touchEndY;
       }
     };
 
-    container.addEventListener("wheel", handleWheel, { passive: false });
     container.addEventListener("touchstart", handleTouchStart, { passive: true });
     container.addEventListener("touchmove", handleTouchMove, { passive: false });
 
@@ -175,7 +174,7 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
       container.removeEventListener("touchstart", handleTouchStart);
       container.removeEventListener("touchmove", handleTouchMove);
     };
-  }, [currentSection, divPosition, section4SlideIndex]);
+  }, [handleWheel]);
 
   return (
     <div ref={containerRef}>
@@ -195,10 +194,7 @@ const ScrollSections = ({ setModelColor, setModelAnimation }) => {
               disableTransition={disableSlideTransition}
             />
           ) : index === 7 ? (
-            <Component
-              onSectionWheel={handleWheel}
-              currentSection={currentSection}
-            />
+            <Component onSectionWheel={handleWheel} currentSection={currentSection} />
           ) : (
             <Component />
           )}
