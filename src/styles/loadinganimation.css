@@ -210,3 +210,17 @@
         z-index: 20;
     }
 }
+
+.scrolldownani {
+    animation: scrolldown 1.5s infinite alternate ease-in;
+}
+
+@keyframes scrolldown {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(300px);
+    }
+}
